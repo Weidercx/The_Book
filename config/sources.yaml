@@ -9,6 +9,9 @@ archives:
     domain: "Hebrew Bible"
     url: "https://github.com/openscriptures/morphhb"
     adapter_class: "src.adapters.oshb_adapter.OSHBGenesisAdapter"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
     format: "OSIS XML, JSON"
     license: "CC-BY 4.0 (lemma/morph), Public Domain (WLC text)"
     parallel_workers: 2
@@ -21,10 +24,83 @@ archives:
     url: "https://www.sefaria.org/"
     adapter_class: "src.adapters.sefaria_adapter.SefariaGenesisAdapter"
     api_endpoint: "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
     format: "JSON API (Hebrew text)"
     license: "CC-BY-SA (version mapped in adapter)"
     parallel_workers: 1
     refresh_schedule: "weekly"
+    v1_enabled: true
+
+  dss_4qgen:
+    name: "Dead Sea Scrolls Genesis Transcriptions (4QGen)"
+    domain: "Hebrew Bible (Qumran DSS)"
+    url: "https://www.deadseascrolls.org.il/"
+    adapter_class: "src.adapters.dss_adapter.DSSGenesisTranscriptionAdapter"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
+    format: "JSON transcription payload (Hebrew)"
+    license: "CC-BY 4.0 (transcription provider dependent; verify per dataset)"
+    parallel_workers: 1
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  codex_sassoon_1053:
+    name: "Codex Sassoon 1053 Hebrew Transcriptions"
+    domain: "Hebrew Bible (Masoretic Codex)"
+    url: "https://www.anu.org.il/exhibitions/codex-sassoon/"
+    adapter_class: "src.adapters.hebrew_transcription_adapter.HebrewGenesisTranscriptionAdapter"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
+    format: "JSON transcription payload (Hebrew, verse keyed)"
+    license: "CC-BY 4.0 (provider dependent; verify per dataset)"
+    parallel_workers: 1
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  cairo_genizah_genesis:
+    name: "Cambridge Genizah Genesis Fragments (Hebrew Transcriptions)"
+    domain: "Hebrew Bible (Genizah Fragments)"
+    url: "https://cudl.lib.cam.ac.uk/collections/genizah"
+    adapter_class: "src.adapters.hebrew_transcription_adapter.HebrewGenesisTranscriptionAdapter"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
+    format: "JSON transcription payload (Hebrew fragments, verse keyed)"
+    license: "CC-BY 4.0 (provider dependent; verify per dataset)"
+    parallel_workers: 1
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  nli_ktiv_genesis_fragments:
+    name: "NLI KTIV Genesis Fragments (Hebrew Transcriptions)"
+    domain: "Hebrew Bible (Masoretic Manuscript Fragments)"
+    url: "https://www.nli.org.il/en/discover/manuscripts/hebrew-manuscripts"
+    adapter_class: "src.adapters.hebrew_transcription_adapter.HebrewGenesisTranscriptionAdapter"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
+    format: "JSON transcription payload (Hebrew fragments, verse keyed)"
+    license: "CC-BY 4.0 (provider dependent; verify per dataset)"
+    parallel_workers: 1
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  samaritan_pentateuch_sp:
+    name: "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)"
+    domain: "Hebrew Bible (Samaritan Pentateuch)"
+    url: "https://github.com/DT-UCPH/sp"
+    adapter_class: "src.adapters.hebrew_transcription_adapter.HebrewGenesisTranscriptionAdapter"
+    text_relation: "original_language_transcription"
+    is_translation: false
+    is_transcription: true
+    format: "Text-Fabric features transformed to JSON transcription payload (Hebrew)"
+    license: "CC-BY-NC 4.0"
+    parallel_workers: 1
+    refresh_schedule: "quarterly"
     v1_enabled: true
 
   sblgnt:

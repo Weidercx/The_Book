@@ -93,6 +93,27 @@ def parse_year(value: Any) -> int | None:
         return None
 
 
+def signed_year_from_bce(year_bce: int | None) -> int | None:
+    if not isinstance(year_bce, int):
+        return None
+    return -year_bce
+
+
+def format_signed_year(year_ce: int | None) -> str:
+    if year_ce is None:
+        return "(unknown)"
+    if year_ce < 0:
+        return f"{abs(year_ce)} BCE"
+    return f"{year_ce} CE"
+
+
+def gap_years_without_year_zero(earlier_year: int, later_year: int) -> int:
+    gap = later_year - earlier_year
+    if earlier_year < 0 < later_year:
+        return gap - 1
+    return gap
+
+
 def oldest_witness_anchor_year(anchor: Dict[str, Any]) -> int | None:
     if not isinstance(anchor, dict):
         return None
@@ -101,15 +122,32 @@ def oldest_witness_anchor_year(anchor: Dict[str, Any]) -> int | None:
     if isinstance(ordering_year, int):
         return ordering_year
 
+    ordering_year_bce = anchor.get("ordering_year_bce")
+    converted_ordering_bce = signed_year_from_bce(ordering_year_bce)
+    if converted_ordering_bce is not None:
+        return converted_ordering_bce
+
     window = anchor.get("witness_anchor_window_ce")
     if isinstance(window, dict):
         start = window.get("start")
         if isinstance(start, int):
             return start
 
+    window_bce = anchor.get("witness_anchor_window_bce")
+    if isinstance(window_bce, dict):
+        start_bce = window_bce.get("start")
+        converted_start_bce = signed_year_from_bce(start_bce)
+        if converted_start_bce is not None:
+            return converted_start_bce
+
     date_ce = anchor.get("witness_anchor_date_ce") or anchor.get("date_ce")
     if isinstance(date_ce, int):
         return date_ce
+
+    date_bce = anchor.get("witness_anchor_date_bce") or anchor.get("date_bce")
+    converted_date_bce = signed_year_from_bce(date_bce)
+    if converted_date_bce is not None:
+        return converted_date_bce
 
     return None
 
@@ -133,6 +171,9 @@ def build_source_profile(
         "source_archive": sample.get("source_archive") or archive_config.get("name") or source_name,
         "source_url": archive_config.get("url") or sample.get("source_uri"),
         "api_endpoint": archive_config.get("api_endpoint"),
+        "text_relation": archive_config.get("text_relation") or archive_config.get("witness_text_relation"),
+        "is_translation": bool(archive_config.get("is_translation", False)),
+        "is_transcription": bool(archive_config.get("is_transcription", False)),
         "source_uri_example": sample.get("source_uri"),
         "source_version_dates": version_dates,
         "digital_edition_dates": version_dates,
@@ -143,6 +184,17 @@ def build_source_profile(
         "discovery_location": source_anchor.get("discovery_location"),
         "attributed_author": source_anchor.get("attributed_author"),
     }
+
+
+def source_is_translation(profile: Dict[str, Any]) -> bool:
+    relation = str(profile.get("text_relation") or "").strip().lower()
+    if relation in {
+        "translation",
+        "translated",
+        "target_language_translation",
+    }:
+        return True
+    return bool(profile.get("is_translation", False))
 
 
 def source_order_key(profile: Dict[str, Any]) -> tuple[int, int, str]:
@@ -160,6 +212,8 @@ def year_gap_summary(older_year: int | None, newer_year: int | None, method: str
             "years": None,
             "older_year_ce": older_year,
             "newer_year_ce": newer_year,
+            "older_year_label": format_signed_year(older_year),
+            "newer_year_label": format_signed_year(newer_year),
             "method": method,
         }
 
@@ -168,11 +222,19 @@ def year_gap_summary(older_year: int | None, newer_year: int | None, method: str
 
     return {
         "known": True,
-        "years": later_year - earlier_year,
+        "years": gap_years_without_year_zero(earlier_year, later_year),
         "older_year_ce": earlier_year,
         "newer_year_ce": later_year,
+        "older_year_label": format_signed_year(earlier_year),
+        "newer_year_label": format_signed_year(later_year),
         "method": method,
     }
+
+
+def safe_ratio(numerator: int, denominator: int) -> float | None:
+    if denominator <= 0:
+        return None
+    return round(numerator / denominator, 4)
 
 
 def build_chronology_context(
@@ -216,12 +278,18 @@ def format_anchor(anchor: Dict[str, Any]) -> str:
 
     label = anchor.get("witness_anchor_label") or anchor.get("label") or "(unnamed anchor)"
     date_ce = anchor.get("witness_anchor_date_ce") or anchor.get("date_ce")
+    date_bce = anchor.get("witness_anchor_date_bce") or anchor.get("date_bce")
     window_ce = anchor.get("witness_anchor_window_ce")
+    window_bce = anchor.get("witness_anchor_window_bce")
 
     if isinstance(window_ce, dict) and window_ce.get("start") is not None and window_ce.get("end") is not None:
         return f"{label} ({window_ce.get('start')}-{window_ce.get('end')} CE)"
+    if isinstance(window_bce, dict) and window_bce.get("start") is not None and window_bce.get("end") is not None:
+        return f"{label} ({window_bce.get('start')}-{window_bce.get('end')} BCE)"
     if date_ce is not None:
         return f"{label} ({date_ce} CE)"
+    if date_bce is not None:
+        return f"{label} ({date_bce} BCE)"
 
     return str(label)
 
@@ -318,24 +386,58 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
 
     lines.append("## Source Ordering (Oldest First)")
     lines.append("")
+
+    ordered_a_year_label = format_signed_year(ordered_a.get("oldest_witness_anchor_year_ce"))
+    ordered_b_year_label = format_signed_year(ordered_b.get("oldest_witness_anchor_year_ce"))
+
     lines.append(
         f"- Source A (oldest witness): {ordered_a_name} | "
-        f"anchor year CE: {ordered_a.get('oldest_witness_anchor_year_ce') or '(unknown)'}"
+        f"anchor year: {ordered_a_year_label}"
     )
     lines.append(
         f"- Source B (newer witness): {ordered_b_name} | "
-        f"anchor year CE: {ordered_b.get('oldest_witness_anchor_year_ce') or '(unknown)'}"
+        f"anchor year: {ordered_b_year_label}"
     )
 
     witness_gap = source_ordering.get("witness_year_gap", {})
     if witness_gap.get("known"):
+        older_label = witness_gap.get("older_year_label") or format_signed_year(witness_gap.get("older_year_ce"))
+        newer_label = witness_gap.get("newer_year_label") or format_signed_year(witness_gap.get("newer_year_ce"))
         lines.append(
             "- Estimated year gap between source witnesses: "
             f"{witness_gap.get('years')} years "
-            f"({witness_gap.get('older_year_ce')} -> {witness_gap.get('newer_year_ce')} CE)"
+            f"({older_label} -> {newer_label})"
         )
     else:
         lines.append("- Estimated year gap between source witnesses: (unknown)")
+    lines.append("")
+
+    lines.append("## Coverage Alignment")
+    lines.append("")
+    lines.append(
+        "- Matching strategy: verse reference alignment from source_uri fragments or notes"
+    )
+    lines.append(
+        "- Input order handling: file order ignored; verses are matched and sorted by reference"
+    )
+    coverage_mode = str(comparison.get("coverage_mode") or "full_overlap")
+    lines.append(
+        f"- Coverage mode: {'overlap only' if coverage_mode == 'overlap_only' else 'full overlap'}"
+    )
+    lines.append(f"- {ordered_a_name} verses available: {comparison.get('source_a_total_verses')}")
+    lines.append(f"- {ordered_b_name} verses available: {comparison.get('source_b_total_verses')}")
+    lines.append(f"- Shared verses compared: {comparison.get('shared_verses')}")
+    lines.append(f"- Only in {ordered_a_name}: {comparison.get('only_in_source_a')}")
+    lines.append(f"- Only in {ordered_b_name}: {comparison.get('only_in_source_b')}")
+
+    only_in_a_details = comparison.get("only_in_source_a_details", [])
+    only_in_b_details = comparison.get("only_in_source_b_details", [])
+    only_in_a_refs = [str(item.get("verse")) for item in only_in_a_details[:10] if item.get("verse")]
+    only_in_b_refs = [str(item.get("verse")) for item in only_in_b_details[:10] if item.get("verse")]
+    if only_in_a_refs:
+        lines.append(f"- {ordered_a_name}-only verse refs: {', '.join(only_in_a_refs)}")
+    if only_in_b_refs:
+        lines.append(f"- {ordered_b_name}-only verse refs: {', '.join(only_in_b_refs)}")
     lines.append("")
 
     lines.append("## Authorship and Source Context")
@@ -459,6 +561,18 @@ def compare_sources(
         for name, records in source_inputs.items()
     }
 
+    translated_sources = [
+        profile["source_name"]
+        for profile in source_profiles.values()
+        if source_is_translation(profile)
+    ]
+    if translated_sources:
+        labels = ", ".join(translated_sources)
+        raise ValueError(
+            "Translated witnesses are not allowed for this comparison. "
+            f"Provide original-language witnesses or transcriptions instead: {labels}"
+        )
+
     ordered_profiles = sorted(
         source_profiles.values(),
         key=source_order_key,
@@ -491,6 +605,7 @@ def compare_sources(
     shared = sorted(set(a_by_verse).intersection(b_by_verse), key=verse_sort_key)
     only_a = sorted(set(a_by_verse).difference(b_by_verse), key=verse_sort_key)
     only_b = sorted(set(b_by_verse).difference(a_by_verse), key=verse_sort_key)
+    coverage_mode = "full_overlap" if not only_a and not only_b else "overlap_only"
 
     identical: List[str] = []
     changed: List[str] = []
@@ -565,6 +680,23 @@ def compare_sources(
             }
         )
 
+    if only_a or only_b:
+        findings.append(
+            {
+                "severity": "medium",
+                "code": "PARTIAL_VERSE_OVERLAP",
+                "message": (
+                    "Sources were aligned by verse reference and compared only where both "
+                    "witnesses contain the verse; unmatched verses remain listed separately"
+                ),
+                "source_a_total_verses": len(a_by_verse),
+                "source_b_total_verses": len(b_by_verse),
+                "shared_verses": len(shared),
+                "only_in_source_a": len(only_a),
+                "only_in_source_b": len(only_b),
+            }
+        )
+
     if changed:
         findings.append(
             {
@@ -609,6 +741,13 @@ def compare_sources(
             ordered_b_name: ordered_b_profile,
         },
         "comparison": {
+            "matching_strategy": "verse_reference_alignment",
+            "order_independent_alignment": True,
+            "coverage_mode": coverage_mode,
+            "source_a_total_verses": len(a_by_verse),
+            "source_b_total_verses": len(b_by_verse),
+            "shared_coverage_ratio_source_a": safe_ratio(len(shared), len(a_by_verse)),
+            "shared_coverage_ratio_source_b": safe_ratio(len(shared), len(b_by_verse)),
             "shared_verses": len(shared),
             "identical_hash_verses": len(identical),
             "changed_hash_verses": len(changed),

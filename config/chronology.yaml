@@ -17,6 +17,49 @@ works:
       label: "Leningrad Codex (B19A) through WLC tradition"
       date_ce: 1008
     source_tradition_anchors:
+      dss_4qgen:
+        witness_anchor_label: "Qumran Genesis fragments (4QGen corpus)"
+        witness_anchor_window_bce:
+          start: 250
+          end: 100
+        ordering_year_bce: 250
+        source_basis: "Hebrew diplomatic transcriptions of Dead Sea Scrolls Genesis fragments"
+        attributed_author: "Second Temple Jewish scribal tradition"
+        discovery_location: "Qumran caves near the Dead Sea (Judean Desert)"
+      codex_sassoon_1053:
+        witness_anchor_label: "Codex Sassoon 1053 (late 9th to early 10th century CE)"
+        witness_anchor_window_ce:
+          start: 900
+          end: 950
+        ordering_year_ce: 900
+        source_basis: "Hebrew codex transcription witness where chapter/verse transcription coverage is available"
+        attributed_author: "Masoretic scribal tradition"
+        discovery_location: "Codex Sassoon (current custodial institution in Israel)"
+      cairo_genizah_genesis:
+        witness_anchor_label: "Cairo Genizah Genesis fragments (medieval Hebrew manuscripts)"
+        witness_anchor_window_ce:
+          start: 900
+          end: 1100
+        ordering_year_ce: 900
+        source_basis: "Hebrew fragment transcriptions from Genizah manuscript witnesses"
+        attributed_author: "Medieval Jewish scribal tradition"
+        discovery_location: "Ben Ezra Genizah, Fustat (Old Cairo), now dispersed in research collections"
+      nli_ktiv_genesis_fragments:
+        witness_anchor_label: "NLI KTIV Hebrew manuscript Genesis fragments"
+        witness_anchor_window_ce:
+          start: 900
+          end: 1100
+        ordering_year_ce: 900
+        source_basis: "Hebrew manuscript fragment transcriptions curated through the NLI KTIV ecosystem"
+        attributed_author: "Medieval Jewish scribal tradition"
+        discovery_location: "Multiple manuscript repositories represented in NLI KTIV"
+      samaritan_pentateuch_sp:
+        witness_anchor_label: "Samaritan Pentateuch (MS Dublin Chester Beatty Library 751)"
+        witness_anchor_date_ce: 1225
+        ordering_year_ce: 1225
+        source_basis: "Hebrew-script transcription from DT-UCPH SP Text-Fabric data, based on MS Dublin Chester Beatty Library 751 (Gen 1-Deut 32:36) and MS Garizim 1"
+        attributed_author: "Samaritan scribal tradition"
+        discovery_location: "Chester Beatty Library (Dublin) with parallel Samaritan manuscript evidence from Mount Gerizim"
       oshb:
         witness_anchor_label: "Leningrad Codex (B19A) base witness"
         witness_anchor_date_ce: 1008
