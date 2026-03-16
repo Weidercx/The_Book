@@ -19,6 +19,8 @@ if str(PROJECT_ROOT) not in sys.path:
 
 WORK_ID = "bible.ot.genesis"
 VERSE_REF_RE = re.compile(r"Gen\.(\d+)\.(\d+)$")
+HEBREW_DIACRITICS_RE = re.compile(r"[\u0591-\u05C7]")
+KEEP_ALNUM_HEBREW_RE = re.compile(r"[^0-9A-Za-z\u05D0-\u05EA]+")
 
 
 def chapter_dir(chapter: int) -> str:
@@ -361,6 +363,96 @@ def render_token_pr_diff(source_a_text: str, source_b_text: str) -> str:
     return "\n".join(rendered)
 
 
+def canonical_token(token: str) -> str:
+    """Normalize one token so semantic comparison focuses on lexical letters."""
+    normalized = HEBREW_DIACRITICS_RE.sub("", token)
+    normalized = normalized.replace("/", "")
+    normalized = normalized.replace("־", "")
+    normalized = normalized.replace("{", "").replace("}", "")
+    return KEEP_ALNUM_HEBREW_RE.sub("", normalized)
+
+
+def canonical_token_stream(text: str) -> List[str]:
+    tokens = [canonical_token(token) for token in text.split()]
+    return [token for token in tokens if token]
+
+
+def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff: Dict[str, Any]) -> List[str]:
+    """Create English reviewer-style comments combining semantic and impact notes."""
+    operations = token_diff.get("operations") if isinstance(token_diff, dict) else []
+    if not isinstance(operations, list):
+        operations = []
+
+    op_counts = {"replace": 0, "insert": 0, "delete": 0}
+    for operation in operations:
+        if not isinstance(operation, dict):
+            continue
+        op = operation.get("op")
+        if isinstance(op, str) and op in op_counts:
+            op_counts[op] += 1
+
+    a_canonical = canonical_token_stream(source_a_text)
+    b_canonical = canonical_token_stream(source_b_text)
+    lexical_similarity = difflib.SequenceMatcher(a=a_canonical, b=b_canonical, autojunk=False).ratio()
+
+    token_similarity = 0.0
+    char_similarity = 0.0
+    if isinstance(token_diff, dict):
+        token_similarity = float(token_diff.get("token_similarity_ratio") or 0.0)
+        char_similarity = float(token_diff.get("char_similarity_ratio") or 0.0)
+
+    segmentation_markers = ("/", "־", "{", "}")
+    has_segmentation_markers = any(marker in source_a_text for marker in segmentation_markers) or any(
+        marker in source_b_text for marker in segmentation_markers
+    )
+
+    if a_canonical == b_canonical and has_segmentation_markers:
+        semantic_comment = (
+            "Semantic comparison (simulated): lexical content aligns after normalization; "
+            "differences are mostly segmentation/pointing or punctuation encoding."
+        )
+        impact_comment = (
+            "Impact (simulated): low semantic risk for interpretation, but medium processing risk "
+            "for tokenization-dependent pipelines and hash-level diffs."
+        )
+    elif lexical_similarity >= 0.88:
+        semantic_comment = (
+            "Semantic comparison (simulated): verses are highly similar with minor lexical or "
+            "morphological variation layered onto orthographic shifts."
+        )
+        impact_comment = (
+            "Impact (simulated): low-to-moderate interpretive impact; translation wording may shift "
+            "at phrase level, but core proposition remains stable."
+        )
+    elif lexical_similarity >= 0.6:
+        semantic_comment = (
+            "Semantic comparison (simulated): mixed lexical divergence is present beyond pure "
+            "orthographic segmentation differences."
+        )
+        impact_comment = (
+            "Impact (simulated): moderate interpretive impact; this verse should be prioritized "
+            "for manual textual-critical review."
+        )
+    else:
+        semantic_comment = (
+            "Semantic comparison (simulated): substantial lexical divergence detected between witnesses."
+        )
+        impact_comment = (
+            "Impact (simulated): high interpretive impact potential; decisions here can affect "
+            "exegesis, alignment confidence, and downstream translation choices."
+        )
+
+    profile_comment = (
+        "Diff profile (simulated): "
+        f"token_similarity={token_similarity:.3f}, "
+        f"char_similarity={char_similarity:.3f}, "
+        f"lexical_similarity={lexical_similarity:.3f}, "
+        f"ops(replace={op_counts['replace']}, insert={op_counts['insert']}, delete={op_counts['delete']})."
+    )
+
+    return [semantic_comment, impact_comment, profile_comment]
+
+
 def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_name: str) -> str:
     """Render human-readable PR/MR style markdown report with diff blocks."""
     lines: List[str] = []
@@ -503,6 +595,7 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
         verse = detail.get("verse", "unknown")
         source_a = detail.get("source_a", {})
         source_b = detail.get("source_b", {})
+        token_diff = detail.get("token_diff") if isinstance(detail.get("token_diff"), dict) else {}
 
         lines.append(f"### {verse}")
         lines.append("")
@@ -523,6 +616,14 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
             )
         )
         lines.append("```")
+        lines.append("")
+        lines.append("Simulated review comments:")
+        for comment in simulated_review_comments(
+            source_a_text=str(source_a.get("text_content", "")),
+            source_b_text=str(source_b.get("text_content", "")),
+            token_diff=token_diff,
+        ):
+            lines.append(f"- {comment}")
         lines.append("")
 
     return "\n".join(lines)
