@@ -131,6 +131,191 @@ _HEBREW_GLOSSARY: Dict[str, tuple[str, str]] = {
     "כָּל": ("kol — all, every; standard qere spelling", ""),
 }
 
+# Literal lexical map used for readable English lines in verse diff output.
+# This is intentionally approximate and transparent, not a polished translation edition.
+_HEBREW_LITERAL_MAP: Dict[str, str] = {
+    "ו": "and",
+    "ה": "the",
+    "ל": "to",
+    "ב": "in",
+    "מ": "from",
+    "כ": "as",
+    "על": "upon",
+    "אל": "to",
+    "פ": "face",
+    "בראשית": "in the beginning",
+    "ראשית": "beginning",
+    "ברא": "created",
+    "יברא": "he created",
+    "ויברא": "and created",
+    "אלהים": "God",
+    "יהוה": "YHWH",
+    "את": "",
+    "כל": "all",
+    "אשר": "that/which",
+    "שמים": "heavens",
+    "ארץ": "earth",
+    "היתה": "was",
+    "היו": "were",
+    "יהי": "let there be",
+    "ויהי": "and there was",
+    "ויהיאור": "and there was light",
+    "תהו": "formless",
+    "בהו": "void",
+    "חשך": "darkness",
+    "אור": "light",
+    "פני": "face of",
+    "תהום": "the deep",
+    "רוח": "spirit/wind",
+    "מרחפת": "hovering",
+    "מים": "waters",
+    "אמר": "said",
+    "ויאמר": "and said",
+    "וירא": "and saw",
+    "ירא": "saw",
+    "כי": "that",
+    "כיטוב": "that it was good",
+    "טוב": "good",
+    "ויבדל": "and separated",
+    "יבדל": "he separates",
+    "בין": "between",
+    "ויקרא": "and called",
+    "יקרא": "he called",
+    "יום": "day",
+    "לילה": "night",
+    "ערב": "evening",
+    "בקר": "morning",
+    "ויהיערב": "and there was evening",
+    "ויהיבקר": "and there was morning",
+    "אחד": "one",
+    "שני": "second",
+    "שלישי": "third",
+    "רביעי": "fourth",
+    "חמישי": "fifth",
+    "ששי": "sixth",
+    "רקיע": "expanse",
+    "עשה": "made",
+    "ויעש": "and made",
+    "כן": "so",
+    "יקוו": "be gathered",
+    "מקום": "place",
+    "מקוה": "gathering",
+    "תראה": "appeared",
+    "יבשה": "dry land",
+    "ים": "sea",
+    "ימים": "seas",
+    "דשא": "vegetation",
+    "עשב": "plant",
+    "מזריע": "seed-bearing",
+    "זרע": "seed",
+    "עץ": "tree",
+    "פרי": "fruit",
+    "מינה": "kind",
+    "מינו": "its kind",
+    "מינהו": "its kind",
+    "מינהם": "their kinds",
+    "מאור": "luminary",
+    "מארת": "lights",
+    "גדול": "great",
+    "גדלים": "great",
+    "קטן": "small",
+    "ממשלת": "rule",
+    "משל": "rule",
+    "כוכבים": "stars",
+    "נתן": "set",
+    "ויתן": "and set",
+    "תנינים": "great sea creatures",
+    "תנינם": "great sea creatures",
+    "נפש": "living creature",
+    "חיה": "living thing",
+    "חית": "beast of",
+    "רמש": "creeping thing",
+    "רמשת": "creeping thing",
+    "רומש": "moving thing",
+    "עוף": "bird",
+    "כנף": "wing",
+    "יברך": "he blessed",
+    "ויברך": "and blessed",
+    "פרו": "be fruitful",
+    "רבו": "multiply",
+    "מלאו": "fill",
+    "שרצו": "swarm",
+    "ישרצו": "let ... swarm",
+    "יעופף": "let ... fly",
+    "יעפף": "let ... fly",
+    "דגת": "fish of",
+    "בהמה": "livestock",
+    "וחיתו": "and beast of",
+    "חיתו": "beast of",
+    "וחיתוארץ": "and beast of the earth",
+    "חיתוארץ": "beast of the earth",
+    "אדם": "humanity",
+    "נעשה": "let us make",
+    "צלם": "image",
+    "צלמו": "his image",
+    "צלמנו": "our image",
+    "דמות": "likeness",
+    "דמותנו": "our likeness",
+    "רדו": "rule",
+    "ירדו": "they shall rule",
+    "כבשוה": "subdue it",
+    "זכר": "male",
+    "נקבה": "female",
+    "נתתי": "I have given",
+    "אכלה": "for food",
+    "אתם": "you",
+    "אתו": "with it",
+    "בו": "in it",
+    "לכם": "to you",
+    "להם": "to them",
+    "בתוך": "in the midst of",
+    "תוך": "midst",
+    "מעל": "above",
+    "מתחת": "under",
+    "תחת": "under",
+    "יעש": "he made",
+    "קרא": "called",
+    "יאמר": "he said",
+    "להבדיל": "to separate",
+    "ולהבדיל": "and to separate",
+    "מבדיל": "separating",
+    "הבדיל": "separated",
+    "תדשא": "let ... sprout",
+    "תוצא": "let ... bring forth",
+    "ותוצא": "and brought forth",
+    "שרץ": "swarming thing",
+    "להאיר": "to give light",
+    "האיר": "to give light",
+    "לאתת": "for signs",
+    "אתות": "signs",
+    "מועדים": "appointed times",
+    "ולמועדים": "and for appointed times",
+    "שנים": "years",
+    "ושנים": "and years",
+    "למאורת": "for a light",
+    "מאורות": "lights",
+    "הגדל": "the greater",
+    "יהיה": "shall be",
+    "ויהיכן": "and it was so",
+    "יתן": "he set",
+    "ירב": "be many",
+    "ירבה": "multiply",
+    "מיניהם": "their kinds",
+    "זרעו": "its seed",
+    "זרעובו": "seed in it",
+    "אשרבו": "which is in it",
+    "אדמה": "ground",
+    "האדמה": "the ground",
+    "ירק": "green plant",
+    "וכבשה": "and subdue it",
+    "עשהפרי": "making fruit",
+    "פריעץ": "fruit tree",
+    "אתכלירק": "every green thing",
+    "מאד": "very",
+    "הנה": "behold",
+    "והנהטוב": "and behold, it was good",
+}
+
 
 def chapter_dir(chapter: int) -> str:
     return f"chapter_{chapter:03d}"
@@ -486,6 +671,92 @@ def canonical_token_stream(text: str) -> List[str]:
     return [token for token in tokens if token]
 
 
+def _normalize_for_literal_translation(text: str) -> str:
+    normalized = HEBREW_DIACRITICS_RE.sub("", text)
+    normalized = normalized.replace("/", "")
+    normalized = normalized.replace("{", "").replace("}", "")
+    normalized = normalized.replace("־", " ")
+    normalized = KEEP_ALNUM_HEBREW_RE.sub(" ", normalized)
+    return " ".join(normalized.split())
+
+
+def _translate_hebrew_token(token: str, depth: int = 0) -> tuple[str, bool]:
+    token = token.strip()
+    if not token:
+        return "", True
+    if depth > 5:
+        return f"[{token}]", False
+
+    if token in _HEBREW_LITERAL_MAP:
+        return _HEBREW_LITERAL_MAP[token], True
+
+    for prefix, english in (("את", ""), ("כל", "all"), ("על", "upon"), ("אל", "to")):
+        if token.startswith(prefix) and len(token) > len(prefix):
+            remainder = token[len(prefix):]
+            remainder_text, remainder_known = _translate_hebrew_token(remainder, depth + 1)
+            if remainder_known:
+                if prefix == "את":
+                    return remainder_text, True
+                if prefix == "כל":
+                    return (f"all {remainder_text}".strip(), True)
+                return (f"{english} {remainder_text}".strip(), True)
+
+    for prefix, english in (
+        ("ו", "and"),
+        ("ב", "in"),
+        ("ל", "to"),
+        ("כ", "as"),
+        ("מ", "from"),
+        ("ש", "that"),
+        ("ה", "the"),
+    ):
+        if token.startswith(prefix) and len(token) > 1:
+            remainder = token[1:]
+            remainder_text, remainder_known = _translate_hebrew_token(remainder, depth + 1)
+            if remainder_known:
+                if prefix == "ה":
+                    return (f"the {remainder_text}".strip(), True)
+                return (f"{english} {remainder_text}".strip(), True)
+
+    # Attempt an internal split when compound forms were merged in transmission.
+    for idx in range(2, len(token) - 1):
+        left = token[:idx]
+        right = token[idx:]
+        left_text, left_known = _translate_hebrew_token(left, depth + 1)
+        if not left_known:
+            continue
+        right_text, right_known = _translate_hebrew_token(right, depth + 1)
+        if not right_known:
+            continue
+        combined = f"{left_text} {right_text}".strip()
+        if combined:
+            return combined, True
+
+    return f"[{token}]", False
+
+
+def literal_english_translation(text: str) -> str:
+    """Build an approximate literal English rendering from normalized Hebrew tokens."""
+    normalized = _normalize_for_literal_translation(text)
+    if not normalized:
+        return "(empty)"
+
+    rendered_tokens: List[str] = []
+    for token in normalized.split():
+        translated, _known = _translate_hebrew_token(token)
+        if translated:
+            rendered_tokens.append(translated)
+
+    if not rendered_tokens:
+        return "(unable to produce literal translation)"
+
+    sentence = " ".join(rendered_tokens)
+    sentence = re.sub(r"\s+", " ", sentence).strip()
+    if sentence:
+        sentence = sentence[0].upper() + sentence[1:]
+    return sentence
+
+
 def _gloss(token: str) -> str:
     """Return a short English gloss for a known Hebrew token, or the token itself."""
     entry = _HEBREW_GLOSSARY.get(token)
@@ -754,6 +1025,8 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
         source_a = detail.get("source_a", {})
         source_b = detail.get("source_b", {})
         token_diff = detail.get("token_diff") if isinstance(detail.get("token_diff"), dict) else {}
+        source_a_text = str(source_a.get("text_content", ""))
+        source_b_text = str(source_b.get("text_content", ""))
 
         lines.append(f"### {verse}")
         lines.append("")
@@ -765,20 +1038,28 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
             f"Source B ({ordered_b_name}): {source_b.get('source_archive')} | "
             f"digital/source edition date: {source_b.get('source_version_date')}"
         )
+        lines.append(
+            "Source A English (literal, auto-generated; approximate): "
+            f"{literal_english_translation(source_a_text)}"
+        )
+        lines.append(
+            "Source B English (literal, auto-generated; approximate): "
+            f"{literal_english_translation(source_b_text)}"
+        )
         lines.append("")
         lines.append("```diff")
         lines.append(
             render_token_pr_diff(
-                source_a_text=str(source_a.get("text_content", "")),
-                source_b_text=str(source_b.get("text_content", "")),
+                source_a_text=source_a_text,
+                source_b_text=source_b_text,
             )
         )
         lines.append("```")
         lines.append("")
         lines.append("Reviewer notes:")
         for comment in simulated_review_comments(
-            source_a_text=str(source_a.get("text_content", "")),
-            source_b_text=str(source_b.get("text_content", "")),
+            source_a_text=source_a_text,
+            source_b_text=source_b_text,
             token_diff=token_diff,
         ):
             lines.append(f"- {comment}")

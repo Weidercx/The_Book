@@ -83,6 +83,8 @@ def test_markdown_render_contains_diff_block_with_plus_and_minus_tokens():
     assert "## Chronology Axis (Primary)" in markdown
     assert "Estimated original composition window: 1000-400 BCE" in markdown
     assert "## Digital Edition Dates (Secondary)" in markdown
+    assert "Source A English (literal, auto-generated; approximate):" in markdown
+    assert "Source B English (literal, auto-generated; approximate):" in markdown
     assert "Reviewer notes:" in markdown
     assert "Textual observation:" in markdown
     assert "Historical significance:" in markdown
