@@ -1,0 +1,181 @@
+# The_Book/config/sources.yaml
+# Archive registry for all v1 ingestion sources
+# Format: Each archive includes endpoint, adapter class, parallel workers, and refresh schedule
+
+archives:
+  # ===== BIBLICAL & DEUTEROCANON =====
+  oshb:
+    name: "Open Scriptures Hebrew Bible"
+    domain: "Hebrew Bible"
+    url: "https://github.com/openscriptures/morphhb"
+    adapter_class: "adapters.github_adapter.GitHubRepoAdapter"
+    format: "OSIS XML, JSON"
+    license: "CC-BY 4.0 (lemma/morph), Public Domain (WLC text)"
+    parallel_workers: 2
+    refresh_schedule: "monthly"
+    v1_enabled: true
+
+  sblgnt:
+    name: "SBL Greek New Testament"
+    domain: "Greek New Testament"
+    url: "https://github.com/morphgnt/sblgnt"
+    adapter_class: "adapters.github_adapter.GitHubRepoAdapter"
+    format: "Plain text (tab-separated fields)"
+    license: "CC-BY 4.0"
+    parallel_workers: 2
+    refresh_schedule: "monthly"
+    v1_enabled: true
+
+  macula_greek:
+    name: "MACULA Greek (Clear Bible)"
+    domain: "Greek New Testament (syntax/semantics)"
+    url: "https://github.com/Clear-Bible"
+    adapter_class: "adapters.github_adapter.GitHubRepoAdapter"
+    format: "TEI XML, TSV"
+    license: "CC-BY 4.0 (SBLGNT edition), CC-BY-SA 3.0 (Nestle1904)"
+    parallel_workers: 2
+    refresh_schedule: "monthly"
+    v1_enabled: true
+
+  # ===== CUNEIFORM =====
+  oracc:
+    name: "ORACC (University of Pennsylvania)"
+    domain: "Sumerian & Akkadian"
+    url: "https://oracc.museum.upenn.edu/"
+    adapter_class: "adapters.oracc_adapter.OrcAccAPIAdapter"
+    format: "ATF (transliteration), XML, RDF"
+    api_endpoint: "https://oracc.museum.upenn.edu/api/v0"
+    license: "CC-BY-SA 3.0"
+    parallel_workers: 4
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  cdli:
+    name: "CDLI (UCLA + Oxford)"
+    domain: "Sumerian/Akkadian + cuneiform artifacts"
+    url: "https://cdli.earth/"
+    adapter_class: "adapters.cdli_adapter.CDLIAPIAdapter"
+    format: "ATF, TEI-XML, JSON catalog"
+    api_endpoint: "https://cdli.earth/"
+    license: "CC-BY (text), CC-BY-SA (annotations)"
+    parallel_workers: 4
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  # ===== EGYPTIAN =====
+  trismegistos:
+    name: "Trismegistos (Université de Liège)"
+    domain: "Egyptian + Greek + Latin papyri & metadata"
+    url: "https://www.trismegistos.org/"
+    adapter_class: "adapters.trismegistos_adapter.TrismegistosAPIAdapter"
+    api_endpoint: "https://www.trismegistos.org/dataservices"
+    format: "JSON, CSV, RDF"
+    license: "CC-BY-SA 4.0 (metadata); text restrictions per source"
+    parallel_workers: 3
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  coptic_scriptorium:
+    name: "Coptic Scriptorium"
+    domain: "Coptic religious texts"
+    url: "https://www.copticscriptorium.org/"
+    adapter_class: "adapters.github_adapter.GitHubRepoAdapter"
+    format: "TEI XML, Unicode Coptic"
+    license: "Open (check per text)"
+    parallel_workers: 2
+    refresh_schedule: "monthly"
+    v1_enabled: true
+
+  # ===== EUROPEAN HISTORICAL =====
+  transkribus:
+    name: "Transkribus (European Cooperation)"
+    domain: "Medieval manuscripts, historical texts (Old Church Slavonic, Old Norse, Medieval Latin, etc.)"
+    url: "https://transkribus.eu/"
+    adapter_class: "adapters.transkribus_adapter.TranskriusAPIAdapter"
+    api_endpoint: "https://transkribus.eu/TrpServer/rest/v1"
+    format: "PAGE XML, JSON, plain text"
+    license: "Varies per project; check project metadata"
+    parallel_workers: 4
+    refresh_schedule: "weekly"
+    v1_enabled: true
+    auth_required: true
+
+  clarin:
+    name: "CLARIN (FCS Federated Search)"
+    domain: "European language resources (Old English, Old Norse, Medieval Latin, Slavic corpora)"
+    url: "https://www.clarin.eu/"
+    adapter_class: "adapters.clarin_adapter.CLARINFCSAdapter"
+    api_endpoint: "https://clarin.eu/fcs"
+    format: "CMDI XML metadata, text corpora"
+    license: "CC-BY, CC-0, varies per resource"
+    parallel_workers: 2
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  polona:
+    name: "Polona (Polish National Library)"
+    domain: "Polish manuscripts, medieval texts, Church Slavonic"
+    url: "https://polona.pl/"
+    adapter_class: "adapters.iiif_adapter.IIIFAdapter"
+    iiif_manifest_prefix: "https://images.polona.pl/iiif"
+    format: "IIIF (images), OAI-PMH metadata"
+    license: "CC-BY, CC-BY-SA, Public Domain"
+    parallel_workers: 2
+    refresh_schedule: "quarterly"
+    v1_enabled: true
+
+  # ===== RUSSIAN & SLAVIC =====
+  internet_archive_russian:
+    name: "Internet Archive (Russian Collection + OAI-PMH)"
+    domain: "Russian texts, Old Russian, Church Slavonic"
+    url: "https://archive.org/"
+    adapter_class: "adapters.archive_org_adapter.ArchiveOrgAdapter"
+    api_endpoint: "https://archive.org/advancedsearch.php"
+    oai_pmh_endpoint: "https://archive.org/services/oai2"
+    format: "JSON metadata, DAISY XML, plain text, EPUB"
+    license: "Public domain + CC licenses"
+    parallel_workers: 4
+    refresh_schedule: "weekly"
+    search_query: "collection:texts AND (language:Russian OR language:chu OR language:old_russian)"
+    v1_enabled: true
+
+  rsl_aleph:
+    name: "Russian State Library (RSL) Aleph Catalog"
+    domain: "Russian manuscripts, rare books, Church Slavonic"
+    url: "https://www.rsl.ru/"
+    adapter_class: "adapters.aleph_adapter.AlephOPACAdapter"
+    api_endpoint: "http://aleph.rsl.ru:1891"
+    format: "MARC XML, plain text"
+    license: "Mixed; institutional access required for manuscripts"
+    parallel_workers: 2
+    refresh_schedule: "monthly"
+    v1_enabled: false
+
+  # ===== ETHIOPIAN & GE'EZ =====
+  internet_archive_ethiopian:
+    name: "Internet Archive (Ethiopian Collection)"
+    domain: "Ge'ez, Amharic, Ethiopic manuscripts"
+    url: "https://archive.org/"
+    adapter_class: "adapters.archive_org_adapter.ArchiveOrgAdapter"
+    api_endpoint: "https://archive.org/advancedsearch.php"
+    oai_pmh_endpoint: "https://archive.org/services/oai2"
+    format: "JSON metadata, DAISY XML, plain text"
+    license: "Public domain + CC licenses"
+    parallel_workers: 3
+    refresh_schedule: "weekly"
+    search_query: "collection:texts AND (language:Amharic OR language:Ethiopic OR language:gez OR subject:Ge'ez)"
+    v1_enabled: true
+
+  # ===== GLOBAL AGGREGATORS =====
+  europeana:
+    name: "Europeana (European Digital Library)"
+    domain: "Metadata aggregator from 3,000+ European institutions"
+    url: "https://www.europeana.eu/"
+    adapter_class: "adapters.europeana_adapter.EuropeanaAPIAdapter"
+    api_endpoint: "https://api.europeana.eu/record"
+    format: "JSON metadata, IIIF links"
+    license: "Varies by contributing institution"
+    parallel_workers: 4
+    refresh_schedule: "weekly"
+    v1_enabled: true
+    auth_required: true

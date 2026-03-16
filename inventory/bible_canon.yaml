@@ -1,0 +1,84 @@
+# The_Book/inventory/bible_canon.yaml
+# Canonical biblical works inventory: OT/NT + apocryphal materials
+# Used to compare against ingested witness records and identify gaps
+
+works:
+  # ===== OLD TESTAMENT (Hebrew Bible) =====
+  
+  # Pentateuch (Torah)
+  - work_id: "bible.ot.genesis"
+    canonical_title: "Genesis"
+    language_code: "heb"
+    script_family: "Hebrew"
+    canonical_status: "canonical"
+    expected_witness_families: ["MT", "DSS", "LXX"]
+    alternate_titles: ["Bereishit"]
+  
+  - work_id: "bible.ot.exodus"
+    canonical_title: "Exodus"
+    language_code: "heb"
+    script_family: "Hebrew"
+    canonical_status: "canonical"
+    expected_witness_families: ["MT", "DSS", "LXX"]
+    alternate_titles: ["Shemot"]
+  
+  # (Additional OT books would follow same pattern...)
+  
+  # ===== NEW TESTAMENT (Greek) =====
+  
+  - work_id: "bible.nt.matthew"
+    canonical_title: "Matthew"
+    language_code: "grc"
+    script_family: "Greek"
+    canonical_status: "canonical"
+    expected_witness_families: ["NA28", "UBS5", "TC-GNT", "SBLGNT"]
+    alternate_titles: ["Gospel of Matthew", "Matthew Evangelist"]
+  
+  - work_id: "bible.nt.mark"
+    canonical_title: "Mark"
+    language_code: "grc"
+    script_family: "Greek"
+    canonical_status: "canonical"
+    expected_witness_families: ["NA28", "UBS5", "TC-GNT", "SBLGNT"]
+  
+  # (Additional NT books would follow...)
+  
+  # ===== DEUTEROCANONICAL BOOKS =====
+  
+  - work_id: "bible.deuterocanon.tobit"
+    canonical_title: "Tobit"
+    language_code: "grc"  # Original likely Aramaic; Greek witness used
+    script_family: "Greek"
+    canonical_status: "deuterocanon"
+    expected_witness_families: ["LXX"]
+    notes: "Hebrew/Aramaic originals fragmentary; Greek LXX text primary"
+  
+  # (Additional deuterocanonical books...)
+  
+  # ===== APOCRYPHAL TEXTS (with original-language witnesses) =====
+  
+  - work_id: "apocrypha.1enoch"
+    canonical_title: "1 Enoch"
+    language_code: "gez"  # Ge'ez (Ethiopic); original Hebrew/Aramaic mostly lost
+    script_family: "Ge'ez"
+    canonical_status: "apocrypha"
+    expected_witness_families: ["Ethiopic-Ge'ez"]
+    notes: "Full text survives only in Ge'ez; Hebrew/Aramaic fragments in DSS"
+  
+  - work_id: "apocrypha.jubilees"
+    canonical_title: "Jubilees"
+    language_code: "gez"  # Ge'ez primary; Hebrew fragments DSS
+    script_family: "Ge'ez"
+    canonical_status: "apocrypha"
+    expected_witness_families: ["Ethiopic-Ge'ez", "DSS-Hebrew"]
+  
+  # (Additional apocrypha...)
+
+# Inventory statistics
+metadata:
+  total_works: 66  # OT + NT + selection of deuterocanon/apocrypha
+  canonical_count: 66
+  deuterocanon_count: 10
+  apocrypha_count: 0  # v1: canonical + deuterocanon only
+  languages: ["heb", "aram", "grc", "gez", "lat"]
+  last_updated: "2026-03-16"

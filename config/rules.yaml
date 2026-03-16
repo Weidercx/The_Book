@@ -1,0 +1,74 @@
+# The_Book/config/rules.yaml
+# Hard policy gates for ingest pipeline
+
+policy:
+  origin_class_filter:
+    # Only these types allowed in final dataset
+    allowed_types:
+      - witness
+      - critical_edition_source_language
+      - transliteration
+      - diplomatic_transcription
+    rejected_types:
+      - translation
+      - paraphrase
+      - back_translation
+      - commentary_only
+      - study_bible
+    gate_action: "reject"
+
+  license_compliance:
+    # Minimum license requirements for v1 public export
+    acceptable_licenses:
+      - CC-BY-4.0
+      - CC-BY-3.0
+      - CC-BY-SA-4.0
+      - CC-BY-SA-3.0
+      - Public-Domain
+      - CC0
+    mixed_gate:
+      - license_url_required: true
+    gate_action: "quarantine"
+
+  language_code_validation:
+    standard: "ISO 639-3"
+    gate_action: "fail_validation"
+
+  script_detection:
+    mappings:
+      - language_code: "heb"
+        expected_script: "Hebrew"
+      - language_code: "grc"
+        expected_script: "Greek"
+      - language_code: "akk"
+        expected_script: "Cuneiform"
+      - language_code: "cop"
+        expected_script: "Coptic"
+    gate_action: "warn"
+
+  unicode_normalization:
+    default_form: "NFC"
+    overrides:
+      - language_code: "heb"
+        form: "NFD"
+    gate_action: "normalize_before_ingest"
+
+  duplicate_detection:
+    exact_match_threshold: 0.99
+    fuzzy_threshold: 0.85
+    action: "flag_for_review"
+
+  provenance_tracking:
+    required_fields:
+      - source_archive
+      - source_uri
+      - acquisition_date
+      - license
+    gate_action: "reject"
+
+  versioning:
+    version_pinning_required: true
+    checksum_tracking: true
+    refresh_frequency:
+      default: "weekly"
+      manual_override_possible: true

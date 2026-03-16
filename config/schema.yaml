@@ -1,0 +1,35 @@
+# The_Book/config/schema.yaml
+# Unified schema for all ingested witness records
+# All fields documented for ingest adapters and validators
+
+witness_record:
+  required_fields:
+    - work_id                 # Canonical work identifier (enum-like, from inventory)
+    - work_title              # Normalized work title
+    - language_code           # ISO 639-3 code
+    - script_family           # Hebrew, Greek, Cuneiform, Egyptian, Coptic, Cyrillic, Latin, etc.
+    - text_content            # Raw original-language text or transliteration
+    - source_archive          # Which archive contributed this witness
+    - source_uri              # Direct persistent URL/ARK at source
+    - origin_class            # witness | critical_edition_source_language | transliteration | diplomatic_transcription
+    - license                 # CC-BY-4.0 | CC-BY-SA-3.0 | Public-Domain | other (free-text with URL)
+    - acquisition_date        # ISO 8601 date when ingested
+    - content_hash            # SHA-256 of text_content for deduplication
+
+  optional_fields:
+    - work_aliases            # Alternate titles, historical names
+    - source_version_date     # Upstream archive version/date (if versionable)
+    - manuscript_siglum       # Scholarly MS identifier (e.g., "P46", "Codex Sinaiticus κ")
+    - witness_confidence      # high | medium | low (based on textual criticism)
+    - period                  # Historical period / dating
+    - provenance              # Physical location, institution holding original
+    - morphology_tagged       # boolean; true if lemma/POS/morphology included
+    - transliteration_system  # betacode | atf | transliteration_standard_name
+    - notes                   # Internal curation notes
+    - quarantine_reason       # If filtered at license gate: reason code + message
+
+  metadata_fields:
+    - ingest_pipeline_version # Which version of ingestion code processed this
+    - qa_validation_status    # passed | failed | needs_review
+    - dedup_match_group       # If deduplicated, unique group ID
+    - export_included         # boolean; true if in public dataset export
