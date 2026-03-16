@@ -50,7 +50,8 @@ htmlcov/
 # Data (large files)
 data/raw/
 data/normalized/
-data/reports/
+data/reports/*
+!data/reports/genesis_ch1_cross_source_diff.md
 data/exports/*.parquet
 data/exports/*.jsonl
 *.zip

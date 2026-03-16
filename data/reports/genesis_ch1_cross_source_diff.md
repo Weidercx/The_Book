@@ -1,0 +1,1073 @@
+# Genesis 1 Cross-Source Diff (PR Style)
+
+- Work: bible.ot.genesis
+- Chapter: 1
+- Risk level: medium
+- Shared verses: 31
+- Changed verses: 31
+
+## Chronology Axis (Primary)
+
+- Tradition: Hebrew Bible / Torah
+- Estimated original composition window: 1000-400 BCE
+- Earliest known textual witness window: 250-100 BCE
+- Baseline witness anchor: Leningrad Codex (B19A) through WLC tradition (1008 CE)
+- oshb witness anchor: Leningrad Codex (B19A) base witness (1008 CE)
+- sefaria_mam witness anchor: Miqra according to the Masorah (Aleppo/Leningrad tradition) (930-1008 CE)
+
+## Digital Edition Dates (Secondary)
+
+- oshb digital/source edition dates: 2018-12-14T00:00:00
+- sefaria_mam digital/source edition dates: 2025-01-02T17:56:40Z
+
+## Verse Diffs
+
+### Gen.1.1
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- בְּ/רֵאשִׁ֖ית
++ בְּרֵאשִׁ֖ית
+  בָּרָ֣א
+  אֱלֹהִ֑ים
+  אֵ֥ת
+- הַ/שָּׁמַ֖יִם
++ הַשָּׁמַ֖יִם
+- וְ/אֵ֥ת
++ וְאֵ֥ת
+- הָ/אָֽרֶץ
++ הָאָֽרֶץ׃
+- ׃
+```
+
+### Gen.1.2
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וְ/הָ/אָ֗רֶץ
++ וְהָאָ֗רֶץ
+  הָיְתָ֥ה
+- תֹ֨הוּ֙
++ תֹ֙הוּ֙
+- וָ/בֹ֔הוּ
++ וָבֹ֔הוּ
+- וְ/חֹ֖שֶׁךְ
++ וְחֹ֖שֶׁךְ
+- עַל
+- ־
+- פְּנֵ֣י
++ עַל־פְּנֵ֣י
+  תְה֑וֹם
+- וְ/ר֣וּחַ
++ וְר֣וּחַ
+  אֱלֹהִ֔ים
+  מְרַחֶ֖פֶת
+- עַל
+- ־
+- פְּנֵ֥י
++ עַל־פְּנֵ֥י
+- הַ/מָּֽיִם
++ הַמָּֽיִם׃
+- ׃
+```
+
+### Gen.1.3
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֥אמֶר
++ וַיֹּ֥אמֶר
+  אֱלֹהִ֖ים
+  יְהִ֣י
+  א֑וֹר
++ וַֽיְהִי־אֽוֹר׃
+- וַֽ/יְהִי
+- ־
+- אֽוֹר
+- ׃
+```
+
+### Gen.1.4
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יַּ֧רְא
++ וַיַּ֧רְא
+  אֱלֹהִ֛ים
++ אֶת־הָא֖וֹר
++ כִּי־ט֑וֹב
+- אֶת
+- ־
+- הָ/א֖וֹר
+- כִּי
+- ־
+- ט֑וֹב
+- וַ/יַּבְדֵּ֣ל
++ וַיַּבְדֵּ֣ל
+  אֱלֹהִ֔ים
+  בֵּ֥ין
+- הָ/א֖וֹר
++ הָא֖וֹר
+- וּ/בֵ֥ין
++ וּבֵ֥ין
+- הַ/חֹֽשֶׁךְ
++ הַחֹֽשֶׁךְ׃
+- ׃
+```
+
+### Gen.1.5
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יִּקְרָ֨א
++ וַיִּקְרָ֨א
+  אֱלֹהִ֤ים
+  ׀
+- לָ/אוֹר֙
++ לָאוֹר֙
+  י֔וֹם
+- וְ/לַ/חֹ֖שֶׁךְ
++ וְלַחֹ֖שֶׁךְ
+  קָ֣רָא
+  לָ֑יְלָה
++ וַֽיְהִי־עֶ֥רֶב
++ וַֽיְהִי־בֹ֖קֶר
+- וַֽ/יְהִי
+- ־
+- עֶ֥רֶב
+- וַֽ/יְהִי
+- ־
+- בֹ֖קֶר
+  י֥וֹם
+- אֶחָֽד
++ אֶחָֽד׃
++ {פ}
+- ׃
+- פ
+```
+
+### Gen.1.6
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֔ים
+  יְהִ֥י
+  רָקִ֖יעַ
+- בְּ/ת֣וֹךְ
++ בְּת֣וֹךְ
+- הַ/מָּ֑יִם
++ הַמָּ֑יִם
+- וִ/יהִ֣י
++ וִיהִ֣י
+  מַבְדִּ֔יל
+  בֵּ֥ין
+  מַ֖יִם
+- לָ/מָֽיִם
++ לָמָֽיִם׃
+- ׃
+```
+
+### Gen.1.7
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יַּ֣עַשׂ
++ וַיַּ֣עַשׂ
+  אֱלֹהִים֮
+- אֶת
+- ־
+- הָ/רָקִיעַ֒
++ אֶת־הָרָקִ֒יעַ֒
+- וַ/יַּבְדֵּ֗ל
++ וַיַּבְדֵּ֗ל
+  בֵּ֤ין
+- הַ/מַּ֨יִם֙
++ הַמַּ֙יִם֙
+  אֲשֶׁר֙
+- מִ/תַּ֣חַת
++ מִתַּ֣חַת
+- לָ/רָקִ֔יעַ
++ לָרָקִ֔יעַ
+- וּ/בֵ֣ין
++ וּבֵ֣ין
+- הַ/מַּ֔יִם
++ הַמַּ֔יִם
+  אֲשֶׁ֖ר
+- מֵ/עַ֣ל
++ מֵעַ֣ל
+- לָ/רָקִ֑יעַ
++ לָרָקִ֑יעַ
++ וַֽיְהִי־כֵֽן׃
+- וַֽ/יְהִי
+- ־
+- כֵֽן
+- ׃
+```
+
+### Gen.1.8
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יִּקְרָ֧א
++ וַיִּקְרָ֧א
+  אֱלֹהִ֛ים
+- לָֽ/רָקִ֖יעַ
++ לָֽרָקִ֖יעַ
+  שָׁמָ֑יִם
++ וַֽיְהִי־עֶ֥רֶב
++ וַֽיְהִי־בֹ֖קֶר
+- וַֽ/יְהִי
+- ־
+- עֶ֥רֶב
+- וַֽ/יְהִי
+- ־
+- בֹ֖קֶר
+  י֥וֹם
+- שֵׁנִֽי
++ שֵׁנִֽי׃
++ {פ}
+- ׃
+- פ
+```
+
+### Gen.1.9
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֗ים
+  יִקָּו֨וּ
+- הַ/מַּ֜יִם
++ הַמַּ֜יִם
+- מִ/תַּ֤חַת
++ מִתַּ֤חַת
+- הַ/שָּׁמַ֨יִם֙
++ הַשָּׁמַ֙יִם֙
+- אֶל
+- ־
+- מָק֣וֹם
++ אֶל־מָק֣וֹם
+  אֶחָ֔ד
+- וְ/תֵרָאֶ֖ה
++ וְתֵרָאֶ֖ה
+- הַ/יַּבָּשָׁ֑ה
++ הַיַּבָּשָׁ֑ה
++ וַֽיְהִי־כֵֽן׃
+- וַֽ/יְהִי
+- ־
+- כֵֽן
+- ׃
+```
+
+### Gen.1.10
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יִּקְרָ֨א
++ וַיִּקְרָ֨א
+  אֱלֹהִ֤ים
+  ׀
+- לַ/יַּבָּשָׁה֙
++ לַיַּבָּשָׁה֙
+  אֶ֔רֶץ
+- וּ/לְ/מִקְוֵ֥ה
++ וּלְמִקְוֵ֥ה
+- הַ/מַּ֖יִם
++ הַמַּ֖יִם
+  קָרָ֣א
+  יַמִּ֑ים
+- וַ/יַּ֥רְא
++ וַיַּ֥רְא
+  אֱלֹהִ֖ים
++ כִּי־טֽוֹב׃
+- כִּי
+- ־
+- טֽוֹב
+- ׃
+```
+
+### Gen.1.11
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֗ים
+  תַּֽדְשֵׁ֤א
+- הָ/אָ֨רֶץ֙
++ הָאָ֙רֶץ֙
+- דֶּ֔שֶׁא
++ דֶּ֗שֶׁא
+  עֵ֚שֶׂב
+  מַזְרִ֣יעַ
+  זֶ֔רַע
+  עֵ֣ץ
+  פְּרִ֞י
+  עֹ֤שֶׂה
+  פְּרִי֙
+- לְ/מִינ֔/וֹ
++ לְמִינ֔וֹ
+  אֲשֶׁ֥ר
++ זַרְעוֹ־ב֖וֹ
+- זַרְע/וֹ
+- ־
+- ב֖/וֹ
+- עַל
+- ־
+- הָ/אָ֑רֶץ
++ עַל־הָאָ֑רֶץ
++ וַֽיְהִי־כֵֽן׃
+- וַֽ/יְהִי
+- ־
+- כֵֽן
+- ׃
+```
+
+### Gen.1.12
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/תּוֹצֵ֨א
++ וַתּוֹצֵ֨א
+- הָ/אָ֜רֶץ
++ הָאָ֜רֶץ
+  דֶּ֠שֶׁא
+  עֵ֣שֶׂב
+  מַזְרִ֤יעַ
+- זֶ֨רַע֙
++ זֶ֙רַע֙
+- לְ/מִינֵ֔/הוּ
++ לְמִינֵ֔הוּ
+- וְ/עֵ֧ץ
++ וְעֵ֧ץ
++ עֹֽשֶׂה־פְּרִ֛י
+- עֹֽשֶׂה
+- ־
+- פְּרִ֛י
+  אֲשֶׁ֥ר
++ זַרְעוֹ־ב֖וֹ
+- זַרְע/וֹ
+- ־
+- ב֖/וֹ
+- לְ/מִינֵ֑/הוּ
++ לְמִינֵ֑הוּ
+- וַ/יַּ֥רְא
++ וַיַּ֥רְא
+  אֱלֹהִ֖ים
++ כִּי־טֽוֹב׃
+- כִּי
+- ־
+- טֽוֹב
+- ׃
+```
+
+### Gen.1.13
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
++ וַֽיְהִי־עֶ֥רֶב
++ וַֽיְהִי־בֹ֖קֶר
+- וַֽ/יְהִי
+- ־
+- עֶ֥רֶב
+- וַֽ/יְהִי
+- ־
+- בֹ֖קֶר
+  י֥וֹם
+- שְׁלִישִֽׁי
++ שְׁלִישִֽׁי׃
++ {פ}
+- ׃
+- פ
+```
+
+### Gen.1.14
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֗ים
+  יְהִ֤י
+  מְאֹרֹת֙
+- בִּ/רְקִ֣יעַ
++ בִּרְקִ֣יעַ
+- הַ/שָּׁמַ֔יִם
++ הַשָּׁמַ֔יִם
+- לְ/הַבְדִּ֕יל
++ לְהַבְדִּ֕יל
+  בֵּ֥ין
+- הַ/יּ֖וֹם
++ הַיּ֖וֹם
+- וּ/בֵ֣ין
++ וּבֵ֣ין
+- הַ/לָּ֑יְלָה
++ הַלָּ֑יְלָה
+- וְ/הָי֤וּ
++ וְהָי֤וּ
+- לְ/אֹתֹת֙
++ לְאֹתֹת֙
+- וּ/לְ/מ֣וֹעֲדִ֔ים
++ וּלְמ֣וֹעֲדִ֔ים
+- וּ/לְ/יָמִ֖ים
++ וּלְיָמִ֖ים
+- וְ/שָׁנִֽים
++ וְשָׁנִֽים׃
+- ׃
+```
+
+### Gen.1.15
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וְ/הָי֤וּ
++ וְהָי֤וּ
+- לִ/מְאוֹרֹת֙
++ לִמְאוֹרֹת֙
+- בִּ/רְקִ֣יעַ
++ בִּרְקִ֣יעַ
+- הַ/שָּׁמַ֔יִם
++ הַשָּׁמַ֔יִם
+- לְ/הָאִ֖יר
++ לְהָאִ֖יר
+- עַל
+- ־
+- הָ/אָ֑רֶץ
++ עַל־הָאָ֑רֶץ
++ וַֽיְהִי־כֵֽן׃
+- וַֽ/יְהִי
+- ־
+- כֵֽן
+- ׃
+```
+
+### Gen.1.16
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יַּ֣עַשׂ
++ וַיַּ֣עַשׂ
+  אֱלֹהִ֔ים
+- אֶת
+- ־
+- שְׁנֵ֥י
++ אֶת־שְׁנֵ֥י
+- הַ/מְּאֹרֹ֖ת
++ הַמְּאֹרֹ֖ת
+- הַ/גְּדֹלִ֑ים
++ הַגְּדֹלִ֑ים
+- אֶת
+- ־
+- הַ/מָּא֤וֹר
++ אֶת־הַמָּא֤וֹר
+- הַ/גָּדֹל֙
++ הַגָּדֹל֙
+- לְ/מֶמְשֶׁ֣לֶת
++ לְמֶמְשֶׁ֣לֶת
+- הַ/יּ֔וֹם
++ הַיּ֔וֹם
++ וְאֶת־הַמָּא֤וֹר
+- וְ/אֶת
+- ־
+- הַ/מָּא֤וֹר
+- הַ/קָּטֹן֙
++ הַקָּטֹן֙
+- לְ/מֶמְשֶׁ֣לֶת
++ לְמֶמְשֶׁ֣לֶת
+- הַ/לַּ֔יְלָה
++ הַלַּ֔יְלָה
+- וְ/אֵ֖ת
++ וְאֵ֖ת
+- הַ/כּוֹכָבִֽים
++ הַכּוֹכָבִֽים׃
+- ׃
+```
+
+### Gen.1.17
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יִּתֵּ֥ן
++ וַיִּתֵּ֥ן
+- אֹתָ֛/ם
++ אֹתָ֛ם
+  אֱלֹהִ֖ים
+- בִּ/רְקִ֣יעַ
++ בִּרְקִ֣יעַ
+- הַ/שָּׁמָ֑יִם
++ הַשָּׁמָ֑יִם
+- לְ/הָאִ֖יר
++ לְהָאִ֖יר
++ עַל־הָאָֽרֶץ׃
+- עַל
+- ־
+- הָ/אָֽרֶץ
+- ׃
+```
+
+### Gen.1.18
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וְ/לִ/מְשֹׁל֙
++ וְלִמְשֹׁל֙
+- בַּ/יּ֣וֹם
++ בַּיּ֣וֹם
+- וּ/בַ/לַּ֔יְלָה
++ וּבַלַּ֔יְלָה
+- וּֽ/לֲ/הַבְדִּ֔יל
++ וּֽלְהַבְדִּ֔יל
+  בֵּ֥ין
+- הָ/א֖וֹר
++ הָא֖וֹר
+- וּ/בֵ֣ין
++ וּבֵ֣ין
+- הַ/חֹ֑שֶׁךְ
++ הַחֹ֑שֶׁךְ
+- וַ/יַּ֥רְא
++ וַיַּ֥רְא
+  אֱלֹהִ֖ים
++ כִּי־טֽוֹב׃
+- כִּי
+- ־
+- טֽוֹב
+- ׃
+```
+
+### Gen.1.19
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
++ וַֽיְהִי־עֶ֥רֶב
++ וַֽיְהִי־בֹ֖קֶר
+- וַֽ/יְהִי
+- ־
+- עֶ֥רֶב
+- וַֽ/יְהִי
+- ־
+- בֹ֖קֶר
+  י֥וֹם
+- רְבִיעִֽי
++ רְבִיעִֽי׃
++ {פ}
+- ׃
+- פ
+```
+
+### Gen.1.20
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֔ים
+  יִשְׁרְצ֣וּ
+- הַ/מַּ֔יִם
++ הַמַּ֔יִם
+  שֶׁ֖רֶץ
+  נֶ֣פֶשׁ
+  חַיָּ֑ה
+- וְ/עוֹף֙
++ וְעוֹף֙
+  יְעוֹפֵ֣ף
+- עַל
+- ־
+- הָ/אָ֔רֶץ
++ עַל־הָאָ֔רֶץ
+- עַל
+- ־
+- פְּנֵ֖י
++ עַל־פְּנֵ֖י
+  רְקִ֥יעַ
+- הַ/שָּׁמָֽיִם
++ הַשָּׁמָֽיִם׃
+- ׃
+```
+
+### Gen.1.21
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יִּבְרָ֣א
++ וַיִּבְרָ֣א
+  אֱלֹהִ֔ים
+- אֶת
+- ־
+- הַ/תַּנִּינִ֖ם
++ אֶת־הַתַּנִּינִ֖ם
+- הַ/גְּדֹלִ֑ים
++ הַגְּדֹלִ֑ים
+- וְ/אֵ֣ת
++ וְאֵ֣ת
++ כׇּל־נֶ֣פֶשׁ
+- כָּל
+- ־
+- נֶ֣פֶשׁ
+- הַֽ/חַיָּ֣ה
++ הַֽחַיָּ֣ה
+  ׀
+- הָֽ/רֹמֶ֡שֶׂת
++ הָֽרֹמֶ֡שֶׂת
+  אֲשֶׁר֩
+  שָׁרְצ֨וּ
+- הַ/מַּ֜יִם
++ הַמַּ֜יִם
+- לְ/מִֽינֵ/הֶ֗ם
++ לְמִֽינֵהֶ֗ם
+- וְ/אֵ֨ת
++ וְאֵ֨ת
++ כׇּל־ע֤וֹף
+- כָּל
+- ־
+- ע֤וֹף
+  כָּנָף֙
+- לְ/מִינֵ֔/הוּ
++ לְמִינֵ֔הוּ
+- וַ/יַּ֥רְא
++ וַיַּ֥רְא
+  אֱלֹהִ֖ים
++ כִּי־טֽוֹב׃
+- כִּי
+- ־
+- טֽוֹב
+- ׃
+```
+
+### Gen.1.22
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יְבָ֧רֶךְ
++ וַיְבָ֧רֶךְ
+- אֹתָ֛/ם
++ אֹתָ֛ם
+  אֱלֹהִ֖ים
+- לֵ/אמֹ֑ר
++ לֵאמֹ֑ר
+  פְּר֣וּ
+- וּ/רְב֗וּ
++ וּרְב֗וּ
+- וּ/מִלְא֤וּ
++ וּמִלְא֤וּ
++ אֶת־הַמַּ֙יִם֙
+- אֶת
+- ־
+- הַ/מַּ֨יִם֙
+- בַּ/יַּמִּ֔ים
++ בַּיַּמִּ֔ים
+- וְ/הָ/ע֖וֹף
++ וְהָע֖וֹף
+  יִ֥רֶב
+- בָּ/אָֽרֶץ
++ בָּאָֽרֶץ׃
+- ׃
+```
+
+### Gen.1.23
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
++ וַֽיְהִי־עֶ֥רֶב
++ וַֽיְהִי־בֹ֖קֶר
+- וַֽ/יְהִי
+- ־
+- עֶ֥רֶב
+- וַֽ/יְהִי
+- ־
+- בֹ֖קֶר
+  י֥וֹם
+- חֲמִישִֽׁי
++ חֲמִישִֽׁי׃
++ {פ}
+- ׃
+- פ
+```
+
+### Gen.1.24
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֗ים
+  תּוֹצֵ֨א
+- הָ/אָ֜רֶץ
++ הָאָ֜רֶץ
+  נֶ֤פֶשׁ
+  חַיָּה֙
+- לְ/מִינָ֔/הּ
++ לְמִינָ֔הּ
+  בְּהֵמָ֥ה
+- וָ/רֶ֛מֶשׂ
++ וָרֶ֛מֶשׂ
++ וְחַֽיְתוֹ־אֶ֖רֶץ
+- וְ/חַֽיְתוֹ
+- ־
+- אֶ֖רֶץ
+- לְ/מִינָ֑/הּ
++ לְמִינָ֑הּ
++ וַֽיְהִי־כֵֽן׃
+- וַֽ/יְהִי
+- ־
+- כֵֽן
+- ׃
+```
+
+### Gen.1.25
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יַּ֣עַשׂ
++ וַיַּ֣עַשׂ
+  אֱלֹהִים֩
+- אֶת
+- ־
+- חַיַּ֨ת
++ אֶת־חַיַּ֨ת
+- הָ/אָ֜רֶץ
++ הָאָ֜רֶץ
+- לְ/מִינָ֗/הּ
++ לְמִינָ֗הּ
+- וְ/אֶת
+- ־
+- הַ/בְּהֵמָה֙
++ וְאֶת־הַבְּהֵמָה֙
+- לְ/מִינָ֔/הּ
++ לְמִינָ֔הּ
+- וְ/אֵ֛ת
++ וְאֵ֛ת
++ כׇּל־רֶ֥מֶשׂ
+- כָּל
+- ־
+- רֶ֥מֶשׂ
+- הָֽ/אֲדָמָ֖ה
++ הָֽאֲדָמָ֖ה
+- לְ/מִינֵ֑/הוּ
++ לְמִינֵ֑הוּ
+- וַ/יַּ֥רְא
++ וַיַּ֥רְא
+  אֱלֹהִ֖ים
++ כִּי־טֽוֹב׃
+- כִּי
+- ־
+- טֽוֹב
+- ׃
+```
+
+### Gen.1.26
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֔ים
+  נַֽעֲשֶׂ֥ה
+  אָדָ֛ם
+- בְּ/צַלְמֵ֖/נוּ
++ בְּצַלְמֵ֖נוּ
+- כִּ/דְמוּתֵ֑/נוּ
++ כִּדְמוּתֵ֑נוּ
+- וְ/יִרְדּוּ֩
++ וְיִרְדּוּ֩
+- בִ/דְגַ֨ת
++ בִדְגַ֨ת
+- הַ/יָּ֜ם
++ הַיָּ֜ם
+- וּ/בְ/ע֣וֹף
++ וּבְע֣וֹף
+- הַ/שָּׁמַ֗יִם
++ הַשָּׁמַ֗יִם
+- וּ/בַ/בְּהֵמָה֙
++ וּבַבְּהֵמָה֙
++ וּבְכׇל־הָאָ֔רֶץ
++ וּבְכׇל־הָרֶ֖מֶשׂ
+- וּ/בְ/כָל
+- ־
+- הָ/אָ֔רֶץ
+- וּ/בְ/כָל
+- ־
+- הָ/רֶ֖מֶשׂ
+- הָֽ/רֹמֵ֥שׂ
++ הָֽרֹמֵ֥שׂ
++ עַל־הָאָֽרֶץ׃
+- עַל
+- ־
+- הָ/אָֽרֶץ
+- ׃
+```
+
+### Gen.1.27
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יִּבְרָ֨א
++ וַיִּבְרָ֨א
+  אֱלֹהִ֤ים
+  ׀
++ אֶת־הָֽאָדָם֙
+- אֶת
+- ־
+- הָֽ/אָדָם֙
+- בְּ/צַלְמ֔/וֹ
++ בְּצַלְמ֔וֹ
+- בְּ/צֶ֥לֶם
++ בְּצֶ֥לֶם
+  אֱלֹהִ֖ים
+  בָּרָ֣א
+- אֹת֑/וֹ
++ אֹת֑וֹ
+  זָכָ֥ר
+- וּ/נְקֵבָ֖ה
++ וּנְקֵבָ֖ה
+  בָּרָ֥א
+- אֹתָֽ/ם
++ אֹתָֽם׃
+- ׃
+```
+
+### Gen.1.28
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יְבָ֣רֶךְ
++ וַיְבָ֣רֶךְ
+- אֹתָ/ם֮
++ אֹתָם֮
+  אֱלֹהִים֒
+- וַ/יֹּ֨אמֶר
++ וַיֹּ֨אמֶר
+- לָ/הֶ֜ם
++ לָהֶ֜ם
+  אֱלֹהִ֗ים
+  פְּר֥וּ
+- וּ/רְב֛וּ
++ וּרְב֛וּ
+- וּ/מִלְא֥וּ
++ וּמִלְא֥וּ
+- אֶת
+- ־
+- הָ/אָ֖רֶץ
++ אֶת־הָאָ֖רֶץ
+- וְ/כִבְשֻׁ֑/הָ
++ וְכִבְשֻׁ֑הָ
+- וּ/רְד֞וּ
++ וּרְד֞וּ
+- בִּ/דְגַ֤ת
++ בִּדְגַ֤ת
+- הַ/יָּם֙
++ הַיָּם֙
+- וּ/בְ/ע֣וֹף
++ וּבְע֣וֹף
+- הַ/שָּׁמַ֔יִם
++ הַשָּׁמַ֔יִם
++ וּבְכׇל־חַיָּ֖ה
+- וּ/בְ/כָל
+- ־
+- חַיָּ֖ה
+- הָֽ/רֹמֶ֥שֶׂת
++ הָֽרֹמֶ֥שֶׂת
++ עַל־הָאָֽרֶץ׃
+- עַל
+- ־
+- הָ/אָֽרֶץ
+- ׃
+```
+
+### Gen.1.29
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יֹּ֣אמֶר
++ וַיֹּ֣אמֶר
+  אֱלֹהִ֗ים
+  הִנֵּה֩
+  נָתַ֨תִּי
+- לָ/כֶ֜ם
++ לָכֶ֜ם
++ אֶת־כׇּל־עֵ֣שֶׂב
+- אֶת
+- ־
+- כָּל
+- ־
+- עֵ֣שֶׂב
+  ׀
+  זֹרֵ֣עַ
+  זֶ֗רַע
+  אֲשֶׁר֙
+- עַל
+- ־
+- פְּנֵ֣י
++ עַל־פְּנֵ֣י
+- כָל
+- ־
+- הָ/אָ֔רֶץ
++ כׇל־הָאָ֔רֶץ
++ וְאֶת־כׇּל־הָעֵ֛ץ
++ אֲשֶׁר־בּ֥וֹ
++ פְרִי־עֵ֖ץ
+- וְ/אֶת
+- ־
+- כָּל
+- ־
+- הָ/עֵ֛ץ
+- אֲשֶׁר
+- ־
+- בּ֥/וֹ
+- פְרִי
+- ־
+- עֵ֖ץ
+  זֹרֵ֣עַ
+  זָ֑רַע
+- לָ/כֶ֥ם
++ לָכֶ֥ם
+  יִֽהְיֶ֖ה
+- לְ/אָכְלָֽה
++ לְאׇכְלָֽה׃
+- ׃
+```
+
+### Gen.1.30
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
++ וּֽלְכׇל־חַיַּ֣ת
+- וּֽ/לְ/כָל
+- ־
+- חַיַּ֣ת
+- הָ֠/אָרֶץ
++ הָ֠אָ֠רֶץ
++ וּלְכׇל־ע֨וֹף
+- וּ/לְ/כָל
+- ־
+- ע֨וֹף
+- הַ/שָּׁמַ֜יִם
++ הַשָּׁמַ֜יִם
+- וּ/לְ/כֹ֣ל
++ וּלְכֹ֣ל
+  ׀
+  רוֹמֵ֣שׂ
+- עַל
+- ־
+- הָ/אָ֗רֶץ
++ עַל־הָאָ֗רֶץ
++ אֲשֶׁר־בּוֹ֙
+- אֲשֶׁר
+- ־
+- בּ/וֹ֙
+  נֶ֣פֶשׁ
+  חַיָּ֔ה
++ אֶת־כׇּל־יֶ֥רֶק
+- אֶת
+- ־
+- כָּל
+- ־
+- יֶ֥רֶק
+  עֵ֖שֶׂב
+- לְ/אָכְלָ֑ה
++ לְאׇכְלָ֑ה
++ וַֽיְהִי־כֵֽן׃
+- וַֽ/יְהִי
+- ־
+- כֵֽן
+- ׃
+```
+
+### Gen.1.31
+
+Source A (oshb): Open Scriptures Hebrew Bible | digital/source edition date: 2018-12-14T00:00:00
+Source B (sefaria_mam): Sefaria Miqra according to the Masorah | digital/source edition date: 2025-01-02T17:56:40Z
+
+```diff
+- וַ/יַּ֤רְא
++ וַיַּ֤רְא
+  אֱלֹהִים֙
++ אֶת־כׇּל־אֲשֶׁ֣ר
+- אֶת
+- ־
+- כָּל
+- ־
+- אֲשֶׁ֣ר
+  עָשָׂ֔ה
++ וְהִנֵּה־ט֖וֹב
+- וְ/הִנֵּה
+- ־
+- ט֖וֹב
+  מְאֹ֑ד
++ וַֽיְהִי־עֶ֥רֶב
++ וַֽיְהִי־בֹ֖קֶר
+- וַֽ/יְהִי
+- ־
+- עֶ֥רֶב
+- וַֽ/יְהִי
+- ־
+- בֹ֖קֶר
+  י֥וֹם
+- הַ/שִּׁשִּֽׁי
++ הַשִּׁשִּֽׁי׃
++ {פ}
+- ׃
+- פ
+```
