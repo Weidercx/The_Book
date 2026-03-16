@@ -19,7 +19,7 @@ def test_diff_output_stem_prefers_compact_year_span():
         include_source_pair_suffix=False,
     )
 
-    assert output_stem == "250BCE_1008CE"
+    assert output_stem == "BCE250_CE1008"
 
 
 def test_diff_output_stem_appends_pair_suffix_when_requested():
@@ -30,11 +30,11 @@ def test_diff_output_stem_appends_pair_suffix_when_requested():
         include_source_pair_suffix=True,
     )
 
-    assert output_stem == "250BCE_1008CE__dss_4qgen_vs_oshb"
+    assert output_stem == "BCE250_CE1008__dss_4qgen_vs_oshb"
 
 
 def test_parse_pair_from_prefixed_diff_path():
-    path = Path("250BCE_1008CE__dss_4qgen_vs_oshb.json")
+    path = Path("BCE250_CE1008__dss_4qgen_vs_oshb.json")
 
     assert parse_pair_from_path(path) == ("dss_4qgen", "oshb")
 
@@ -191,8 +191,8 @@ def test_normalize_diff_artifacts_adds_suffix_on_year_collision(tmp_path: Path):
     json_names = {path.name for path in artifacts_dir.glob("*.json")}
 
     assert len(normalized) == 2
-    assert "930CE_1008CE__source_alpha_vs_source_beta.json" in json_names
+    assert "CE930_CE1008__source_alpha_vs_source_beta.json" in json_names
     assert any(
-        name.startswith("930CE_1008CE__") and "source_gamma" in name and "source_delta" in name
+        name.startswith("CE930_CE1008__") and "source_gamma" in name and "source_delta" in name
         for name in json_names
     )

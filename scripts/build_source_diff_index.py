@@ -70,8 +70,8 @@ def filename_year_label(year_signed: int | None) -> str:
     if year_signed is None:
         return "unknown"
     if year_signed < 0:
-        return f"{abs(year_signed)}BCE"
-    return f"{year_signed}CE"
+        return f"BCE{abs(year_signed)}"
+    return f"CE{year_signed}"
 
 
 def year_pair_stem(
@@ -726,7 +726,7 @@ def build_source_index(
             "pairs if either source has blocking data-quality flags."
         ),
         "diff_filename_policy": (
-            "Diff artifact filenames prefer compact year spans (<olderYear>_<newerYear>). "
+            "Diff artifact filenames prefer compact year spans (<olderEra><olderYear>_<newerEra><newerYear>). "
             "If multiple pairs share the same year span, a <source_a>_vs_<source_b> suffix "
             "is appended to avoid collisions."
         ),
