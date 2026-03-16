@@ -99,6 +99,90 @@ def token_diff_ops(source_a_text: str, source_b_text: str) -> Dict[str, Any]:
     }
 
 
+def render_token_pr_diff(source_a_text: str, source_b_text: str) -> str:
+    """Render token-level PR-style diff with + and - prefixes."""
+    a_tokens = source_a_text.split()
+    b_tokens = source_b_text.split()
+
+    rendered: List[str] = []
+    for row in difflib.ndiff(a_tokens, b_tokens):
+        if row.startswith("? "):
+            continue
+
+        marker = row[0]
+        token = row[2:]
+        if marker == "-":
+            rendered.append(f"- {token}")
+        elif marker == "+":
+            rendered.append(f"+ {token}")
+        else:
+            rendered.append(f"  {token}")
+
+    if not rendered:
+        return "  (no token-level differences)"
+
+    return "\n".join(rendered)
+
+
+def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_name: str) -> str:
+    """Render human-readable PR/MR style markdown report with diff blocks."""
+    lines: List[str] = []
+    comparison = report.get("comparison", {})
+    sources = report.get("sources", {})
+
+    lines.append("# Genesis 1 Cross-Source Diff (PR Style)")
+    lines.append("")
+    lines.append(f"- Work: {report.get('work_id')}")
+    lines.append(f"- Chapter: {report.get('chapter')}")
+    lines.append(f"- Risk level: {report.get('risk_level')}")
+    lines.append(f"- Shared verses: {comparison.get('shared_verses')}")
+    lines.append(f"- Changed verses: {comparison.get('changed_hash_verses')}")
+    lines.append("")
+
+    source_a_dates = ", ".join(sources.get(source_a_name, {}).get("source_version_dates", [])) or "(none)"
+    source_b_dates = ", ".join(sources.get(source_b_name, {}).get("source_version_dates", [])) or "(none)"
+    lines.append(f"- {source_a_name} source dates: {source_a_dates}")
+    lines.append(f"- {source_b_name} source dates: {source_b_dates}")
+    lines.append("")
+
+    changed_details = comparison.get("changed_verse_details", [])
+    if not changed_details:
+        lines.append("No changed verses found.")
+        lines.append("")
+        return "\n".join(lines)
+
+    lines.append("## Verse Diffs")
+    lines.append("")
+
+    for detail in changed_details:
+        verse = detail.get("verse", "unknown")
+        source_a = detail.get("source_a", {})
+        source_b = detail.get("source_b", {})
+
+        lines.append(f"### {verse}")
+        lines.append("")
+        lines.append(
+            f"Source A ({source_a_name}): {source_a.get('source_archive')} | "
+            f"date: {source_a.get('source_version_date')}"
+        )
+        lines.append(
+            f"Source B ({source_b_name}): {source_b.get('source_archive')} | "
+            f"date: {source_b.get('source_version_date')}"
+        )
+        lines.append("")
+        lines.append("```diff")
+        lines.append(
+            render_token_pr_diff(
+                source_a_text=str(source_a.get("text_content", "")),
+                source_b_text=str(source_b.get("text_content", "")),
+            )
+        )
+        lines.append("```")
+        lines.append("")
+
+    return "\n".join(lines)
+
+
 def compare_sources(
     source_a_name: str,
     source_a_records: List[Dict[str, Any]],
@@ -254,6 +338,12 @@ def parse_args() -> argparse.Namespace:
         default=Path("data") / "reports" / "genesis_ch1_cross_source_diff.json",
         help="Output report path",
     )
+    parser.add_argument(
+        "--markdown-output",
+        type=Path,
+        default=Path("data") / "reports" / "genesis_ch1_cross_source_diff.md",
+        help="PR/MR style markdown report path",
+    )
     return parser.parse_args()
 
 
@@ -274,11 +364,21 @@ def main() -> int:
     with args.output.open("w", encoding="utf-8") as handle:
         json.dump(report, handle, ensure_ascii=False, indent=2)
 
+    args.markdown_output.parent.mkdir(parents=True, exist_ok=True)
+    markdown = render_markdown_report(
+        report=report,
+        source_a_name=args.source_a_name,
+        source_b_name=args.source_b_name,
+    )
+    with args.markdown_output.open("w", encoding="utf-8") as handle:
+        handle.write(markdown)
+
     print(f"Cross-source report status: {report.get('status')}")
     print(f"Risk level: {report.get('risk_level')}")
     print(f"Shared verses: {report['comparison']['shared_verses']}")
     print(f"Changed hash verses: {report['comparison']['changed_hash_verses']}")
     print(f"Output report: {args.output}")
+    print(f"Markdown diff report: {args.markdown_output}")
 
     return 0
 
