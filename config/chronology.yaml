@@ -4,7 +4,6 @@
 works:
   bible.ot.genesis:
     tradition_label: "Hebrew Bible / Torah"
-    source_ordering_policy: "higher_year_is_older"
     textual_authorship:
       traditional_attribution: "Traditionally attributed to Moses"
       scholarly_model: "Composite redaction over time (often modeled with Priestly/Yahwist and related strata)"
