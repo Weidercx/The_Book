@@ -85,9 +85,7 @@ def test_markdown_render_contains_diff_block_with_plus_and_minus_tokens():
     assert "## Digital Edition Dates (Secondary)" in markdown
     assert "Source A English (literal, auto-generated; approximate):" in markdown
     assert "Source B English (literal, auto-generated; approximate):" in markdown
-    assert "Reviewer notes:" in markdown
-    assert "Textual observation:" in markdown
-    assert "Historical significance:" in markdown
+    assert "Reviewer notes:" not in markdown
 
 
 def test_markdown_render_formats_bce_year_labels_for_oldest_source():

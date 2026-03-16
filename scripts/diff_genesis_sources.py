@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 import difflib
 import json
+import os
 import re
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -757,132 +760,329 @@ def literal_english_translation(text: str) -> str:
     return sentence
 
 
-def _gloss(token: str) -> str:
-    """Return a short English gloss for a known Hebrew token, or the token itself."""
-    entry = _HEBREW_GLOSSARY.get(token)
-    return entry[0] if entry else f"the Hebrew form '{token}'"
-
-
-def _significance(token: str) -> str:
-    """Return the scholarly significance note for a known Hebrew token, or empty string."""
-    entry = _HEBREW_GLOSSARY.get(token)
-    return entry[1] if (entry and entry[1]) else ""
-
-
 def _is_segmentation_variant(left: str, right: str) -> bool:
     """True when two token strings are identical after removing whitespace — a maqqef-split artifact."""
     return bool(left) and bool(right) and left.replace(" ", "") == right.replace(" ", "")
 
 
-def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff: Dict[str, Any]) -> List[str]:
-    """Return two scholarly narrative comments on the word-level differences between witnesses."""
+def _env_truthy(value: str | None) -> bool:
+    if value is None:
+        return False
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _unique_preserving_order(items: List[str]) -> List[str]:
+    seen: set[str] = set()
+    ordered: List[str] = []
+    for item in items:
+        if not item or item in seen:
+            continue
+        seen.add(item)
+        ordered.append(item)
+    return ordered
+
+
+def _lexical_change_profile(source_a_text: str, source_b_text: str) -> Dict[str, Any]:
+    """Compute lexical substitutions/additions/omissions after canonical normalization."""
     a_canonical = canonical_token_stream(source_a_text)
     b_canonical = canonical_token_stream(source_b_text)
     canonical_matcher = difflib.SequenceMatcher(a=a_canonical, b=b_canonical, autojunk=False)
 
-    true_substitutions: List[tuple[str, str]] = []
+    substitutions: List[tuple[str, str]] = []
     additions: List[str] = []
     omissions: List[str] = []
+    changed_tokens: List[str] = []
 
     for op, i1, i2, j1, j2 in canonical_matcher.get_opcodes():
         if op == "equal":
             continue
-        left = " ".join(a_canonical[i1:i2]).strip()
-        right = " ".join(b_canonical[j1:j2]).strip()
+
+        left_tokens = [token for token in a_canonical[i1:i2] if token]
+        right_tokens = [token for token in b_canonical[j1:j2] if token]
+
+        left = " ".join(left_tokens).strip()
+        right = " ".join(right_tokens).strip()
         if op == "replace":
             if left and right:
                 if _is_segmentation_variant(left, right):
-                    pass  # maqqef-split artifact — same word, different encoding
+                    continue  # maqqef-split artifact
                 else:
-                    true_substitutions.append((left, right))
+                    substitutions.append((left, right))
+                    changed_tokens.extend(left_tokens)
+                    changed_tokens.extend(right_tokens)
             elif left:
                 omissions.append(left)
+                changed_tokens.extend(left_tokens)
             elif right:
                 additions.append(right)
+                changed_tokens.extend(right_tokens)
         elif op == "delete" and left:
             omissions.append(left)
+            changed_tokens.extend(left_tokens)
         elif op == "insert" and right:
             additions.append(right)
+            changed_tokens.extend(right_tokens)
 
-    # Pure scribal-convention difference — same consonants, different punctuation encoding
-    if not true_substitutions and not additions and not omissions:
-        observation = (
-            "Textual observation: Both witnesses preserve identical vocabulary in this verse. "
-            "The differences are entirely matters of how the maqqef — the connecting dash that "
-            "Hebrew tradition uses to bind short unstressed words to the following term — is encoded. "
-            "One tradition writes the phrase as a single typographic unit; the other separates the "
-            "components. Neither scribe altered a single root or consonant."
-        )
-        significance = (
-            "Historical significance: The complete agreement on every root and consonant across two "
-            "independent manuscript traditions confirms that this verse's wording was entirely settled "
-            "within the Masoretic stream long before either copy was made. Whatever disagreements lay "
-            "between these scribal communities, they were not disagreements about what this verse said."
-        )
+    ordered_substitutions: List[tuple[str, str]] = []
+    seen_pairs: set[tuple[str, str]] = set()
+    for pair in substitutions:
+        if pair in seen_pairs:
+            continue
+        seen_pairs.add(pair)
+        ordered_substitutions.append(pair)
+
+    return {
+        "substitutions": ordered_substitutions,
+        "additions": _unique_preserving_order(additions),
+        "omissions": _unique_preserving_order(omissions),
+        "changed_tokens": _unique_preserving_order(changed_tokens),
+    }
+
+
+def _is_significant_change(profile: Dict[str, Any]) -> bool:
+    substitutions = profile.get("substitutions", [])
+    additions = profile.get("additions", [])
+    omissions = profile.get("omissions", [])
+    changed_tokens = profile.get("changed_tokens", [])
+
+    if not substitutions and not additions and not omissions:
+        return False
+
+    # Treat lexical substitutions as meaningful by default.
+    if substitutions:
+        return True
+
+    # Phrase-level additions/omissions are almost always interpretively relevant.
+    if any(" " in phrase for phrase in additions + omissions):
+        return True
+
+    significant_lexemes = {
+        token
+        for token, (_gloss_value, significance_note) in _HEBREW_GLOSSARY.items()
+        if significance_note
+    }
+    if any(token in significant_lexemes for token in changed_tokens):
+        return True
+
+    # Tiny function-word-only drift is treated as non-significant noise.
+    return (len(additions) + len(omissions)) >= 2
+
+
+def _format_change_examples(values: List[str], limit: int = 3) -> str:
+    if not values:
+        return "(none)"
+    sample = values[:limit]
+    rendered = "; ".join(f"'{item}'" for item in sample)
+    if len(values) > limit:
+        return f"{rendered}; ..."
+    return rendered
+
+
+def _build_genai_prompt(
+    *,
+    verse_ref: str,
+    source_a_label: str,
+    source_b_label: str,
+    source_a_text: str,
+    source_b_text: str,
+    profile: Dict[str, Any],
+) -> str:
+    substitutions = profile.get("substitutions", [])
+    substitution_text = "(none)"
+    if substitutions:
+        chunks = [f"'{left}' -> '{right}'" for left, right in substitutions[:3]]
+        substitution_text = "; ".join(chunks)
+        if len(substitutions) > 3:
+            substitution_text += "; ..."
+
+    return (
+        "You are a textual critic and historian of Biblical Hebrew. "
+        "Write only meaningful commentary and avoid generic filler.\n\n"
+        f"Verse reference: {verse_ref}\n"
+        f"Older witness label: {source_a_label}\n"
+        f"Newer witness label: {source_b_label}\n"
+        f"Older witness Hebrew: {source_a_text}\n"
+        f"Newer witness Hebrew: {source_b_text}\n"
+        f"Older witness English (literal, approximate): {literal_english_translation(source_a_text)}\n"
+        f"Newer witness English (literal, approximate): {literal_english_translation(source_b_text)}\n"
+        "Word-level changes after canonical normalization:\n"
+        f"- Substitutions: {substitution_text}\n"
+        f"- Additions in newer witness: {_format_change_examples(profile.get('additions', []))}\n"
+        f"- Omissions in newer witness: {_format_change_examples(profile.get('omissions', []))}\n\n"
+        "Output exactly 2 bullet lines in plain English, no extra headings:\n"
+        "- Textual observation: [specific wording change in concrete terms]\n"
+        "- Historical significance: [why this matters historically/theologically, or explicitly state uncertainty]\n"
+        "Do not output similarity scores, code-like labels, or repetitive boilerplate."
+    )
+
+
+def _extract_chat_text(response_payload: Dict[str, Any]) -> str | None:
+    choices = response_payload.get("choices")
+    if not isinstance(choices, list) or not choices:
+        return None
+
+    first_choice = choices[0] if isinstance(choices[0], dict) else {}
+    message = first_choice.get("message") if isinstance(first_choice, dict) else {}
+    if not isinstance(message, dict):
+        return None
+
+    content = message.get("content")
+    if isinstance(content, str):
+        return content.strip() or None
+
+    if isinstance(content, list):
+        parts: List[str] = []
+        for part in content:
+            if not isinstance(part, dict):
+                continue
+            text = part.get("text")
+            if isinstance(text, str) and text.strip():
+                parts.append(text.strip())
+        if parts:
+            return "\n".join(parts)
+
+    return None
+
+
+def _call_genai_review(prompt: str, enable_genai_review: bool | None = None) -> str | None:
+    if enable_genai_review is None:
+        enable_genai_review = _env_truthy(os.getenv("GENAI_REVIEW_ENABLED"))
+    if not enable_genai_review:
+        return None
+
+    api_key = os.getenv("GENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
+
+    base_url = os.getenv("GENAI_API_BASE", "https://api.openai.com/v1").rstrip("/")
+    model = os.getenv("GENAI_MODEL", "gpt-4.1-mini")
+    max_tokens = int(os.getenv("GENAI_MAX_TOKENS", "320"))
+    temperature = float(os.getenv("GENAI_TEMPERATURE", "0.2"))
+
+    payload = {
+        "model": model,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "You produce concise, non-repetitive scholarly notes about Biblical Hebrew textual variants. "
+                    "Do not invent manuscript facts that are not in the prompt."
+                ),
+            },
+            {"role": "user", "content": prompt},
+        ],
+        "max_tokens": max_tokens,
+        "temperature": temperature,
+    }
+
+    request = urllib.request.Request(
+        url=f"{base_url}/chat/completions",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            body = response.read().decode("utf-8")
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        return None
+
+    try:
+        payload_json = json.loads(body)
+    except json.JSONDecodeError:
+        return None
+
+    return _extract_chat_text(payload_json)
+
+
+def _parse_genai_comment_lines(text: str) -> List[str]:
+    raw_lines: List[str] = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        line = line.lstrip("-*• ").strip()
+        if line:
+            raw_lines.append(line)
+
+    if not raw_lines:
+        return []
+
+    observation = ""
+    significance = ""
+
+    for line in raw_lines:
+        lowered = line.lower()
+        if lowered.startswith("textual observation:") and not observation:
+            observation = "Textual observation:" + line.split(":", maxsplit=1)[1].strip()
+            if not observation.endswith((".", "!", "?")):
+                observation += "."
+        elif lowered.startswith("historical significance:") and not significance:
+            significance = "Historical significance:" + line.split(":", maxsplit=1)[1].strip()
+            if not significance.endswith((".", "!", "?")):
+                significance += "."
+
+    if observation and significance:
         return [observation, significance]
 
-    # Build the observation comment naming specific words
-    observation_parts: List[str] = []
-    first_significance = ""
+    if len(raw_lines) >= 2:
+        fallback_observation = raw_lines[0]
+        fallback_significance = raw_lines[1]
+        if not fallback_observation.lower().startswith("textual observation:"):
+            fallback_observation = f"Textual observation: {fallback_observation}"
+        if not fallback_significance.lower().startswith("historical significance:"):
+            fallback_significance = f"Historical significance: {fallback_significance}"
+        return [fallback_observation, fallback_significance]
 
-    for left, right in true_substitutions[:3]:
-        observation_parts.append(
-            f"the older witness reads '{left}' ({_gloss(left)}), "
-            f"while the later manuscript writes '{right}' ({_gloss(right)})"
-        )
-        if not first_significance:
-            first_significance = _significance(left) or _significance(right)
-
-    for phrase in omissions[:2]:
-        observation_parts.append(
-            f"the phrase '{phrase}' ({_gloss(phrase)}) appears in the older witness "
-            f"but is absent from the later one"
-        )
-        if not first_significance:
-            first_significance = _significance(phrase)
-
-    for phrase in additions[:2]:
-        observation_parts.append(
-            f"the later witness carries '{phrase}' ({_gloss(phrase)}), "
-            f"which the older text does not have"
-        )
-        if not first_significance:
-            first_significance = _significance(phrase)
-
-    if observation_parts:
-        joined = "; ".join(observation_parts)
-        observation = "Textual observation: " + joined[0].upper() + joined[1:] + "."
-    else:
-        observation = "Textual observation: A lexical difference was detected between the two witnesses."
-
-    # Build the significance comment
-    if first_significance:
-        significance = f"Historical significance: {first_significance}"
-    elif omissions or additions:
-        total = len(omissions) + len(additions)
-        direction = "longer" if additions else "shorter"
-        significance = (
-            f"Historical significance: The later witness is {direction} at this point by some "
-            f"{total} phrase(s). Whether this reflects a genuinely different Vorlage — the "
-            "manuscript the scribe was copying from — or physical damage to the older scroll, "
-            "cannot be settled from the text alone. But the question matters enormously. This verse "
-            "was copied, chanted, memorized, and interpreted by communities across more than two "
-            "millennia. A phrase that belongs to one tradition and not the other shapes what every "
-            "reader downstream was taught to believe God had said at the beginning."
-        )
-    else:
-        significance = (
-            "Historical significance: Even where the divergence looks small on the page, word-level "
-            "changes in a text that was memorized, chanted, and interpreted by millions of people "
-            "over more than two thousand years are never trivial. Every scribe who wrote something "
-            "slightly different was, whether he knew it or not, quietly shaping what the next "
-            "generation would believe this verse meant."
-        )
-
-    return [observation, significance]
+    return []
 
 
-def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_name: str) -> str:
+def simulated_review_comments(
+    source_a_text: str,
+    source_b_text: str,
+    token_diff: Dict[str, Any],
+    *,
+    verse_ref: str,
+    source_a_label: str,
+    source_b_label: str,
+    enable_genai_review: bool | None = None,
+) -> List[str]:
+    """Generate reviewer comments only for significant changes, using GenAI when enabled."""
+    _ = token_diff  # Reserved for future prompt enrichment.
+    profile = _lexical_change_profile(source_a_text, source_b_text)
+
+    if not _is_significant_change(profile):
+        return []
+
+    prompt = _build_genai_prompt(
+        verse_ref=verse_ref,
+        source_a_label=source_a_label,
+        source_b_label=source_b_label,
+        source_a_text=source_a_text,
+        source_b_text=source_b_text,
+        profile=profile,
+    )
+    generated = _call_genai_review(prompt, enable_genai_review=enable_genai_review)
+    if not generated:
+        return []
+
+    comments = _parse_genai_comment_lines(generated)
+    if len(comments) == 2 and comments[0] == comments[1]:
+        return [comments[0]]
+    return comments
+
+
+def render_markdown_report(
+    report: Dict[str, Any],
+    source_a_name: str,
+    source_b_name: str,
+    *,
+    enable_genai_review: bool | None = None,
+) -> str:
     """Render human-readable PR/MR style markdown report with diff blocks."""
     lines: List[str] = []
     comparison = report.get("comparison", {})
@@ -1056,14 +1256,20 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
         )
         lines.append("```")
         lines.append("")
-        lines.append("Reviewer notes:")
-        for comment in simulated_review_comments(
+        comments = simulated_review_comments(
             source_a_text=source_a_text,
             source_b_text=source_b_text,
             token_diff=token_diff,
-        ):
-            lines.append(f"- {comment}")
-        lines.append("")
+            verse_ref=str(verse),
+            source_a_label=ordered_a_name,
+            source_b_label=ordered_b_name,
+            enable_genai_review=enable_genai_review,
+        )
+        if comments:
+            lines.append("Reviewer notes:")
+            for comment in comments:
+                lines.append(f"- {comment}")
+            lines.append("")
 
     return "\n".join(lines)
 
@@ -1359,6 +1565,14 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="PR/MR style markdown report path (default: data/reports/bible.ot.genesis/chapter_XXX/cross_source_diff.md)",
     )
+    parser.add_argument(
+        "--enable-genai-review",
+        action="store_true",
+        help=(
+            "Enable GenAI reviewer notes for significant verse changes only. "
+            "Requires GENAI_API_KEY or OPENAI_API_KEY."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -1394,6 +1608,7 @@ def main() -> int:
         report=report,
         source_a_name=args.source_a_name,
         source_b_name=args.source_b_name,
+        enable_genai_review=args.enable_genai_review,
     )
     with markdown_output_path.open("w", encoding="utf-8") as handle:
         handle.write(markdown)
