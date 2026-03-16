@@ -4,17 +4,26 @@
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 VERSE_REF_RE = re.compile(r"Gen\.1\.(\d+)$")
+
+
+def verse_sort_key(verse_ref: str) -> int | str:
+    """Sort verse refs in numeric chapter order when possible."""
+    match = VERSE_REF_RE.search(verse_ref)
+    if match:
+        return int(match.group(1))
+    return verse_ref
 
 
 def load_jsonl(path: Path) -> List[Dict[str, Any]]:
@@ -48,6 +57,48 @@ def source_dates(records: List[Dict[str, Any]]) -> List[str]:
     return values
 
 
+def record_detail(record: Dict[str, Any]) -> Dict[str, Any]:
+    """Return human-review detail fields for one source record."""
+    return {
+        "source_archive": record.get("source_archive"),
+        "source_uri": record.get("source_uri"),
+        "source_version_date": record.get("source_version_date"),
+        "content_hash": record.get("content_hash"),
+        "text_content": record.get("text_content"),
+    }
+
+
+def token_diff_ops(source_a_text: str, source_b_text: str) -> Dict[str, Any]:
+    """Compute token-level change operations between two verse strings."""
+    a_tokens = source_a_text.split()
+    b_tokens = source_b_text.split()
+    matcher = difflib.SequenceMatcher(a=a_tokens, b=b_tokens, autojunk=False)
+
+    operations: List[Dict[str, Any]] = []
+    for op, i1, i2, j1, j2 in matcher.get_opcodes():
+        if op == "equal":
+            continue
+        operations.append(
+            {
+                "op": op,
+                "source_a_range": [i1, i2],
+                "source_b_range": [j1, j2],
+                "source_a_tokens": a_tokens[i1:i2],
+                "source_b_tokens": b_tokens[j1:j2],
+            }
+        )
+
+    char_similarity = difflib.SequenceMatcher(a=source_a_text, b=source_b_text, autojunk=False).ratio()
+
+    return {
+        "source_a_token_count": len(a_tokens),
+        "source_b_token_count": len(b_tokens),
+        "token_similarity_ratio": matcher.ratio(),
+        "char_similarity_ratio": char_similarity,
+        "operations": operations,
+    }
+
+
 def compare_sources(
     source_a_name: str,
     source_a_records: List[Dict[str, Any]],
@@ -57,18 +108,35 @@ def compare_sources(
     a_by_verse = {verse_key(rec): rec for rec in source_a_records}
     b_by_verse = {verse_key(rec): rec for rec in source_b_records}
 
-    shared = sorted(set(a_by_verse).intersection(b_by_verse))
-    only_a = sorted(set(a_by_verse).difference(b_by_verse))
-    only_b = sorted(set(b_by_verse).difference(a_by_verse))
+    shared = sorted(set(a_by_verse).intersection(b_by_verse), key=verse_sort_key)
+    only_a = sorted(set(a_by_verse).difference(b_by_verse), key=verse_sort_key)
+    only_b = sorted(set(b_by_verse).difference(a_by_verse), key=verse_sort_key)
 
     identical: List[str] = []
     changed: List[str] = []
+    changed_verse_details: List[Dict[str, Any]] = []
 
     for key in shared:
-        if a_by_verse[key].get("content_hash") == b_by_verse[key].get("content_hash"):
+        a_record = a_by_verse[key]
+        b_record = b_by_verse[key]
+
+        if a_record.get("content_hash") == b_record.get("content_hash"):
             identical.append(key)
         else:
             changed.append(key)
+            source_a_text = str(a_record.get("text_content", ""))
+            source_b_text = str(b_record.get("text_content", ""))
+            changed_verse_details.append(
+                {
+                    "verse": key,
+                    "source_a": record_detail(a_record),
+                    "source_b": record_detail(b_record),
+                    "token_diff": token_diff_ops(source_a_text=source_a_text, source_b_text=source_b_text),
+                }
+            )
+
+    only_in_source_a_details = [{"verse": key, "source_a": record_detail(a_by_verse[key])} for key in only_a]
+    only_in_source_b_details = [{"verse": key, "source_b": record_detail(b_by_verse[key])} for key in only_b]
 
     a_dates = source_dates(source_a_records)
     b_dates = source_dates(source_b_records)
@@ -145,6 +213,9 @@ def compare_sources(
             "only_in_source_a": len(only_a),
             "only_in_source_b": len(only_b),
             "changed_examples": changed[:10],
+            "changed_verse_details": changed_verse_details,
+            "only_in_source_a_details": only_in_source_a_details,
+            "only_in_source_b_details": only_in_source_b_details,
         },
         "risk_level": risk_level,
         "findings": findings,
