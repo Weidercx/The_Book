@@ -13,6 +13,15 @@ works:
     base_witness:
       label: "Leningrad Codex (B19A) through WLC tradition"
       date_ce: 1008
+    source_tradition_anchors:
+      oshb:
+        witness_anchor_label: "Leningrad Codex (B19A) base witness"
+        witness_anchor_date_ce: 1008
+      sefaria_mam:
+        witness_anchor_label: "Miqra according to the Masorah (Aleppo/Leningrad tradition)"
+        witness_anchor_window_ce:
+          start: 930
+          end: 1008
     skeptical_rules:
       require_source_version_date: true
       flag_inline_editorial_notes: true

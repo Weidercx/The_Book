@@ -15,6 +15,26 @@ def _record(source_archive: str, verse: int, text: str, content_hash: str, sourc
     }
 
 
+def _chronology():
+    return {
+        "works": {
+            "bible.ot.genesis": {
+                "tradition_label": "Hebrew Bible / Torah",
+                "composition_window_bce": {"start": 1000, "end": 400},
+                "earliest_known_textual_witness_window_bce": {"start": 250, "end": 100},
+                "base_witness": {"label": "Leningrad Codex", "date_ce": 1008},
+                "source_tradition_anchors": {
+                    "oshb": {"witness_anchor_label": "Leningrad Codex", "witness_anchor_date_ce": 1008},
+                    "sefaria_mam": {
+                        "witness_anchor_label": "MAM Aleppo/Leningrad tradition",
+                        "witness_anchor_window_ce": {"start": 930, "end": 1008},
+                    },
+                },
+            }
+        }
+    }
+
+
 def test_compare_sources_includes_full_changed_verse_details():
     source_a = [_record("oshb", 1, "בראשית ברא", "h1", "2018-12-14T00:00:00")]
     source_b = [_record("sefaria", 1, "בראשית ברא אלהים", "h2", "2025-01-02T17:56:40Z")]
@@ -24,6 +44,7 @@ def test_compare_sources_includes_full_changed_verse_details():
         source_a_records=source_a,
         source_b_name="sefaria_mam",
         source_b_records=source_b,
+        chronology_config=_chronology(),
     )
 
     details = report["comparison"]["changed_verse_details"]
@@ -32,3 +53,4 @@ def test_compare_sources_includes_full_changed_verse_details():
     assert details[0]["source_a"]["text_content"] == "בראשית ברא"
     assert details[0]["source_b"]["text_content"] == "בראשית ברא אלהים"
     assert len(details[0]["token_diff"]["operations"]) >= 1
+    assert report["chronology"]["composition_window_bce"]["start"] == 1000

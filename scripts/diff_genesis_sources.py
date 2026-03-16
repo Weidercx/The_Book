@@ -11,11 +11,18 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
+import yaml
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 VERSE_REF_RE = re.compile(r"Gen\.1\.(\d+)$")
+
+
+def load_yaml(path: Path) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as handle:
+        return yaml.safe_load(handle) or {}
 
 
 def verse_sort_key(verse_ref: str) -> int | str:
@@ -55,6 +62,56 @@ def verse_key(record: Dict[str, Any]) -> str:
 def source_dates(records: List[Dict[str, Any]]) -> List[str]:
     values = sorted({str(rec.get("source_version_date")) for rec in records if rec.get("source_version_date")})
     return values
+
+
+def build_chronology_context(
+    chronology_config: Dict[str, Any],
+    work_id: str,
+    source_a_name: str,
+    source_b_name: str,
+) -> Dict[str, Any]:
+    works = chronology_config.get("works", {})
+    work = works.get(work_id, {})
+    anchors = work.get("source_tradition_anchors", {})
+
+    selected_anchors: Dict[str, Any] = {}
+    for source_name in (source_a_name, source_b_name):
+        if source_name in anchors:
+            selected_anchors[source_name] = anchors[source_name]
+
+    return {
+        "tradition_label": work.get("tradition_label"),
+        "composition_window_bce": work.get("composition_window_bce"),
+        "earliest_known_textual_witness_window_bce": work.get("earliest_known_textual_witness_window_bce"),
+        "base_witness": work.get("base_witness"),
+        "source_tradition_anchors": selected_anchors,
+    }
+
+
+def format_window_bce(window: Any) -> str:
+    if not isinstance(window, dict):
+        return "(unknown)"
+    start = window.get("start")
+    end = window.get("end")
+    if start is None or end is None:
+        return "(unknown)"
+    return f"{start}-{end} BCE"
+
+
+def format_anchor(anchor: Dict[str, Any]) -> str:
+    if not anchor:
+        return "(unknown)"
+
+    label = anchor.get("witness_anchor_label") or anchor.get("label") or "(unnamed anchor)"
+    date_ce = anchor.get("witness_anchor_date_ce") or anchor.get("date_ce")
+    window_ce = anchor.get("witness_anchor_window_ce")
+
+    if isinstance(window_ce, dict) and window_ce.get("start") is not None and window_ce.get("end") is not None:
+        return f"{label} ({window_ce.get('start')}-{window_ce.get('end')} CE)"
+    if date_ce is not None:
+        return f"{label} ({date_ce} CE)"
+
+    return str(label)
 
 
 def record_detail(record: Dict[str, Any]) -> Dict[str, Any]:
@@ -129,6 +186,7 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
     lines: List[str] = []
     comparison = report.get("comparison", {})
     sources = report.get("sources", {})
+    chronology = report.get("chronology", {})
 
     lines.append("# Genesis 1 Cross-Source Diff (PR Style)")
     lines.append("")
@@ -139,10 +197,32 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
     lines.append(f"- Changed verses: {comparison.get('changed_hash_verses')}")
     lines.append("")
 
+    lines.append("## Chronology Axis (Primary)")
+    lines.append("")
+    lines.append(f"- Tradition: {chronology.get('tradition_label') or '(unknown)'}")
+    lines.append(
+        "- Estimated original composition window: "
+        f"{format_window_bce(chronology.get('composition_window_bce'))}"
+    )
+    lines.append(
+        "- Earliest known textual witness window: "
+        f"{format_window_bce(chronology.get('earliest_known_textual_witness_window_bce'))}"
+    )
+
+    base_witness = chronology.get("base_witness") or {}
+    lines.append(f"- Baseline witness anchor: {format_anchor(base_witness)}")
+
+    source_anchors = chronology.get("source_tradition_anchors", {})
+    lines.append(f"- {source_a_name} witness anchor: {format_anchor(source_anchors.get(source_a_name, {}))}")
+    lines.append(f"- {source_b_name} witness anchor: {format_anchor(source_anchors.get(source_b_name, {}))}")
+    lines.append("")
+    lines.append("## Digital Edition Dates (Secondary)")
+    lines.append("")
+
     source_a_dates = ", ".join(sources.get(source_a_name, {}).get("source_version_dates", [])) or "(none)"
     source_b_dates = ", ".join(sources.get(source_b_name, {}).get("source_version_dates", [])) or "(none)"
-    lines.append(f"- {source_a_name} source dates: {source_a_dates}")
-    lines.append(f"- {source_b_name} source dates: {source_b_dates}")
+    lines.append(f"- {source_a_name} digital/source edition dates: {source_a_dates}")
+    lines.append(f"- {source_b_name} digital/source edition dates: {source_b_dates}")
     lines.append("")
 
     changed_details = comparison.get("changed_verse_details", [])
@@ -163,11 +243,11 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
         lines.append("")
         lines.append(
             f"Source A ({source_a_name}): {source_a.get('source_archive')} | "
-            f"date: {source_a.get('source_version_date')}"
+            f"digital/source edition date: {source_a.get('source_version_date')}"
         )
         lines.append(
             f"Source B ({source_b_name}): {source_b.get('source_archive')} | "
-            f"date: {source_b.get('source_version_date')}"
+            f"digital/source edition date: {source_b.get('source_version_date')}"
         )
         lines.append("")
         lines.append("```diff")
@@ -188,7 +268,16 @@ def compare_sources(
     source_a_records: List[Dict[str, Any]],
     source_b_name: str,
     source_b_records: List[Dict[str, Any]],
+    chronology_config: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
+    work_id = "bible.ot.genesis"
+    chronology_context = build_chronology_context(
+        chronology_config or {},
+        work_id=work_id,
+        source_a_name=source_a_name,
+        source_b_name=source_b_name,
+    )
+
     a_by_verse = {verse_key(rec): rec for rec in source_a_records}
     b_by_verse = {verse_key(rec): rec for rec in source_b_records}
 
@@ -227,6 +316,15 @@ def compare_sources(
     date_overlap = sorted(set(a_dates).intersection(b_dates))
 
     findings: List[Dict[str, Any]] = []
+
+    if not chronology_context.get("composition_window_bce"):
+        findings.append(
+            {
+                "severity": "high",
+                "code": "MISSING_ORIGINAL_COMPOSITION_DATES",
+                "message": "Original composition window is missing from chronology config",
+            }
+        )
 
     if not a_dates or not b_dates:
         findings.append(
@@ -278,16 +376,19 @@ def compare_sources(
 
     return {
         "status": "ok",
-        "work_id": "bible.ot.genesis",
+        "work_id": work_id,
         "chapter": 1,
+        "chronology": chronology_context,
         "sources": {
             source_a_name: {
                 "record_count": len(source_a_records),
                 "source_version_dates": a_dates,
+                "digital_edition_dates": a_dates,
             },
             source_b_name: {
                 "record_count": len(source_b_records),
                 "source_version_dates": b_dates,
+                "digital_edition_dates": b_dates,
             },
         },
         "comparison": {
@@ -339,6 +440,12 @@ def parse_args() -> argparse.Namespace:
         help="Output report path",
     )
     parser.add_argument(
+        "--chronology",
+        type=Path,
+        default=Path("config") / "chronology.yaml",
+        help="Chronology config path for original composition dates",
+    )
+    parser.add_argument(
         "--markdown-output",
         type=Path,
         default=Path("data") / "reports" / "genesis_ch1_cross_source_diff.md",
@@ -352,12 +459,14 @@ def main() -> int:
 
     source_a_records = load_jsonl(args.source_a)
     source_b_records = load_jsonl(args.source_b)
+    chronology_config = load_yaml(args.chronology) if args.chronology.exists() else {}
 
     report = compare_sources(
         source_a_name=args.source_a_name,
         source_a_records=source_a_records,
         source_b_name=args.source_b_name,
         source_b_records=source_b_records,
+        chronology_config=chronology_config,
     )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
