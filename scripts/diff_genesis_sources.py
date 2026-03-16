@@ -21,6 +21,17 @@ WORK_ID = "bible.ot.genesis"
 VERSE_REF_RE = re.compile(r"Gen\.(\d+)\.(\d+)$")
 HEBREW_DIACRITICS_RE = re.compile(r"[\u0591-\u05C7]")
 KEEP_ALNUM_HEBREW_RE = re.compile(r"[^0-9A-Za-z\u05D0-\u05EA]+")
+SIGNIFICANT_NAME_TOKENS = {
+    "יהוה",
+    "אלהים",
+    "אדם",
+    "חוה",
+    "אברהם",
+    "יצחק",
+    "יעקב",
+    "משה",
+    "ישראל",
+}
 
 
 def chapter_dir(chapter: int) -> str:
@@ -377,8 +388,33 @@ def canonical_token_stream(text: str) -> List[str]:
     return [token for token in tokens if token]
 
 
+def unique_preserving_order(items: List[str]) -> List[str]:
+    seen: set[str] = set()
+    ordered: List[str] = []
+    for item in items:
+        if not item or item in seen:
+            continue
+        seen.add(item)
+        ordered.append(item)
+    return ordered
+
+
+def summarize_examples(items: List[str], limit: int = 3) -> str:
+    if not items:
+        return "(none)"
+    sample = items[:limit]
+    rendered = "; ".join(f"'{item}'" for item in sample)
+    if len(items) > limit:
+        return f"{rendered}; ..."
+    return rendered
+
+
+def token_mentions_significant_name(token: str) -> bool:
+    return any(name in token for name in SIGNIFICANT_NAME_TOKENS)
+
+
 def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff: Dict[str, Any]) -> List[str]:
-    """Create English reviewer-style comments combining semantic and impact notes."""
+    """Create English reviewer-style comments combining semantic, content, and impact notes."""
     operations = token_diff.get("operations") if isinstance(token_diff, dict) else []
     if not isinstance(operations, list):
         operations = []
@@ -393,7 +429,41 @@ def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff
 
     a_canonical = canonical_token_stream(source_a_text)
     b_canonical = canonical_token_stream(source_b_text)
-    lexical_similarity = difflib.SequenceMatcher(a=a_canonical, b=b_canonical, autojunk=False).ratio()
+    canonical_matcher = difflib.SequenceMatcher(a=a_canonical, b=b_canonical, autojunk=False)
+    lexical_similarity = canonical_matcher.ratio()
+
+    lexical_replacements: List[str] = []
+    lexical_insertions: List[str] = []
+    lexical_deletions: List[str] = []
+    replacement_tokens: List[str] = []
+
+    for op, i1, i2, j1, j2 in canonical_matcher.get_opcodes():
+        if op == "equal":
+            continue
+
+        left_tokens = [token for token in a_canonical[i1:i2] if token]
+        right_tokens = [token for token in b_canonical[j1:j2] if token]
+
+        left = " ".join(left_tokens).strip()
+        right = " ".join(right_tokens).strip()
+
+        if op == "replace":
+            if left and right and left != right:
+                lexical_replacements.append(f"{left} -> {right}")
+                replacement_tokens.extend(left_tokens)
+                replacement_tokens.extend(right_tokens)
+            elif left and not right:
+                lexical_deletions.append(left)
+            elif right and not left:
+                lexical_insertions.append(right)
+        elif op == "delete" and left:
+            lexical_deletions.append(left)
+        elif op == "insert" and right:
+            lexical_insertions.append(right)
+
+    lexical_replacements = unique_preserving_order(lexical_replacements)
+    lexical_insertions = unique_preserving_order(lexical_insertions)
+    lexical_deletions = unique_preserving_order(lexical_deletions)
 
     token_similarity = 0.0
     char_similarity = 0.0
@@ -442,6 +512,50 @@ def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff
             "exegesis, alignment confidence, and downstream translation choices."
         )
 
+    if lexical_replacements or lexical_insertions or lexical_deletions:
+        parts: List[str] = []
+        if lexical_replacements:
+            parts.append(f"substitutions {summarize_examples(lexical_replacements)}")
+        if lexical_insertions:
+            parts.append(f"additions in Source B {summarize_examples(lexical_insertions)}")
+        if lexical_deletions:
+            parts.append(f"omissions from Source B {summarize_examples(lexical_deletions)}")
+        content_comment = "Content change summary (simulated): " + "; ".join(parts) + "."
+    else:
+        content_comment = (
+            "Content change summary (simulated): no lexical substitutions detected after normalization; "
+            "surface differences are predominantly orthographic/tokenization shifts."
+        )
+
+    name_sensitive_replacements = [
+        item
+        for item in lexical_replacements
+        if any(token_mentions_significant_name(token) for token in item.replace("->", " ").split())
+    ]
+
+    if name_sensitive_replacements:
+        etymology_comment = (
+            "Etymology significance (simulated): high-significance term substitution detected, "
+            f"including {summarize_examples(name_sensitive_replacements, limit=2)}. "
+            "Treat as potentially meaningful lexical replacement, not merely spelling drift."
+        )
+    elif lexical_replacements:
+        etymology_comment = (
+            "Etymology significance (simulated): substitutions likely involve lexeme-level choices; "
+            "validate lemma/root alignment for the changed forms before drawing doctrinal or "
+            "historical conclusions."
+        )
+    elif lexical_insertions or lexical_deletions:
+        etymology_comment = (
+            "Etymology significance (simulated): additions/omissions may shift nuance or syntactic force; "
+            "verify whether omitted/added forms represent alternate stems or explanatory expansions."
+        )
+    else:
+        etymology_comment = (
+            "Etymology significance (simulated): no lexeme substitution signal detected; etymological "
+            "interpretation should remain stable across these witnesses."
+        )
+
     profile_comment = (
         "Diff profile (simulated): "
         f"token_similarity={token_similarity:.3f}, "
@@ -450,7 +564,7 @@ def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff
         f"ops(replace={op_counts['replace']}, insert={op_counts['insert']}, delete={op_counts['delete']})."
     )
 
-    return [semantic_comment, impact_comment, profile_comment]
+    return [semantic_comment, content_comment, impact_comment, etymology_comment, profile_comment]
 
 
 def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_name: str) -> str:

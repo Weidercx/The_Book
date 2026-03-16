@@ -85,7 +85,10 @@ def test_markdown_render_contains_diff_block_with_plus_and_minus_tokens():
     assert "## Digital Edition Dates (Secondary)" in markdown
     assert "Simulated review comments:" in markdown
     assert "Semantic comparison (simulated):" in markdown
+    assert "Content change summary (simulated):" in markdown
+    assert "omissions from Source B" in markdown
     assert "Impact (simulated):" in markdown
+    assert "Etymology significance (simulated):" in markdown
     assert "Diff profile (simulated):" in markdown
 
 
