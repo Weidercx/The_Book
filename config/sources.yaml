@@ -8,7 +8,7 @@ archives:
     name: "Open Scriptures Hebrew Bible"
     domain: "Hebrew Bible"
     url: "https://github.com/openscriptures/morphhb"
-    adapter_class: "adapters.github_adapter.GitHubRepoAdapter"
+    adapter_class: "src.adapters.oshb_adapter.OSHBGenesisAdapter"
     format: "OSIS XML, JSON"
     license: "CC-BY 4.0 (lemma/morph), Public Domain (WLC text)"
     parallel_workers: 2
