@@ -1,0 +1,2647 @@
+{
+  "status": "ok",
+  "work_id": "bible.ot.genesis",
+  "chapter": 1,
+  "chronology": {
+    "tradition_label": "Hebrew Bible / Torah",
+    "textual_authorship": {
+      "traditional_attribution": "Traditionally attributed to Moses",
+      "scholarly_model": "Composite redaction over time (often modeled with Priestly/Yahwist and related strata)"
+    },
+    "composition_window_bce": {
+      "start": 1000,
+      "end": 400
+    },
+    "earliest_known_textual_witness_window_bce": {
+      "start": 250,
+      "end": 100
+    },
+    "base_witness": {
+      "label": "Leningrad Codex (B19A) through WLC tradition",
+      "date_ce": 1008
+    },
+    "source_tradition_anchors": {
+      "oshb": {
+        "witness_anchor_label": "Leningrad Codex (B19A) base witness",
+        "witness_anchor_date_ce": 1008,
+        "ordering_year_ce": 1008,
+        "source_basis": "Open Scriptures Hebrew Bible representation of WLC/Leningrad Codex tradition",
+        "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses",
+        "discovery_location": "Leningrad Codex repository: National Library of Russia, Saint Petersburg"
+      },
+      "samaritan_pentateuch_sp": {
+        "witness_anchor_label": "Samaritan Pentateuch (MS Dublin Chester Beatty Library 751)",
+        "witness_anchor_date_ce": 1225,
+        "ordering_year_ce": 1225,
+        "source_basis": "Hebrew-script transcription from DT-UCPH SP Text-Fabric data, based on MS Dublin Chester Beatty Library 751 (Gen 1-Deut 32:36) and MS Garizim 1",
+        "attributed_author": "Samaritan scribal tradition",
+        "discovery_location": "Chester Beatty Library (Dublin) with parallel Samaritan manuscript evidence from Mount Gerizim"
+      }
+    }
+  },
+  "source_ordering": {
+    "source_a_name": "oshb",
+    "source_b_name": "samaritan_pentateuch_sp",
+    "ordering_basis": "lowest textual witness anchor year (fallback: lowest digital/source year)",
+    "witness_year_gap": {
+      "known": true,
+      "years": 217,
+      "older_year_ce": 1008,
+      "newer_year_ce": 1225,
+      "older_year_label": "1008 CE",
+      "newer_year_label": "1225 CE",
+      "method": "difference between configured witness ordering years (window uses start year)"
+    },
+    "digital_year_gap": {
+      "known": false,
+      "years": null,
+      "older_year_ce": 2018,
+      "newer_year_ce": null,
+      "older_year_label": "2018 CE",
+      "newer_year_label": "(unknown)",
+      "method": "difference between earliest digital/source edition years"
+    }
+  },
+  "sources": {
+    "oshb": {
+      "source_name": "oshb",
+      "display_name": "Open Scriptures Hebrew Bible",
+      "record_count": 31,
+      "source_archive": "Open Scriptures Hebrew Bible",
+      "source_url": "https://github.com/openscriptures/morphhb",
+      "api_endpoint": null,
+      "text_relation": "original_language_transcription",
+      "is_translation": false,
+      "is_transcription": true,
+      "source_uri_example": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.1",
+      "source_version_dates": [
+        "2018-12-14T00:00:00"
+      ],
+      "digital_edition_dates": [
+        "2018-12-14T00:00:00"
+      ],
+      "oldest_digital_year_ce": 2018,
+      "witness_anchor": {
+        "witness_anchor_label": "Leningrad Codex (B19A) base witness",
+        "witness_anchor_date_ce": 1008,
+        "ordering_year_ce": 1008,
+        "source_basis": "Open Scriptures Hebrew Bible representation of WLC/Leningrad Codex tradition",
+        "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses",
+        "discovery_location": "Leningrad Codex repository: National Library of Russia, Saint Petersburg"
+      },
+      "oldest_witness_anchor_year_ce": 1008,
+      "source_basis": "Open Scriptures Hebrew Bible representation of WLC/Leningrad Codex tradition",
+      "discovery_location": "Leningrad Codex repository: National Library of Russia, Saint Petersburg",
+      "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses"
+    },
+    "samaritan_pentateuch_sp": {
+      "source_name": "samaritan_pentateuch_sp",
+      "display_name": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+      "record_count": 31,
+      "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+      "source_url": "https://github.com/DT-UCPH/sp",
+      "api_endpoint": null,
+      "text_relation": "original_language_transcription",
+      "is_translation": false,
+      "is_transcription": true,
+      "source_uri_example": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.1",
+      "source_version_dates": [],
+      "digital_edition_dates": [],
+      "oldest_digital_year_ce": null,
+      "witness_anchor": {
+        "witness_anchor_label": "Samaritan Pentateuch (MS Dublin Chester Beatty Library 751)",
+        "witness_anchor_date_ce": 1225,
+        "ordering_year_ce": 1225,
+        "source_basis": "Hebrew-script transcription from DT-UCPH SP Text-Fabric data, based on MS Dublin Chester Beatty Library 751 (Gen 1-Deut 32:36) and MS Garizim 1",
+        "attributed_author": "Samaritan scribal tradition",
+        "discovery_location": "Chester Beatty Library (Dublin) with parallel Samaritan manuscript evidence from Mount Gerizim"
+      },
+      "oldest_witness_anchor_year_ce": 1225,
+      "source_basis": "Hebrew-script transcription from DT-UCPH SP Text-Fabric data, based on MS Dublin Chester Beatty Library 751 (Gen 1-Deut 32:36) and MS Garizim 1",
+      "discovery_location": "Chester Beatty Library (Dublin) with parallel Samaritan manuscript evidence from Mount Gerizim",
+      "attributed_author": "Samaritan scribal tradition"
+    }
+  },
+  "comparison": {
+    "matching_strategy": "verse_reference_alignment",
+    "order_independent_alignment": true,
+    "coverage_mode": "full_overlap",
+    "source_a_total_verses": 31,
+    "source_b_total_verses": 31,
+    "shared_coverage_ratio_source_a": 1.0,
+    "shared_coverage_ratio_source_b": 1.0,
+    "shared_verses": 31,
+    "identical_hash_verses": 0,
+    "changed_hash_verses": 31,
+    "only_in_source_a": 0,
+    "only_in_source_b": 0,
+    "changed_examples": [
+      "Gen.1.1",
+      "Gen.1.2",
+      "Gen.1.3",
+      "Gen.1.4",
+      "Gen.1.5",
+      "Gen.1.6",
+      "Gen.1.7",
+      "Gen.1.8",
+      "Gen.1.9",
+      "Gen.1.10"
+    ],
+    "changed_verse_details": [
+      {
+        "verse": "Gen.1.1",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.1",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "e7d58fecee97126b64824c4fa73f61f290d8bbf778d194c51216e5c882403a22",
+          "text_content": "בְּ/רֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַ/שָּׁמַ֖יִם וְ/אֵ֥ת הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.1",
+          "source_version_date": null,
+          "content_hash": "b85a5d01929f7a3d50acd48fa5f849b9e6b62228b3e0a433ecbe2c07a2b53499",
+          "text_content": "ב ראשׁית ברא אלהים את ה שׁמים ו את ה ארץ"
+        },
+        "token_diff": {
+          "source_a_token_count": 8,
+          "source_b_token_count": 11,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6545454545454545,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                8
+              ],
+              "source_b_range": [
+                0,
+                11
+              ],
+              "source_a_tokens": [
+                "בְּ/רֵאשִׁ֖ית",
+                "בָּרָ֣א",
+                "אֱלֹהִ֑ים",
+                "אֵ֥ת",
+                "הַ/שָּׁמַ֖יִם",
+                "וְ/אֵ֥ת",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ב",
+                "ראשׁית",
+                "ברא",
+                "אלהים",
+                "את",
+                "ה",
+                "שׁמים",
+                "ו",
+                "את",
+                "ה",
+                "ארץ"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.2",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.2",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "2db5fd6342f30ad8995880cd31c0c883fc2e9c2e5462dfadf00c78822e9c220b",
+          "text_content": "וְ/הָ/אָ֗רֶץ הָיְתָ֥ה תֹ֨הוּ֙ וָ/בֹ֔הוּ וְ/חֹ֖שֶׁךְ עַל ־ פְּנֵ֣י תְה֑וֹם וְ/ר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל ־ פְּנֵ֥י הַ/מָּֽיִם ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.2",
+          "source_version_date": null,
+          "content_hash": "2fc1539cee32cac7fc84c75d797a6a09c54d05a00b3ed9200c1625ce9a4de9e2",
+          "text_content": "ו ה ארץ היתה תהו ו בהו ו חשׁך על פני תהום ו רוח אלהים מרחפת על פני ה מים"
+        },
+        "token_diff": {
+          "source_a_token_count": 17,
+          "source_b_token_count": 20,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6502463054187192,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                17
+              ],
+              "source_b_range": [
+                0,
+                20
+              ],
+              "source_a_tokens": [
+                "וְ/הָ/אָ֗רֶץ",
+                "הָיְתָ֥ה",
+                "תֹ֨הוּ֙",
+                "וָ/בֹ֔הוּ",
+                "וְ/חֹ֖שֶׁךְ",
+                "עַל",
+                "־",
+                "פְּנֵ֣י",
+                "תְה֑וֹם",
+                "וְ/ר֣וּחַ",
+                "אֱלֹהִ֔ים",
+                "מְרַחֶ֖פֶת",
+                "עַל",
+                "־",
+                "פְּנֵ֥י",
+                "הַ/מָּֽיִם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "ה",
+                "ארץ",
+                "היתה",
+                "תהו",
+                "ו",
+                "בהו",
+                "ו",
+                "חשׁך",
+                "על",
+                "פני",
+                "תהום",
+                "ו",
+                "רוח",
+                "אלהים",
+                "מרחפת",
+                "על",
+                "פני",
+                "ה",
+                "מים"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.3",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.3",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "b3b30ed643583817cfe01f80d2e08746a08b8d3a794d530004acd98045b7712a",
+          "text_content": "וַ/יֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽ/יְהִי ־ אֽוֹר ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.3",
+          "source_version_date": null,
+          "content_hash": "9cf326acd322ac600adf7656bb019d6793c11be020111d9a9419329951002bf7",
+          "text_content": "ו יאמר אלהים יהי אור ו יהי אור"
+        },
+        "token_diff": {
+          "source_a_token_count": 8,
+          "source_b_token_count": 8,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6666666666666666,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                8
+              ],
+              "source_b_range": [
+                0,
+                8
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֥אמֶר",
+                "אֱלֹהִ֖ים",
+                "יְהִ֣י",
+                "א֑וֹר",
+                "וַֽ/יְהִי",
+                "־",
+                "אֽוֹר",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "יהי",
+                "אור",
+                "ו",
+                "יהי",
+                "אור"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.4",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.4",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "bce48c93b6aaf97ee880415405adc26307c17f8ea992622b56d0dfd8d075f961",
+          "text_content": "וַ/יַּ֧רְא אֱלֹהִ֛ים אֶת ־ הָ/א֖וֹר כִּי ־ ט֑וֹב וַ/יַּבְדֵּ֣ל אֱלֹהִ֔ים בֵּ֥ין הָ/א֖וֹר וּ/בֵ֥ין הַ/חֹֽשֶׁךְ ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.4",
+          "source_version_date": null,
+          "content_hash": "17b07ae1c5848bec19e3f04da5f541cb546af601c7762d73295b417284961498",
+          "text_content": "ו ירא אלהים את ה אור כי טוב ו יבדל אלהים בין ה אור ו בין ה חשׁך"
+        },
+        "token_diff": {
+          "source_a_token_count": 15,
+          "source_b_token_count": 18,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6551724137931034,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                15
+              ],
+              "source_b_range": [
+                0,
+                18
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֧רְא",
+                "אֱלֹהִ֛ים",
+                "אֶת",
+                "־",
+                "הָ/א֖וֹר",
+                "כִּי",
+                "־",
+                "ט֑וֹב",
+                "וַ/יַּבְדֵּ֣ל",
+                "אֱלֹהִ֔ים",
+                "בֵּ֥ין",
+                "הָ/א֖וֹר",
+                "וּ/בֵ֥ין",
+                "הַ/חֹֽשֶׁךְ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "ירא",
+                "אלהים",
+                "את",
+                "ה",
+                "אור",
+                "כי",
+                "טוב",
+                "ו",
+                "יבדל",
+                "אלהים",
+                "בין",
+                "ה",
+                "אור",
+                "ו",
+                "בין",
+                "ה",
+                "חשׁך"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.5",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.5",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "5ce112732777560039b60c8b116fe48b268e2048c202bff7cb70809f9e91a62d",
+          "text_content": "וַ/יִּקְרָ֨א אֱלֹהִ֤ים ׀ לָ/אוֹר֙ י֔וֹם וְ/לַ/חֹ֖שֶׁךְ קָ֣רָא לָ֑יְלָה וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם אֶחָֽד ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.5",
+          "source_version_date": null,
+          "content_hash": "d8a5137e00fe477cf36393c7921d1cc1953864ffce85b665b0dfdf64b3a9f547",
+          "text_content": "ו יקרא אלהים ל אור יום ו ל חשׁך קרא לילה ו יהי ערב ו יהי בקר יום אחד"
+        },
+        "token_diff": {
+          "source_a_token_count": 18,
+          "source_b_token_count": 19,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6424870466321243,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                18
+              ],
+              "source_b_range": [
+                0,
+                19
+              ],
+              "source_a_tokens": [
+                "וַ/יִּקְרָ֨א",
+                "אֱלֹהִ֤ים",
+                "׀",
+                "לָ/אוֹר֙",
+                "י֔וֹם",
+                "וְ/לַ/חֹ֖שֶׁךְ",
+                "קָ֣רָא",
+                "לָ֑יְלָה",
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר",
+                "י֥וֹם",
+                "אֶחָֽד",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יקרא",
+                "אלהים",
+                "ל",
+                "אור",
+                "יום",
+                "ו",
+                "ל",
+                "חשׁך",
+                "קרא",
+                "לילה",
+                "ו",
+                "יהי",
+                "ערב",
+                "ו",
+                "יהי",
+                "בקר",
+                "יום",
+                "אחד"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.6",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.6",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "17578d611cd1f6b902b2cef155d44eecb49f87595e7b1d8098e00a48740f4f81",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֔ים יְהִ֥י רָקִ֖יעַ בְּ/ת֣וֹךְ הַ/מָּ֑יִם וִ/יהִ֣י מַבְדִּ֔יל בֵּ֥ין מַ֖יִם לָ/מָֽיִם ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.6",
+          "source_version_date": null,
+          "content_hash": "f467bd44f9515aa90906e85049ff4c7692b78fbf8520d81b7557a86c32031469",
+          "text_content": "ו יאמר אלהים יהי רקיע ב תוך ה מים ו יהי מבדיל בין מים ל מים"
+        },
+        "token_diff": {
+          "source_a_token_count": 12,
+          "source_b_token_count": 16,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6585365853658537,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                12
+              ],
+              "source_b_range": [
+                0,
+                16
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֔ים",
+                "יְהִ֥י",
+                "רָקִ֖יעַ",
+                "בְּ/ת֣וֹךְ",
+                "הַ/מָּ֑יִם",
+                "וִ/יהִ֣י",
+                "מַבְדִּ֔יל",
+                "בֵּ֥ין",
+                "מַ֖יִם",
+                "לָ/מָֽיִם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "יהי",
+                "רקיע",
+                "ב",
+                "תוך",
+                "ה",
+                "מים",
+                "ו",
+                "יהי",
+                "מבדיל",
+                "בין",
+                "מים",
+                "ל",
+                "מים"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.7",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.7",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "ea3e270377f06e282f73a0d719a65473b52e0de3f4f50348d2156a68d1c9d3b4",
+          "text_content": "וַ/יַּ֣עַשׂ אֱלֹהִים֮ אֶת ־ הָ/רָקִיעַ֒ וַ/יַּבְדֵּ֗ל בֵּ֤ין הַ/מַּ֨יִם֙ אֲשֶׁר֙ מִ/תַּ֣חַת לָ/רָקִ֔יעַ וּ/בֵ֣ין הַ/מַּ֔יִם אֲשֶׁ֖ר מֵ/עַ֣ל לָ/רָקִ֑יעַ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.7",
+          "source_version_date": null,
+          "content_hash": "6cf807fef092703898ed7df9a275b9c0a4acb6b267f33a4d4d2729c2c0dd0140",
+          "text_content": "ו יעשׂ אלהים את ה רקיע ו יבדל בין ה מים אשׁר מ תחת ל רקיע ו בין ה מים אשׁר מ על ל רקיע ו יהי כן"
+        },
+        "token_diff": {
+          "source_a_token_count": 20,
+          "source_b_token_count": 28,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6339622641509434,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                20
+              ],
+              "source_b_range": [
+                0,
+                28
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֣עַשׂ",
+                "אֱלֹהִים֮",
+                "אֶת",
+                "־",
+                "הָ/רָקִיעַ֒",
+                "וַ/יַּבְדֵּ֗ל",
+                "בֵּ֤ין",
+                "הַ/מַּ֨יִם֙",
+                "אֲשֶׁר֙",
+                "מִ/תַּ֣חַת",
+                "לָ/רָקִ֔יעַ",
+                "וּ/בֵ֣ין",
+                "הַ/מַּ֔יִם",
+                "אֲשֶׁ֖ר",
+                "מֵ/עַ֣ל",
+                "לָ/רָקִ֑יעַ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יעשׂ",
+                "אלהים",
+                "את",
+                "ה",
+                "רקיע",
+                "ו",
+                "יבדל",
+                "בין",
+                "ה",
+                "מים",
+                "אשׁר",
+                "מ",
+                "תחת",
+                "ל",
+                "רקיע",
+                "ו",
+                "בין",
+                "ה",
+                "מים",
+                "אשׁר",
+                "מ",
+                "על",
+                "ל",
+                "רקיע",
+                "ו",
+                "יהי",
+                "כן"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.8",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.8",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "8094c5e186fec32cd9ff357fc5a415d0b986de6fc39c1e997af9b633c75e187e",
+          "text_content": "וַ/יִּקְרָ֧א אֱלֹהִ֛ים לָֽ/רָקִ֖יעַ שָׁמָ֑יִם וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם שֵׁנִֽי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.8",
+          "source_version_date": null,
+          "content_hash": "50c5ea76ee08cf9732ae1025474e5f842f04b5d8405efb42a1d27031586bb65c",
+          "text_content": "ו יקרא אלהים ל רקיע שׁמים ו יהי ערב ו יהי בקר יום שׁני"
+        },
+        "token_diff": {
+          "source_a_token_count": 14,
+          "source_b_token_count": 14,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6451612903225806,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                14
+              ],
+              "source_b_range": [
+                0,
+                14
+              ],
+              "source_a_tokens": [
+                "וַ/יִּקְרָ֧א",
+                "אֱלֹהִ֛ים",
+                "לָֽ/רָקִ֖יעַ",
+                "שָׁמָ֑יִם",
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר",
+                "י֥וֹם",
+                "שֵׁנִֽי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יקרא",
+                "אלהים",
+                "ל",
+                "רקיע",
+                "שׁמים",
+                "ו",
+                "יהי",
+                "ערב",
+                "ו",
+                "יהי",
+                "בקר",
+                "יום",
+                "שׁני"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.9",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.9",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "33e49ea9407fb98ebb2600cb9cabe23b9bf5b1f30462e13a39a4aa442de869e2",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים יִקָּו֨וּ הַ/מַּ֜יִם מִ/תַּ֤חַת הַ/שָּׁמַ֨יִם֙ אֶל ־ מָק֣וֹם אֶחָ֔ד וְ/תֵרָאֶ֖ה הַ/יַּבָּשָׁ֑ה וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.9",
+          "source_version_date": null,
+          "content_hash": "edb6b56c178e6c7ae8110d56ec2d88a9abdf8d21fd6ad42264c2a4f8b7b0e674",
+          "text_content": "ו יאמר אלהים יקוו ה מים מ תחת ה שׁמים אל מקום אחד ו תראה ה יבשׁה ו יהי כן"
+        },
+        "token_diff": {
+          "source_a_token_count": 16,
+          "source_b_token_count": 20,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.5576923076923077,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                16
+              ],
+              "source_b_range": [
+                0,
+                20
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֗ים",
+                "יִקָּו֨וּ",
+                "הַ/מַּ֜יִם",
+                "מִ/תַּ֤חַת",
+                "הַ/שָּׁמַ֨יִם֙",
+                "אֶל",
+                "־",
+                "מָק֣וֹם",
+                "אֶחָ֔ד",
+                "וְ/תֵרָאֶ֖ה",
+                "הַ/יַּבָּשָׁ֑ה",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "יקוו",
+                "ה",
+                "מים",
+                "מ",
+                "תחת",
+                "ה",
+                "שׁמים",
+                "אל",
+                "מקום",
+                "אחד",
+                "ו",
+                "תראה",
+                "ה",
+                "יבשׁה",
+                "ו",
+                "יהי",
+                "כן"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.10",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.10",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "50471d172863ba12fe92774fc77078208167d126484b0505fe6f0a074f8662e6",
+          "text_content": "וַ/יִּקְרָ֨א אֱלֹהִ֤ים ׀ לַ/יַּבָּשָׁה֙ אֶ֔רֶץ וּ/לְ/מִקְוֵ֥ה הַ/מַּ֖יִם קָרָ֣א יַמִּ֑ים וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.10",
+          "source_version_date": null,
+          "content_hash": "71b048197ec7348e0cadaced338d00c0c470171d05aab1b307801721fec14b2e",
+          "text_content": "ו יקרא אלהים ל יבשׁה ארץ ו ל מקוה ה מים קרא ימים ו ירא אלהים כי טוב"
+        },
+        "token_diff": {
+          "source_a_token_count": 15,
+          "source_b_token_count": 18,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6387434554973822,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                15
+              ],
+              "source_b_range": [
+                0,
+                18
+              ],
+              "source_a_tokens": [
+                "וַ/יִּקְרָ֨א",
+                "אֱלֹהִ֤ים",
+                "׀",
+                "לַ/יַּבָּשָׁה֙",
+                "אֶ֔רֶץ",
+                "וּ/לְ/מִקְוֵ֥ה",
+                "הַ/מַּ֖יִם",
+                "קָרָ֣א",
+                "יַמִּ֑ים",
+                "וַ/יַּ֥רְא",
+                "אֱלֹהִ֖ים",
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יקרא",
+                "אלהים",
+                "ל",
+                "יבשׁה",
+                "ארץ",
+                "ו",
+                "ל",
+                "מקוה",
+                "ה",
+                "מים",
+                "קרא",
+                "ימים",
+                "ו",
+                "ירא",
+                "אלהים",
+                "כי",
+                "טוב"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.11",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.11",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "d4a53bb29b8a8211a6e2adc3e28d36c52ced9c6378c7e3dd6781c7366272b24e",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים תַּֽדְשֵׁ֤א הָ/אָ֨רֶץ֙ דֶּ֔שֶׁא עֵ֚שֶׂב מַזְרִ֣יעַ זֶ֔רַע עֵ֣ץ פְּרִ֞י עֹ֤שֶׂה פְּרִי֙ לְ/מִינ֔/וֹ אֲשֶׁ֥ר זַרְע/וֹ ־ ב֖/וֹ עַל ־ הָ/אָ֑רֶץ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.11",
+          "source_version_date": null,
+          "content_hash": "e7d75270dd27eae9e9b74017d747b2db304fd2f34c93d85e0c5a482835ac9d56",
+          "text_content": "ו יאמר אלהים תדשׁא ה ארץ דשׁא עשׂב מזריע זרע ו עץ פרי עשׂה פרי ל מינו אשׁר זרעו בו על ה ארץ ו יהי כן"
+        },
+        "token_diff": {
+          "source_a_token_count": 24,
+          "source_b_token_count": 26,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6642857142857143,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                24
+              ],
+              "source_b_range": [
+                0,
+                26
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֗ים",
+                "תַּֽדְשֵׁ֤א",
+                "הָ/אָ֨רֶץ֙",
+                "דֶּ֔שֶׁא",
+                "עֵ֚שֶׂב",
+                "מַזְרִ֣יעַ",
+                "זֶ֔רַע",
+                "עֵ֣ץ",
+                "פְּרִ֞י",
+                "עֹ֤שֶׂה",
+                "פְּרִי֙",
+                "לְ/מִינ֔/וֹ",
+                "אֲשֶׁ֥ר",
+                "זַרְע/וֹ",
+                "־",
+                "ב֖/וֹ",
+                "עַל",
+                "־",
+                "הָ/אָ֑רֶץ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "תדשׁא",
+                "ה",
+                "ארץ",
+                "דשׁא",
+                "עשׂב",
+                "מזריע",
+                "זרע",
+                "ו",
+                "עץ",
+                "פרי",
+                "עשׂה",
+                "פרי",
+                "ל",
+                "מינו",
+                "אשׁר",
+                "זרעו",
+                "בו",
+                "על",
+                "ה",
+                "ארץ",
+                "ו",
+                "יהי",
+                "כן"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.12",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.12",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "133d9c91f65a7de8b0c6adcdeaf59de94440f65429e4dc42df71f443f25a55e7",
+          "text_content": "וַ/תּוֹצֵ֨א הָ/אָ֜רֶץ דֶּ֠שֶׁא עֵ֣שֶׂב מַזְרִ֤יעַ זֶ֨רַע֙ לְ/מִינֵ֔/הוּ וְ/עֵ֧ץ עֹֽשֶׂה ־ פְּרִ֛י אֲשֶׁ֥ר זַרְע/וֹ ־ ב֖/וֹ לְ/מִינֵ֑/הוּ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.12",
+          "source_version_date": null,
+          "content_hash": "13cd07b998af086ccea3805d8ef88d3b4666676234f15d5e16187345b0bbc7f1",
+          "text_content": "ו תוצא ה ארץ דשׁא עשׂב מזריע זרע ל מינהו ו עץ עשׂה פרי אשׁר זרעו בו ל מינהו ו ירא אלהים כי טוב"
+        },
+        "token_diff": {
+          "source_a_token_count": 22,
+          "source_b_token_count": 24,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6616541353383458,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                22
+              ],
+              "source_b_range": [
+                0,
+                24
+              ],
+              "source_a_tokens": [
+                "וַ/תּוֹצֵ֨א",
+                "הָ/אָ֜רֶץ",
+                "דֶּ֠שֶׁא",
+                "עֵ֣שֶׂב",
+                "מַזְרִ֤יעַ",
+                "זֶ֨רַע֙",
+                "לְ/מִינֵ֔/הוּ",
+                "וְ/עֵ֧ץ",
+                "עֹֽשֶׂה",
+                "־",
+                "פְּרִ֛י",
+                "אֲשֶׁ֥ר",
+                "זַרְע/וֹ",
+                "־",
+                "ב֖/וֹ",
+                "לְ/מִינֵ֑/הוּ",
+                "וַ/יַּ֥רְא",
+                "אֱלֹהִ֖ים",
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "תוצא",
+                "ה",
+                "ארץ",
+                "דשׁא",
+                "עשׂב",
+                "מזריע",
+                "זרע",
+                "ל",
+                "מינהו",
+                "ו",
+                "עץ",
+                "עשׂה",
+                "פרי",
+                "אשׁר",
+                "זרעו",
+                "בו",
+                "ל",
+                "מינהו",
+                "ו",
+                "ירא",
+                "אלהים",
+                "כי",
+                "טוב"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.13",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.13",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "8ff91146a166a6c565e03cff22b015826edeeed64ee919f9658cd14400a252b5",
+          "text_content": "וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם שְׁלִישִֽׁי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.13",
+          "source_version_date": null,
+          "content_hash": "af85dbd07ee7fc9db528ed080ce2482cac12542ad6b1984355b50ac90e73a5b5",
+          "text_content": "ו יהי ערב ו יהי בקר יום שׁלישׁי"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 8,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6444444444444445,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                10
+              ],
+              "source_b_range": [
+                0,
+                8
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר",
+                "י֥וֹם",
+                "שְׁלִישִֽׁי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יהי",
+                "ערב",
+                "ו",
+                "יהי",
+                "בקר",
+                "יום",
+                "שׁלישׁי"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.14",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.14",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9cd31ced995d6dfbfd7479f15fb37c7eb845fe44d16e3f5100d9e72fc5d7ec26",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים יְהִ֤י מְאֹרֹת֙ בִּ/רְקִ֣יעַ הַ/שָּׁמַ֔יִם לְ/הַבְדִּ֕יל בֵּ֥ין הַ/יּ֖וֹם וּ/בֵ֣ין הַ/לָּ֑יְלָה וְ/הָי֤וּ לְ/אֹתֹת֙ וּ/לְ/מ֣וֹעֲדִ֔ים וּ/לְ/יָמִ֖ים וְ/שָׁנִֽים ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.14",
+          "source_version_date": null,
+          "content_hash": "4c6d0e3fb7b17380791415866a01f87ecae9931feb509e9dce12fbc05e662102",
+          "text_content": "ו יאמר אלהים יהי מאורות ב רקיע ה שׁמים ל האיר על ה ארץ ו ל הבדיל בין ה יום ו בין ה לילה ו היו ל אתות ו ל מועדים ו ל ימים ו שׁנים"
+        },
+        "token_diff": {
+          "source_a_token_count": 17,
+          "source_b_token_count": 36,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.5980707395498392,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                17
+              ],
+              "source_b_range": [
+                0,
+                36
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֗ים",
+                "יְהִ֤י",
+                "מְאֹרֹת֙",
+                "בִּ/רְקִ֣יעַ",
+                "הַ/שָּׁמַ֔יִם",
+                "לְ/הַבְדִּ֕יל",
+                "בֵּ֥ין",
+                "הַ/יּ֖וֹם",
+                "וּ/בֵ֣ין",
+                "הַ/לָּ֑יְלָה",
+                "וְ/הָי֤וּ",
+                "לְ/אֹתֹת֙",
+                "וּ/לְ/מ֣וֹעֲדִ֔ים",
+                "וּ/לְ/יָמִ֖ים",
+                "וְ/שָׁנִֽים",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "יהי",
+                "מאורות",
+                "ב",
+                "רקיע",
+                "ה",
+                "שׁמים",
+                "ל",
+                "האיר",
+                "על",
+                "ה",
+                "ארץ",
+                "ו",
+                "ל",
+                "הבדיל",
+                "בין",
+                "ה",
+                "יום",
+                "ו",
+                "בין",
+                "ה",
+                "לילה",
+                "ו",
+                "היו",
+                "ל",
+                "אתות",
+                "ו",
+                "ל",
+                "מועדים",
+                "ו",
+                "ל",
+                "ימים",
+                "ו",
+                "שׁנים"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.15",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.15",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "05dbfdb71a9e33380cfcda83cae859f7abbb47cb04c7440d0d349e898efc0177",
+          "text_content": "וְ/הָי֤וּ לִ/מְאוֹרֹת֙ בִּ/רְקִ֣יעַ הַ/שָּׁמַ֔יִם לְ/הָאִ֖יר עַל ־ הָ/אָ֑רֶץ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.15",
+          "source_version_date": null,
+          "content_hash": "71f68a6fab9c0814c7fdbc0174dee6068226dcdb78ce95c94acd354f2df39602",
+          "text_content": "ו היו ל מאורות ב רקיע ה שׁמים ל האיר על ה ארץ ו יהי כן"
+        },
+        "token_diff": {
+          "source_a_token_count": 12,
+          "source_b_token_count": 16,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6174496644295302,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                12
+              ],
+              "source_b_range": [
+                0,
+                16
+              ],
+              "source_a_tokens": [
+                "וְ/הָי֤וּ",
+                "לִ/מְאוֹרֹת֙",
+                "בִּ/רְקִ֣יעַ",
+                "הַ/שָּׁמַ֔יִם",
+                "לְ/הָאִ֖יר",
+                "עַל",
+                "־",
+                "הָ/אָ֑רֶץ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "היו",
+                "ל",
+                "מאורות",
+                "ב",
+                "רקיע",
+                "ה",
+                "שׁמים",
+                "ל",
+                "האיר",
+                "על",
+                "ה",
+                "ארץ",
+                "ו",
+                "יהי",
+                "כן"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.16",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.16",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "d2c2683780cfbbcd210975e07ee3ce522a2713a4e57d4ef4f1d73710b84fbcf4",
+          "text_content": "וַ/יַּ֣עַשׂ אֱלֹהִ֔ים אֶת ־ שְׁנֵ֥י הַ/מְּאֹרֹ֖ת הַ/גְּדֹלִ֑ים אֶת ־ הַ/מָּא֤וֹר הַ/גָּדֹל֙ לְ/מֶמְשֶׁ֣לֶת הַ/יּ֔וֹם וְ/אֶת ־ הַ/מָּא֤וֹר הַ/קָּטֹן֙ לְ/מֶמְשֶׁ֣לֶת הַ/לַּ֔יְלָה וְ/אֵ֖ת הַ/כּוֹכָבִֽים ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.16",
+          "source_version_date": null,
+          "content_hash": "949cdd1e231d55bd6de004c1b6492cbda2cecdb81efec6e97d9d2e7382b119b8",
+          "text_content": "ו יעשׂ אלהים את שׁני ה מאורות ה גדלים את ה מאור ה גדול ל ממשׁלת ה יום ו את ה מאור ה קטן ל ממשׁלת ה לילה ו את ה כוכבים"
+        },
+        "token_diff": {
+          "source_a_token_count": 22,
+          "source_b_token_count": 32,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6289308176100629,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                22
+              ],
+              "source_b_range": [
+                0,
+                32
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֣עַשׂ",
+                "אֱלֹהִ֔ים",
+                "אֶת",
+                "־",
+                "שְׁנֵ֥י",
+                "הַ/מְּאֹרֹ֖ת",
+                "הַ/גְּדֹלִ֑ים",
+                "אֶת",
+                "־",
+                "הַ/מָּא֤וֹר",
+                "הַ/גָּדֹל֙",
+                "לְ/מֶמְשֶׁ֣לֶת",
+                "הַ/יּ֔וֹם",
+                "וְ/אֶת",
+                "־",
+                "הַ/מָּא֤וֹר",
+                "הַ/קָּטֹן֙",
+                "לְ/מֶמְשֶׁ֣לֶת",
+                "הַ/לַּ֔יְלָה",
+                "וְ/אֵ֖ת",
+                "הַ/כּוֹכָבִֽים",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יעשׂ",
+                "אלהים",
+                "את",
+                "שׁני",
+                "ה",
+                "מאורות",
+                "ה",
+                "גדלים",
+                "את",
+                "ה",
+                "מאור",
+                "ה",
+                "גדול",
+                "ל",
+                "ממשׁלת",
+                "ה",
+                "יום",
+                "ו",
+                "את",
+                "ה",
+                "מאור",
+                "ה",
+                "קטן",
+                "ל",
+                "ממשׁלת",
+                "ה",
+                "לילה",
+                "ו",
+                "את",
+                "ה",
+                "כוכבים"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.17",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.17",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "dffbc5f8cdfd45554dca6d235fbc06ea6957c3c31d2a3e793073766f3ddff39e",
+          "text_content": "וַ/יִּתֵּ֥ן אֹתָ֛/ם אֱלֹהִ֖ים בִּ/רְקִ֣יעַ הַ/שָּׁמָ֑יִם לְ/הָאִ֖יר עַל ־ הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.17",
+          "source_version_date": null,
+          "content_hash": "3c49afe542289f8e783ab9604cbe6355bb59dec61783c39c347eefe684f7cea7",
+          "text_content": "ו יתן אתם אלהים ב רקיע ה שׁמים ל האיר על ה ארץ"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 13,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6259541984732825,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                10
+              ],
+              "source_b_range": [
+                0,
+                13
+              ],
+              "source_a_tokens": [
+                "וַ/יִּתֵּ֥ן",
+                "אֹתָ֛/ם",
+                "אֱלֹהִ֖ים",
+                "בִּ/רְקִ֣יעַ",
+                "הַ/שָּׁמָ֑יִם",
+                "לְ/הָאִ֖יר",
+                "עַל",
+                "־",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יתן",
+                "אתם",
+                "אלהים",
+                "ב",
+                "רקיע",
+                "ה",
+                "שׁמים",
+                "ל",
+                "האיר",
+                "על",
+                "ה",
+                "ארץ"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.18",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.18",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "80517b390019746c149b9d85eeb227b8bb758269482fe9f77135808907e742f9",
+          "text_content": "וְ/לִ/מְשֹׁל֙ בַּ/יּ֣וֹם וּ/בַ/לַּ֔יְלָה וּֽ/לֲ/הַבְדִּ֔יל בֵּ֥ין הָ/א֖וֹר וּ/בֵ֣ין הַ/חֹ֑שֶׁךְ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.18",
+          "source_version_date": null,
+          "content_hash": "ff37177ba05215379bff2fc2a17d39cf093e90299a07810dffe81cc73bacb129",
+          "text_content": "ו ל משׁל ב יום ו ב לילה ו ל הבדיל בין ה אור ו בין ה חשׁך ו ירא אלהים כי טוב"
+        },
+        "token_diff": {
+          "source_a_token_count": 14,
+          "source_b_token_count": 23,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6213592233009708,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                14
+              ],
+              "source_b_range": [
+                0,
+                23
+              ],
+              "source_a_tokens": [
+                "וְ/לִ/מְשֹׁל֙",
+                "בַּ/יּ֣וֹם",
+                "וּ/בַ/לַּ֔יְלָה",
+                "וּֽ/לֲ/הַבְדִּ֔יל",
+                "בֵּ֥ין",
+                "הָ/א֖וֹר",
+                "וּ/בֵ֣ין",
+                "הַ/חֹ֑שֶׁךְ",
+                "וַ/יַּ֥רְא",
+                "אֱלֹהִ֖ים",
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "ל",
+                "משׁל",
+                "ב",
+                "יום",
+                "ו",
+                "ב",
+                "לילה",
+                "ו",
+                "ל",
+                "הבדיל",
+                "בין",
+                "ה",
+                "אור",
+                "ו",
+                "בין",
+                "ה",
+                "חשׁך",
+                "ו",
+                "ירא",
+                "אלהים",
+                "כי",
+                "טוב"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.19",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.19",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9a7228a898d05336175aa8bf6585c8eb5a9cdf576163a3a0e5ca31b988cbc0f6",
+          "text_content": "וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם רְבִיעִֽי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.19",
+          "source_version_date": null,
+          "content_hash": "e0749d37bd90ad71acf5a6f361b6993b7b6e2eaf6d509ecd08682210362b0900",
+          "text_content": "ו יהי ערב ו יהי בקר יום רביעי"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 8,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.627906976744186,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                10
+              ],
+              "source_b_range": [
+                0,
+                8
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר",
+                "י֥וֹם",
+                "רְבִיעִֽי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יהי",
+                "ערב",
+                "ו",
+                "יהי",
+                "בקר",
+                "יום",
+                "רביעי"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.20",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.20",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "4a9d5ccd822d0aa71730341587a2938168b4658bce2b51bff8883ed980c49382",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֔ים יִשְׁרְצ֣וּ הַ/מַּ֔יִם שֶׁ֖רֶץ נֶ֣פֶשׁ חַיָּ֑ה וְ/עוֹף֙ יְעוֹפֵ֣ף עַל ־ הָ/אָ֔רֶץ עַל ־ פְּנֵ֖י רְקִ֥יעַ הַ/שָּׁמָֽיִם ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.20",
+          "source_version_date": null,
+          "content_hash": "e9d7a54593b9d22628c7dabbd156e2399725ed6e6fba7dd3a086d008a0c82c5d",
+          "text_content": "ו יאמר אלהים ישׁרצו ה מים שׁרץ נפשׁ חיה ו עוף יעפף על ה ארץ על פני רקיע ה שׁמים"
+        },
+        "token_diff": {
+          "source_a_token_count": 18,
+          "source_b_token_count": 20,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.669683257918552,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                18
+              ],
+              "source_b_range": [
+                0,
+                20
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֔ים",
+                "יִשְׁרְצ֣וּ",
+                "הַ/מַּ֔יִם",
+                "שֶׁ֖רֶץ",
+                "נֶ֣פֶשׁ",
+                "חַיָּ֑ה",
+                "וְ/עוֹף֙",
+                "יְעוֹפֵ֣ף",
+                "עַל",
+                "־",
+                "הָ/אָ֔רֶץ",
+                "עַל",
+                "־",
+                "פְּנֵ֖י",
+                "רְקִ֥יעַ",
+                "הַ/שָּׁמָֽיִם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "ישׁרצו",
+                "ה",
+                "מים",
+                "שׁרץ",
+                "נפשׁ",
+                "חיה",
+                "ו",
+                "עוף",
+                "יעפף",
+                "על",
+                "ה",
+                "ארץ",
+                "על",
+                "פני",
+                "רקיע",
+                "ה",
+                "שׁמים"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.21",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.21",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "1f99aff9c12332af5d96089d235b6b74429a17919e95e765b214cc700d95e558",
+          "text_content": "וַ/יִּבְרָ֣א אֱלֹהִ֔ים אֶת ־ הַ/תַּנִּינִ֖ם הַ/גְּדֹלִ֑ים וְ/אֵ֣ת כָּל ־ נֶ֣פֶשׁ הַֽ/חַיָּ֣ה ׀ הָֽ/רֹמֶ֡שֶׂת אֲשֶׁר֩ שָׁרְצ֨וּ הַ/מַּ֜יִם לְ/מִֽינֵ/הֶ֗ם וְ/אֵ֨ת כָּל ־ ע֤וֹף כָּנָף֙ לְ/מִינֵ֔/הוּ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.21",
+          "source_version_date": null,
+          "content_hash": "4369ebec2020b75e4159a19886825f9063ffd3afa6a8dc315a6b0e7ca146beee",
+          "text_content": "ו יברא אלהים את ה תנינים ה גדלים ו את כל נפשׁ ה חיה ה רמשׂת אשׁר שׁרצו ה מים ל מיניהם ו את כל עוף כנף ל מינהו ו ירא אלהים כי טוב"
+        },
+        "token_diff": {
+          "source_a_token_count": 29,
+          "source_b_token_count": 34,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6406685236768802,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                29
+              ],
+              "source_b_range": [
+                0,
+                34
+              ],
+              "source_a_tokens": [
+                "וַ/יִּבְרָ֣א",
+                "אֱלֹהִ֔ים",
+                "אֶת",
+                "־",
+                "הַ/תַּנִּינִ֖ם",
+                "הַ/גְּדֹלִ֑ים",
+                "וְ/אֵ֣ת",
+                "כָּל",
+                "־",
+                "נֶ֣פֶשׁ",
+                "הַֽ/חַיָּ֣ה",
+                "׀",
+                "הָֽ/רֹמֶ֡שֶׂת",
+                "אֲשֶׁר֩",
+                "שָׁרְצ֨וּ",
+                "הַ/מַּ֜יִם",
+                "לְ/מִֽינֵ/הֶ֗ם",
+                "וְ/אֵ֨ת",
+                "כָּל",
+                "־",
+                "ע֤וֹף",
+                "כָּנָף֙",
+                "לְ/מִינֵ֔/הוּ",
+                "וַ/יַּ֥רְא",
+                "אֱלֹהִ֖ים",
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יברא",
+                "אלהים",
+                "את",
+                "ה",
+                "תנינים",
+                "ה",
+                "גדלים",
+                "ו",
+                "את",
+                "כל",
+                "נפשׁ",
+                "ה",
+                "חיה",
+                "ה",
+                "רמשׂת",
+                "אשׁר",
+                "שׁרצו",
+                "ה",
+                "מים",
+                "ל",
+                "מיניהם",
+                "ו",
+                "את",
+                "כל",
+                "עוף",
+                "כנף",
+                "ל",
+                "מינהו",
+                "ו",
+                "ירא",
+                "אלהים",
+                "כי",
+                "טוב"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.22",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.22",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9f11b0c3e9dc9f4712b0c927804bf2182978f087f088932fa9dbf0e4d0b53ae5",
+          "text_content": "וַ/יְבָ֧רֶךְ אֹתָ֛/ם אֱלֹהִ֖ים לֵ/אמֹ֑ר פְּר֣וּ וּ/רְב֗וּ וּ/מִלְא֤וּ אֶת ־ הַ/מַּ֨יִם֙ בַּ/יַּמִּ֔ים וְ/הָ/ע֖וֹף יִ֥רֶב בָּ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.22",
+          "source_version_date": null,
+          "content_hash": "5386b26db38f97fef29be5297f383329cf5eea530e735b1564d95ee8125c7714",
+          "text_content": "ו יברך אתם אלהים ל אמר פרו ו רבו ו מלאו את ה מים ב ימים ו ה עוף ירבה ב ארץ"
+        },
+        "token_diff": {
+          "source_a_token_count": 15,
+          "source_b_token_count": 22,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6086956521739131,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                15
+              ],
+              "source_b_range": [
+                0,
+                22
+              ],
+              "source_a_tokens": [
+                "וַ/יְבָ֧רֶךְ",
+                "אֹתָ֛/ם",
+                "אֱלֹהִ֖ים",
+                "לֵ/אמֹ֑ר",
+                "פְּר֣וּ",
+                "וּ/רְב֗וּ",
+                "וּ/מִלְא֤וּ",
+                "אֶת",
+                "־",
+                "הַ/מַּ֨יִם֙",
+                "בַּ/יַּמִּ֔ים",
+                "וְ/הָ/ע֖וֹף",
+                "יִ֥רֶב",
+                "בָּ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יברך",
+                "אתם",
+                "אלהים",
+                "ל",
+                "אמר",
+                "פרו",
+                "ו",
+                "רבו",
+                "ו",
+                "מלאו",
+                "את",
+                "ה",
+                "מים",
+                "ב",
+                "ימים",
+                "ו",
+                "ה",
+                "עוף",
+                "ירבה",
+                "ב",
+                "ארץ"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.23",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.23",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "98a08793041caca9554e81ebd5278ef3f0b41bb953d9372074d589380b7df6fb",
+          "text_content": "וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם חֲמִישִֽׁי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.23",
+          "source_version_date": null,
+          "content_hash": "889ef85404ae97181235d798ffdc268b57e6d0dc13c29481dd8e3c1e614ad067",
+          "text_content": "ו יהי ערב ו יהי בקר יום חמישׁי"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 8,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6363636363636364,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                10
+              ],
+              "source_b_range": [
+                0,
+                8
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר",
+                "י֥וֹם",
+                "חֲמִישִֽׁי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יהי",
+                "ערב",
+                "ו",
+                "יהי",
+                "בקר",
+                "יום",
+                "חמישׁי"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.24",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.24",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "12cced49349816b895b9965105d4422df1601d3f934cf0cd86ac264510d548aa",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים תּוֹצֵ֨א הָ/אָ֜רֶץ נֶ֤פֶשׁ חַיָּה֙ לְ/מִינָ֔/הּ בְּהֵמָ֥ה וָ/רֶ֛מֶשׂ וְ/חַֽיְתוֹ ־ אֶ֖רֶץ לְ/מִינָ֑/הּ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.24",
+          "source_version_date": null,
+          "content_hash": "2c59d6368e7f8893bc3b520ef6200c089eeb87c860aa2ce70abe0ffa98d0cc4a",
+          "text_content": "ו יאמר אלהים תוצא ה ארץ נפשׁ חיה ל מינה בהמה ו רמשׂ ו חית ה ארץ ל מינה ו יהי כן"
+        },
+        "token_diff": {
+          "source_a_token_count": 17,
+          "source_b_token_count": 22,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6396396396396397,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                17
+              ],
+              "source_b_range": [
+                0,
+                22
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֗ים",
+                "תּוֹצֵ֨א",
+                "הָ/אָ֜רֶץ",
+                "נֶ֤פֶשׁ",
+                "חַיָּה֙",
+                "לְ/מִינָ֔/הּ",
+                "בְּהֵמָ֥ה",
+                "וָ/רֶ֛מֶשׂ",
+                "וְ/חַֽיְתוֹ",
+                "־",
+                "אֶ֖רֶץ",
+                "לְ/מִינָ֑/הּ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "תוצא",
+                "ה",
+                "ארץ",
+                "נפשׁ",
+                "חיה",
+                "ל",
+                "מינה",
+                "בהמה",
+                "ו",
+                "רמשׂ",
+                "ו",
+                "חית",
+                "ה",
+                "ארץ",
+                "ל",
+                "מינה",
+                "ו",
+                "יהי",
+                "כן"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.25",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.25",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "4055f4e9fce14ce82a0ed1a6123c14842f9da624455762189cac1838b2fcb29f",
+          "text_content": "וַ/יַּ֣עַשׂ אֱלֹהִים֩ אֶת ־ חַיַּ֨ת הָ/אָ֜רֶץ לְ/מִינָ֗/הּ וְ/אֶת ־ הַ/בְּהֵמָה֙ לְ/מִינָ֔/הּ וְ/אֵ֛ת כָּל ־ רֶ֥מֶשׂ הָֽ/אֲדָמָ֖ה לְ/מִינֵ֑/הוּ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.25",
+          "source_version_date": null,
+          "content_hash": "00a22962e66afc6a3572cfa006d0e3e4a981f9bb92a44db956c5dce27f1a2539",
+          "text_content": "ו יעשׂ אלהים את חית ה ארץ ל מינה ו את ה בהמה ל מינה ו את כל רמשׂ ה אדמה ל מינהו ו ירא אלהים כי טוב"
+        },
+        "token_diff": {
+          "source_a_token_count": 23,
+          "source_b_token_count": 28,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6209386281588448,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                23
+              ],
+              "source_b_range": [
+                0,
+                28
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֣עַשׂ",
+                "אֱלֹהִים֩",
+                "אֶת",
+                "־",
+                "חַיַּ֨ת",
+                "הָ/אָ֜רֶץ",
+                "לְ/מִינָ֗/הּ",
+                "וְ/אֶת",
+                "־",
+                "הַ/בְּהֵמָה֙",
+                "לְ/מִינָ֔/הּ",
+                "וְ/אֵ֛ת",
+                "כָּל",
+                "־",
+                "רֶ֥מֶשׂ",
+                "הָֽ/אֲדָמָ֖ה",
+                "לְ/מִינֵ֑/הוּ",
+                "וַ/יַּ֥רְא",
+                "אֱלֹהִ֖ים",
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יעשׂ",
+                "אלהים",
+                "את",
+                "חית",
+                "ה",
+                "ארץ",
+                "ל",
+                "מינה",
+                "ו",
+                "את",
+                "ה",
+                "בהמה",
+                "ל",
+                "מינה",
+                "ו",
+                "את",
+                "כל",
+                "רמשׂ",
+                "ה",
+                "אדמה",
+                "ל",
+                "מינהו",
+                "ו",
+                "ירא",
+                "אלהים",
+                "כי",
+                "טוב"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.26",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.26",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "2cd226d32d1ed7c56963c2f54ea5a361eaa08a61489999c71bdee2dace0487c8",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֔ים נַֽעֲשֶׂ֥ה אָדָ֛ם בְּ/צַלְמֵ֖/נוּ כִּ/דְמוּתֵ֑/נוּ וְ/יִרְדּוּ֩ בִ/דְגַ֨ת הַ/יָּ֜ם וּ/בְ/ע֣וֹף הַ/שָּׁמַ֗יִם וּ/בַ/בְּהֵמָה֙ וּ/בְ/כָל ־ הָ/אָ֔רֶץ וּ/בְ/כָל ־ הָ/רֶ֖מֶשׂ הָֽ/רֹמֵ֥שׂ עַל ־ הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.26",
+          "source_version_date": null,
+          "content_hash": "0a30813d0993453e127e81fdaae657fe155e508f854dcb9563493f82b35573be",
+          "text_content": "ו יאמר אלהים נעשׂה אדם ב צלמנו ו כ דמותנו ו ירדו ב דגת ה ים ו ב עוף ה שׁמים ו ב בהמה ו ב כל ה ארץ ו ב כל ה רמשׂ ה רמשׂ על ה ארץ"
+        },
+        "token_diff": {
+          "source_a_token_count": 23,
+          "source_b_token_count": 39,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6091954022988506,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                23
+              ],
+              "source_b_range": [
+                0,
+                39
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֔ים",
+                "נַֽעֲשֶׂ֥ה",
+                "אָדָ֛ם",
+                "בְּ/צַלְמֵ֖/נוּ",
+                "כִּ/דְמוּתֵ֑/נוּ",
+                "וְ/יִרְדּוּ֩",
+                "בִ/דְגַ֨ת",
+                "הַ/יָּ֜ם",
+                "וּ/בְ/ע֣וֹף",
+                "הַ/שָּׁמַ֗יִם",
+                "וּ/בַ/בְּהֵמָה֙",
+                "וּ/בְ/כָל",
+                "־",
+                "הָ/אָ֔רֶץ",
+                "וּ/בְ/כָל",
+                "־",
+                "הָ/רֶ֖מֶשׂ",
+                "הָֽ/רֹמֵ֥שׂ",
+                "עַל",
+                "־",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "נעשׂה",
+                "אדם",
+                "ב",
+                "צלמנו",
+                "ו",
+                "כ",
+                "דמותנו",
+                "ו",
+                "ירדו",
+                "ב",
+                "דגת",
+                "ה",
+                "ים",
+                "ו",
+                "ב",
+                "עוף",
+                "ה",
+                "שׁמים",
+                "ו",
+                "ב",
+                "בהמה",
+                "ו",
+                "ב",
+                "כל",
+                "ה",
+                "ארץ",
+                "ו",
+                "ב",
+                "כל",
+                "ה",
+                "רמשׂ",
+                "ה",
+                "רמשׂ",
+                "על",
+                "ה",
+                "ארץ"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.27",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.27",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9c86989ff91f86458f3b3d62cc0f3d71fbdfdecd61eb37b0b325136a8f5a0934",
+          "text_content": "וַ/יִּבְרָ֨א אֱלֹהִ֤ים ׀ אֶת ־ הָֽ/אָדָם֙ בְּ/צַלְמ֔/וֹ בְּ/צֶ֥לֶם אֱלֹהִ֖ים בָּרָ֣א אֹת֑/וֹ זָכָ֥ר וּ/נְקֵבָ֖ה בָּרָ֥א אֹתָֽ/ם ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.27",
+          "source_version_date": null,
+          "content_hash": "d0dd422977a9fe4e3bf471535e33db9c934da78b08581d4b505c4196f8b943d5",
+          "text_content": "ו יברא אלהים את ה אדם ב צלמו ב צלם אלהים ברא אתו זכר ו נקבה ברא אתם"
+        },
+        "token_diff": {
+          "source_a_token_count": 16,
+          "source_b_token_count": 18,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6020408163265306,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                16
+              ],
+              "source_b_range": [
+                0,
+                18
+              ],
+              "source_a_tokens": [
+                "וַ/יִּבְרָ֨א",
+                "אֱלֹהִ֤ים",
+                "׀",
+                "אֶת",
+                "־",
+                "הָֽ/אָדָם֙",
+                "בְּ/צַלְמ֔/וֹ",
+                "בְּ/צֶ֥לֶם",
+                "אֱלֹהִ֖ים",
+                "בָּרָ֣א",
+                "אֹת֑/וֹ",
+                "זָכָ֥ר",
+                "וּ/נְקֵבָ֖ה",
+                "בָּרָ֥א",
+                "אֹתָֽ/ם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יברא",
+                "אלהים",
+                "את",
+                "ה",
+                "אדם",
+                "ב",
+                "צלמו",
+                "ב",
+                "צלם",
+                "אלהים",
+                "ברא",
+                "אתו",
+                "זכר",
+                "ו",
+                "נקבה",
+                "ברא",
+                "אתם"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.28",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.28",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "6383df90000746dac571a7ab56ce573c59cf60cae7df37883059842d216a8acd",
+          "text_content": "וַ/יְבָ֣רֶךְ אֹתָ/ם֮ אֱלֹהִים֒ וַ/יֹּ֨אמֶר לָ/הֶ֜ם אֱלֹהִ֗ים פְּר֥וּ וּ/רְב֛וּ וּ/מִלְא֥וּ אֶת ־ הָ/אָ֖רֶץ וְ/כִבְשֻׁ֑/הָ וּ/רְד֞וּ בִּ/דְגַ֤ת הַ/יָּם֙ וּ/בְ/ע֣וֹף הַ/שָּׁמַ֔יִם וּ/בְ/כָל ־ חַיָּ֖ה הָֽ/רֹמֶ֥שֶׂת עַל ־ הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.28",
+          "source_version_date": null,
+          "content_hash": "ffd40af8315c5abf5d9fe692e9c2133783d19be85d7262e9cae971060a8a60bc",
+          "text_content": "ו יברך אתם אלהים ו יאמר להם אלהים פרו ו רבו ו מלאו את ה ארץ ו כבשׁוה ו רדו ב דגת ה ים ו ב עוף ה שׁמים ו ב כל ה חיה ה רמשׂת על ה ארץ"
+        },
+        "token_diff": {
+          "source_a_token_count": 26,
+          "source_b_token_count": 39,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6277777777777778,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                26
+              ],
+              "source_b_range": [
+                0,
+                39
+              ],
+              "source_a_tokens": [
+                "וַ/יְבָ֣רֶךְ",
+                "אֹתָ/ם֮",
+                "אֱלֹהִים֒",
+                "וַ/יֹּ֨אמֶר",
+                "לָ/הֶ֜ם",
+                "אֱלֹהִ֗ים",
+                "פְּר֥וּ",
+                "וּ/רְב֛וּ",
+                "וּ/מִלְא֥וּ",
+                "אֶת",
+                "־",
+                "הָ/אָ֖רֶץ",
+                "וְ/כִבְשֻׁ֑/הָ",
+                "וּ/רְד֞וּ",
+                "בִּ/דְגַ֤ת",
+                "הַ/יָּם֙",
+                "וּ/בְ/ע֣וֹף",
+                "הַ/שָּׁמַ֔יִם",
+                "וּ/בְ/כָל",
+                "־",
+                "חַיָּ֖ה",
+                "הָֽ/רֹמֶ֥שֶׂת",
+                "עַל",
+                "־",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יברך",
+                "אתם",
+                "אלהים",
+                "ו",
+                "יאמר",
+                "להם",
+                "אלהים",
+                "פרו",
+                "ו",
+                "רבו",
+                "ו",
+                "מלאו",
+                "את",
+                "ה",
+                "ארץ",
+                "ו",
+                "כבשׁוה",
+                "ו",
+                "רדו",
+                "ב",
+                "דגת",
+                "ה",
+                "ים",
+                "ו",
+                "ב",
+                "עוף",
+                "ה",
+                "שׁמים",
+                "ו",
+                "ב",
+                "כל",
+                "ה",
+                "חיה",
+                "ה",
+                "רמשׂת",
+                "על",
+                "ה",
+                "ארץ"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.29",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.29",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "4b143d7c1399511460ecb4a2fde00078d4b1f1ec428fdbe4af55c482d464f53e",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים הִנֵּה֩ נָתַ֨תִּי לָ/כֶ֜ם אֶת ־ כָּל ־ עֵ֣שֶׂב ׀ זֹרֵ֣עַ זֶ֗רַע אֲשֶׁר֙ עַל ־ פְּנֵ֣י כָל ־ הָ/אָ֔רֶץ וְ/אֶת ־ כָּל ־ הָ/עֵ֛ץ אֲשֶׁר ־ בּ֥/וֹ פְרִי ־ עֵ֖ץ זֹרֵ֣עַ זָ֑רַע לָ/כֶ֥ם יִֽהְיֶ֖ה לְ/אָכְלָֽה ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.29",
+          "source_version_date": null,
+          "content_hash": "ef9a771cbd3d2b1f78fb866655f6af73a8cb67b713959feb5a6eed63fa676f2b",
+          "text_content": "ו יאמר אלהים הנה נתתי לכם את כל עשׂב זרע זרע אשׁר על פני כל ה ארץ ו את כל עץ אשׁר בו פרי עץ זרע זרע לכם יהיה ל אכלה"
+        },
+        "token_diff": {
+          "source_a_token_count": 37,
+          "source_b_token_count": 31,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6390532544378699,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                37
+              ],
+              "source_b_range": [
+                0,
+                31
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר",
+                "אֱלֹהִ֗ים",
+                "הִנֵּה֩",
+                "נָתַ֨תִּי",
+                "לָ/כֶ֜ם",
+                "אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "עֵ֣שֶׂב",
+                "׀",
+                "זֹרֵ֣עַ",
+                "זֶ֗רַע",
+                "אֲשֶׁר֙",
+                "עַל",
+                "־",
+                "פְּנֵ֣י",
+                "כָל",
+                "־",
+                "הָ/אָ֔רֶץ",
+                "וְ/אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "הָ/עֵ֛ץ",
+                "אֲשֶׁר",
+                "־",
+                "בּ֥/וֹ",
+                "פְרִי",
+                "־",
+                "עֵ֖ץ",
+                "זֹרֵ֣עַ",
+                "זָ֑רַע",
+                "לָ/כֶ֥ם",
+                "יִֽהְיֶ֖ה",
+                "לְ/אָכְלָֽה",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "יאמר",
+                "אלהים",
+                "הנה",
+                "נתתי",
+                "לכם",
+                "את",
+                "כל",
+                "עשׂב",
+                "זרע",
+                "זרע",
+                "אשׁר",
+                "על",
+                "פני",
+                "כל",
+                "ה",
+                "ארץ",
+                "ו",
+                "את",
+                "כל",
+                "עץ",
+                "אשׁר",
+                "בו",
+                "פרי",
+                "עץ",
+                "זרע",
+                "זרע",
+                "לכם",
+                "יהיה",
+                "ל",
+                "אכלה"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.30",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.30",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "b5a30a04f98ac9eecbbc7e045a10da1d332fca88d6ce0740842feba9248e32ca",
+          "text_content": "וּֽ/לְ/כָל ־ חַיַּ֣ת הָ֠/אָרֶץ וּ/לְ/כָל ־ ע֨וֹף הַ/שָּׁמַ֜יִם וּ/לְ/כֹ֣ל ׀ רוֹמֵ֣שׂ עַל ־ הָ/אָ֗רֶץ אֲשֶׁר ־ בּ/וֹ֙ נֶ֣פֶשׁ חַיָּ֔ה אֶת ־ כָּל ־ יֶ֥רֶק עֵ֖שֶׂב לְ/אָכְלָ֑ה וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.30",
+          "source_version_date": null,
+          "content_hash": "525524021d06dc180c27a045ec23efb983fe58456e59b17a72ee8162ce0e7ac3",
+          "text_content": "ו ל כל חית ה ארץ ו ל כל עוף ה שׁמים ו ל כל ה רמשׂ על ה ארץ אשׁר בו נפשׁ חיה את כל ירק עשׂב ל אכלה ו יהי כן"
+        },
+        "token_diff": {
+          "source_a_token_count": 30,
+          "source_b_token_count": 33,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6060606060606061,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                30
+              ],
+              "source_b_range": [
+                0,
+                33
+              ],
+              "source_a_tokens": [
+                "וּֽ/לְ/כָל",
+                "־",
+                "חַיַּ֣ת",
+                "הָ֠/אָרֶץ",
+                "וּ/לְ/כָל",
+                "־",
+                "ע֨וֹף",
+                "הַ/שָּׁמַ֜יִם",
+                "וּ/לְ/כֹ֣ל",
+                "׀",
+                "רוֹמֵ֣שׂ",
+                "עַל",
+                "־",
+                "הָ/אָ֗רֶץ",
+                "אֲשֶׁר",
+                "־",
+                "בּ/וֹ֙",
+                "נֶ֣פֶשׁ",
+                "חַיָּ֔ה",
+                "אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "יֶ֥רֶק",
+                "עֵ֖שֶׂב",
+                "לְ/אָכְלָ֑ה",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "ל",
+                "כל",
+                "חית",
+                "ה",
+                "ארץ",
+                "ו",
+                "ל",
+                "כל",
+                "עוף",
+                "ה",
+                "שׁמים",
+                "ו",
+                "ל",
+                "כל",
+                "ה",
+                "רמשׂ",
+                "על",
+                "ה",
+                "ארץ",
+                "אשׁר",
+                "בו",
+                "נפשׁ",
+                "חיה",
+                "את",
+                "כל",
+                "ירק",
+                "עשׂב",
+                "ל",
+                "אכלה",
+                "ו",
+                "יהי",
+                "כן"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.31",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.31",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "61fbee17272631325a806bea97c446e802a3257c5043926745340e543bd1f032",
+          "text_content": "וַ/יַּ֤רְא אֱלֹהִים֙ אֶת ־ כָּל ־ אֲשֶׁ֣ר עָשָׂ֔ה וְ/הִנֵּה ־ ט֖וֹב מְאֹ֑ד וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם הַ/שִּׁשִּֽׁי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Samaritan Pentateuch (DT-UCPH Text-Fabric Dataset)",
+          "source_uri": "https://github.com/DT-UCPH/sp/tree/main/tf/6.1#Gen.1.31",
+          "source_version_date": null,
+          "content_hash": "320071a399fe5028ae6b6c5cb3c34619e21c3ade74eb84d9e8f9ae3a410dfa30",
+          "text_content": "ו ירא אלהים את כל אשׁר עשׂה ו הנה טוב מאד ו יהי ערב ו יהי בקר יום ה שׁשׁי"
+        },
+        "token_diff": {
+          "source_a_token_count": 22,
+          "source_b_token_count": 20,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.6507177033492823,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                22
+              ],
+              "source_b_range": [
+                0,
+                20
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֤רְא",
+                "אֱלֹהִים֙",
+                "אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "אֲשֶׁ֣ר",
+                "עָשָׂ֔ה",
+                "וְ/הִנֵּה",
+                "־",
+                "ט֖וֹב",
+                "מְאֹ֑ד",
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר",
+                "י֥וֹם",
+                "הַ/שִּׁשִּֽׁי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "ו",
+                "ירא",
+                "אלהים",
+                "את",
+                "כל",
+                "אשׁר",
+                "עשׂה",
+                "ו",
+                "הנה",
+                "טוב",
+                "מאד",
+                "ו",
+                "יהי",
+                "ערב",
+                "ו",
+                "יהי",
+                "בקר",
+                "יום",
+                "ה",
+                "שׁשׁי"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "only_in_source_a_details": [],
+    "only_in_source_b_details": []
+  },
+  "risk_level": "high",
+  "findings": [
+    {
+      "severity": "high",
+      "code": "MISSING_SOURCE_DATES",
+      "message": "At least one source lacks source_version_date; skeptical temporal review is weakened",
+      "source_a_dates": [
+        "2018-12-14T00:00:00"
+      ],
+      "source_b_dates": []
+    },
+    {
+      "severity": "medium",
+      "code": "CROSS_SOURCE_TEXTUAL_DIVERGENCE",
+      "message": "Shared verses differ across sources and require skeptical line-by-line review",
+      "changed_count": 31,
+      "examples": [
+        "Gen.1.1",
+        "Gen.1.2",
+        "Gen.1.3",
+        "Gen.1.4",
+        "Gen.1.5",
+        "Gen.1.6",
+        "Gen.1.7",
+        "Gen.1.8",
+        "Gen.1.9",
+        "Gen.1.10"
+      ]
+    }
+  ]
+}

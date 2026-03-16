@@ -54,6 +54,8 @@ data/normalized/
 data/reports/**
 !data/reports/
 !data/reports/**/
+!data/reports/**/*.json
+!data/reports/**/*.md
 !data/reports/**/cross_source_diff.json
 !data/reports/**/cross_source_diff.md
 data/exports/*.parquet
