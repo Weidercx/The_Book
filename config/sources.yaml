@@ -15,6 +15,18 @@ archives:
     refresh_schedule: "monthly"
     v1_enabled: true
 
+  sefaria_mam:
+    name: "Sefaria Miqra according to the Masorah"
+    domain: "Hebrew Bible"
+    url: "https://www.sefaria.org/"
+    adapter_class: "src.adapters.sefaria_adapter.SefariaGenesisAdapter"
+    api_endpoint: "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0"
+    format: "JSON API (Hebrew text)"
+    license: "CC-BY-SA (version mapped in adapter)"
+    parallel_workers: 1
+    refresh_schedule: "weekly"
+    v1_enabled: true
+
   sblgnt:
     name: "SBL Greek New Testament"
     domain: "Greek New Testament"
