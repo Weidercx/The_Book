@@ -38,8 +38,8 @@ def _chronology():
                     },
                     "sefaria_mam": {
                         "witness_anchor_label": "MAM Aleppo/Leningrad tradition",
-                        "witness_anchor_window_ce": {"start": 903, "end": 1008},
-                        "ordering_year_ce": 903,
+                        "witness_anchor_window_ce": {"start": 930, "end": 1008},
+                        "ordering_year_ce": 930,
                         "source_basis": "MAM Aleppo/Leningrad stream",
                         "attributed_author": "Masoretic scribal tradition",
                         "discovery_location": "Aleppo/Jerusalem",
@@ -71,4 +71,4 @@ def test_compare_sources_includes_full_changed_verse_details():
     assert report["chronology"]["composition_window_bce"]["start"] == 1000
     assert report["source_ordering"]["source_a_name"] == "sefaria_mam"
     assert report["source_ordering"]["source_b_name"] == "oshb"
-    assert report["source_ordering"]["witness_year_gap"]["years"] == 105
+    assert report["source_ordering"]["witness_year_gap"]["years"] == 78

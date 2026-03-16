@@ -162,11 +162,15 @@ def year_gap_summary(older_year: int | None, newer_year: int | None, method: str
             "newer_year_ce": newer_year,
             "method": method,
         }
+
+    earlier_year = min(older_year, newer_year)
+    later_year = max(older_year, newer_year)
+
     return {
         "known": True,
-        "years": abs(newer_year - older_year),
-        "older_year_ce": older_year,
-        "newer_year_ce": newer_year,
+        "years": later_year - earlier_year,
+        "older_year_ce": earlier_year,
+        "newer_year_ce": later_year,
         "method": method,
     }
 

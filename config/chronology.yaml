@@ -27,9 +27,9 @@ works:
       sefaria_mam:
         witness_anchor_label: "Miqra according to the Masorah (Aleppo/Leningrad tradition)"
         witness_anchor_window_ce:
-          start: 903
+          start: 930
           end: 1008
-        ordering_year_ce: 903
+        ordering_year_ce: 930
         source_basis: "Miqra according to the Masorah digital edition grounded in Aleppo/Leningrad Masoretic tradition"
         attributed_author: "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses"
         discovery_location: "Aleppo Codex historical provenance in Aleppo, Syria; surviving codex now in Jerusalem, Israel"

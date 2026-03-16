@@ -8,9 +8,9 @@
 
 ## Source Ordering (Oldest First)
 
-- Source A (oldest witness): sefaria_mam | anchor year CE: 903
+- Source A (oldest witness): sefaria_mam | anchor year CE: 930
 - Source B (newer witness): oshb | anchor year CE: 1008
-- Estimated year gap between source witnesses: 105 years (903 -> 1008 CE)
+- Estimated year gap between source witnesses: 78 years (930 -> 1008 CE)
 
 ## Authorship and Source Context
 
@@ -35,7 +35,7 @@
 - Estimated original composition window: 1000-400 BCE
 - Earliest known textual witness window: 250-100 BCE
 - Baseline witness anchor: Leningrad Codex (B19A) through WLC tradition (1008 CE)
-- sefaria_mam witness anchor: Miqra according to the Masorah (Aleppo/Leningrad tradition) (903-1008 CE)
+- sefaria_mam witness anchor: Miqra according to the Masorah (Aleppo/Leningrad tradition) (930-1008 CE)
 - oshb witness anchor: Leningrad Codex (B19A) base witness (1008 CE)
 
 ## Digital Edition Dates (Secondary)
