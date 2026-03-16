@@ -20,14 +20,27 @@ def _chronology():
         "works": {
             "bible.ot.genesis": {
                 "tradition_label": "Hebrew Bible / Torah",
+                "textual_authorship": {
+                    "traditional_attribution": "Traditionally attributed to Moses",
+                    "scholarly_model": "Composite redaction model",
+                },
                 "composition_window_bce": {"start": 1000, "end": 400},
                 "earliest_known_textual_witness_window_bce": {"start": 250, "end": 100},
                 "base_witness": {"label": "Leningrad Codex", "date_ce": 1008},
                 "source_tradition_anchors": {
-                    "oshb": {"witness_anchor_label": "Leningrad Codex", "witness_anchor_date_ce": 1008},
+                    "oshb": {
+                        "witness_anchor_label": "Leningrad Codex",
+                        "witness_anchor_date_ce": 1008,
+                        "source_basis": "WLC/Leningrad witness tradition",
+                        "attributed_author": "Masoretic scribal tradition",
+                        "discovery_location": "Saint Petersburg",
+                    },
                     "sefaria_mam": {
                         "witness_anchor_label": "MAM Aleppo/Leningrad tradition",
                         "witness_anchor_window_ce": {"start": 930, "end": 1008},
+                        "source_basis": "MAM Aleppo/Leningrad stream",
+                        "attributed_author": "Masoretic scribal tradition",
+                        "discovery_location": "Aleppo/Jerusalem",
                     },
                 },
             }
@@ -50,7 +63,10 @@ def test_compare_sources_includes_full_changed_verse_details():
     details = report["comparison"]["changed_verse_details"]
     assert len(details) == 1
     assert details[0]["verse"] == "Gen.1.1"
-    assert details[0]["source_a"]["text_content"] == "בראשית ברא"
-    assert details[0]["source_b"]["text_content"] == "בראשית ברא אלהים"
+    assert details[0]["source_a"]["text_content"] == "בראשית ברא אלהים"
+    assert details[0]["source_b"]["text_content"] == "בראשית ברא"
     assert len(details[0]["token_diff"]["operations"]) >= 1
     assert report["chronology"]["composition_window_bce"]["start"] == 1000
+    assert report["source_ordering"]["source_a_name"] == "sefaria_mam"
+    assert report["source_ordering"]["source_b_name"] == "oshb"
+    assert report["source_ordering"]["witness_year_gap"]["years"] == 78

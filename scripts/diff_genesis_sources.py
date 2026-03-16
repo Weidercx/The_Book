@@ -81,6 +81,92 @@ def source_dates(records: List[Dict[str, Any]]) -> List[str]:
     return values
 
 
+def parse_year(value: Any) -> int | None:
+    if value is None:
+        return None
+    match = re.search(r"(\d{4})", str(value))
+    if not match:
+        return None
+    try:
+        return int(match.group(1))
+    except ValueError:
+        return None
+
+
+def oldest_witness_anchor_year(anchor: Dict[str, Any]) -> int | None:
+    if not isinstance(anchor, dict):
+        return None
+
+    window = anchor.get("witness_anchor_window_ce")
+    if isinstance(window, dict):
+        start = window.get("start")
+        if isinstance(start, int):
+            return start
+
+    date_ce = anchor.get("witness_anchor_date_ce") or anchor.get("date_ce")
+    if isinstance(date_ce, int):
+        return date_ce
+
+    return None
+
+
+def build_source_profile(
+    source_name: str,
+    records: List[Dict[str, Any]],
+    source_anchor: Dict[str, Any],
+    sources_config: Dict[str, Any],
+) -> Dict[str, Any]:
+    archive_config = (sources_config.get("archives", {}) if isinstance(sources_config, dict) else {}).get(source_name, {})
+    sample = records[0] if records else {}
+
+    version_dates = source_dates(records)
+    digital_years = sorted(year for year in (parse_year(value) for value in version_dates) if year is not None)
+
+    return {
+        "source_name": source_name,
+        "display_name": archive_config.get("name") or sample.get("source_archive") or source_name,
+        "record_count": len(records),
+        "source_archive": sample.get("source_archive") or archive_config.get("name") or source_name,
+        "source_url": archive_config.get("url") or sample.get("source_uri"),
+        "api_endpoint": archive_config.get("api_endpoint"),
+        "source_uri_example": sample.get("source_uri"),
+        "source_version_dates": version_dates,
+        "digital_edition_dates": version_dates,
+        "oldest_digital_year_ce": digital_years[0] if digital_years else None,
+        "witness_anchor": source_anchor,
+        "oldest_witness_anchor_year_ce": oldest_witness_anchor_year(source_anchor),
+        "source_basis": source_anchor.get("source_basis"),
+        "discovery_location": source_anchor.get("discovery_location"),
+        "attributed_author": source_anchor.get("attributed_author"),
+    }
+
+
+def source_order_key(profile: Dict[str, Any]) -> tuple[int, int, str]:
+    witness_year = profile.get("oldest_witness_anchor_year_ce")
+    digital_year = profile.get("oldest_digital_year_ce")
+    witness_rank = witness_year if isinstance(witness_year, int) else 9_999_999
+    digital_rank = digital_year if isinstance(digital_year, int) else 9_999_999
+    return witness_rank, digital_rank, str(profile.get("source_name"))
+
+
+def year_gap_summary(older_year: int | None, newer_year: int | None, method: str) -> Dict[str, Any]:
+    if older_year is None or newer_year is None:
+        return {
+            "known": False,
+            "years": None,
+            "older_year_ce": older_year,
+            "newer_year_ce": newer_year,
+            "method": method,
+        }
+    return {
+        "known": True,
+        "years": abs(newer_year - older_year),
+        "older_year_ce": older_year,
+        "newer_year_ce": newer_year,
+        "method": method,
+    }
+
+
 def build_chronology_context(
     chronology_config: Dict[str, Any],
     work_id: str,
@@ -98,6 +184,7 @@ def build_chronology_context(
 
     return {
         "tradition_label": work.get("tradition_label"),
+        "textual_authorship": work.get("textual_authorship"),
         "composition_window_bce": work.get("composition_window_bce"),
         "earliest_known_textual_witness_window_bce": work.get("earliest_known_textual_witness_window_bce"),
         "base_witness": work.get("base_witness"),
@@ -204,6 +291,13 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
     comparison = report.get("comparison", {})
     sources = report.get("sources", {})
     chronology = report.get("chronology", {})
+    source_ordering = report.get("source_ordering", {})
+
+    ordered_a_name = source_ordering.get("source_a_name") or source_a_name
+    ordered_b_name = source_ordering.get("source_b_name") or source_b_name
+
+    ordered_a = sources.get(ordered_a_name, {})
+    ordered_b = sources.get(ordered_b_name, {})
 
     lines.append("# Genesis 1 Cross-Source Diff (PR Style)")
     lines.append("")
@@ -212,6 +306,50 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
     lines.append(f"- Risk level: {report.get('risk_level')}")
     lines.append(f"- Shared verses: {comparison.get('shared_verses')}")
     lines.append(f"- Changed verses: {comparison.get('changed_hash_verses')}")
+    lines.append("")
+
+    lines.append("## Source Ordering (Oldest First)")
+    lines.append("")
+    lines.append(
+        f"- Source A (oldest witness): {ordered_a_name} | "
+        f"anchor year CE: {ordered_a.get('oldest_witness_anchor_year_ce') or '(unknown)'}"
+    )
+    lines.append(
+        f"- Source B (newer witness): {ordered_b_name} | "
+        f"anchor year CE: {ordered_b.get('oldest_witness_anchor_year_ce') or '(unknown)'}"
+    )
+
+    witness_gap = source_ordering.get("witness_year_gap", {})
+    if witness_gap.get("known"):
+        lines.append(
+            "- Estimated year gap between source witnesses: "
+            f"{witness_gap.get('years')} years "
+            f"({witness_gap.get('older_year_ce')} -> {witness_gap.get('newer_year_ce')} CE)"
+        )
+    else:
+        lines.append("- Estimated year gap between source witnesses: (unknown)")
+    lines.append("")
+
+    lines.append("## Authorship and Source Context")
+    lines.append("")
+    authorship = chronology.get("textual_authorship") or {}
+    lines.append(
+        "- Text traditional attribution: "
+        f"{authorship.get('traditional_attribution') or '(unknown)'}"
+    )
+    lines.append(
+        "- Text scholarly attribution model: "
+        f"{authorship.get('scholarly_model') or '(unknown)'}"
+    )
+
+    for label, source_name in (("Source A", ordered_a_name), ("Source B", ordered_b_name)):
+        source_meta = sources.get(source_name, {})
+        lines.append(f"- {label} key: {source_name}")
+        lines.append(f"- {label} source/archive: {source_meta.get('display_name') or source_meta.get('source_archive') or '(unknown)'}")
+        lines.append(f"- {label} source URL: {source_meta.get('source_url') or '(unknown)'}")
+        lines.append(f"- {label} source basis: {source_meta.get('source_basis') or '(unknown)'}")
+        lines.append(f"- {label} attributed author/editor: {source_meta.get('attributed_author') or '(unknown)'}")
+        lines.append(f"- {label} discovery location: {source_meta.get('discovery_location') or '(unknown)'}")
     lines.append("")
 
     lines.append("## Chronology Axis (Primary)")
@@ -230,16 +368,16 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
     lines.append(f"- Baseline witness anchor: {format_anchor(base_witness)}")
 
     source_anchors = chronology.get("source_tradition_anchors", {})
-    lines.append(f"- {source_a_name} witness anchor: {format_anchor(source_anchors.get(source_a_name, {}))}")
-    lines.append(f"- {source_b_name} witness anchor: {format_anchor(source_anchors.get(source_b_name, {}))}")
+    lines.append(f"- {ordered_a_name} witness anchor: {format_anchor(source_anchors.get(ordered_a_name, {}))}")
+    lines.append(f"- {ordered_b_name} witness anchor: {format_anchor(source_anchors.get(ordered_b_name, {}))}")
     lines.append("")
     lines.append("## Digital Edition Dates (Secondary)")
     lines.append("")
 
-    source_a_dates = ", ".join(sources.get(source_a_name, {}).get("source_version_dates", [])) or "(none)"
-    source_b_dates = ", ".join(sources.get(source_b_name, {}).get("source_version_dates", [])) or "(none)"
-    lines.append(f"- {source_a_name} digital/source edition dates: {source_a_dates}")
-    lines.append(f"- {source_b_name} digital/source edition dates: {source_b_dates}")
+    source_a_dates = ", ".join(sources.get(ordered_a_name, {}).get("source_version_dates", [])) or "(none)"
+    source_b_dates = ", ".join(sources.get(ordered_b_name, {}).get("source_version_dates", [])) or "(none)"
+    lines.append(f"- {ordered_a_name} digital/source edition dates: {source_a_dates}")
+    lines.append(f"- {ordered_b_name} digital/source edition dates: {source_b_dates}")
     lines.append("")
 
     changed_details = comparison.get("changed_verse_details", [])
@@ -259,11 +397,11 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
         lines.append(f"### {verse}")
         lines.append("")
         lines.append(
-            f"Source A ({source_a_name}): {source_a.get('source_archive')} | "
+            f"Source A ({ordered_a_name}): {source_a.get('source_archive')} | "
             f"digital/source edition date: {source_a.get('source_version_date')}"
         )
         lines.append(
-            f"Source B ({source_b_name}): {source_b.get('source_archive')} | "
+            f"Source B ({ordered_b_name}): {source_b.get('source_archive')} | "
             f"digital/source edition date: {source_b.get('source_version_date')}"
         )
         lines.append("")
@@ -286,6 +424,7 @@ def compare_sources(
     source_b_name: str,
     source_b_records: List[Dict[str, Any]],
     chronology_config: Dict[str, Any] | None = None,
+    sources_config: Dict[str, Any] | None = None,
     chapter: int = 1,
 ) -> Dict[str, Any]:
     work_id = WORK_ID
@@ -296,8 +435,45 @@ def compare_sources(
         source_b_name=source_b_name,
     )
 
-    a_by_verse = {verse_key(rec): rec for rec in source_a_records}
-    b_by_verse = {verse_key(rec): rec for rec in source_b_records}
+    source_inputs: Dict[str, List[Dict[str, Any]]] = {
+        source_a_name: source_a_records,
+        source_b_name: source_b_records,
+    }
+
+    source_anchors = chronology_context.get("source_tradition_anchors", {})
+    source_profiles = {
+        name: build_source_profile(
+            source_name=name,
+            records=records,
+            source_anchor=source_anchors.get(name, {}),
+            sources_config=sources_config or {},
+        )
+        for name, records in source_inputs.items()
+    }
+
+    ordered_profiles = sorted(source_profiles.values(), key=source_order_key)
+    ordered_a_name = ordered_profiles[0]["source_name"]
+    ordered_b_name = ordered_profiles[1]["source_name"]
+
+    ordered_a_profile = source_profiles[ordered_a_name]
+    ordered_b_profile = source_profiles[ordered_b_name]
+    ordered_a_records = source_inputs[ordered_a_name]
+    ordered_b_records = source_inputs[ordered_b_name]
+
+    witness_gap = year_gap_summary(
+        older_year=ordered_a_profile.get("oldest_witness_anchor_year_ce"),
+        newer_year=ordered_b_profile.get("oldest_witness_anchor_year_ce"),
+        method="difference between oldest witness anchor years (window uses start year)",
+    )
+
+    digital_gap = year_gap_summary(
+        older_year=ordered_a_profile.get("oldest_digital_year_ce"),
+        newer_year=ordered_b_profile.get("oldest_digital_year_ce"),
+        method="difference between earliest digital/source edition years",
+    )
+
+    a_by_verse = {verse_key(rec): rec for rec in ordered_a_records}
+    b_by_verse = {verse_key(rec): rec for rec in ordered_b_records}
 
     shared = sorted(set(a_by_verse).intersection(b_by_verse), key=verse_sort_key)
     only_a = sorted(set(a_by_verse).difference(b_by_verse), key=verse_sort_key)
@@ -329,8 +505,8 @@ def compare_sources(
     only_in_source_a_details = [{"verse": key, "source_a": record_detail(a_by_verse[key])} for key in only_a]
     only_in_source_b_details = [{"verse": key, "source_b": record_detail(b_by_verse[key])} for key in only_b]
 
-    a_dates = source_dates(source_a_records)
-    b_dates = source_dates(source_b_records)
+    a_dates = source_dates(ordered_a_records)
+    b_dates = source_dates(ordered_b_records)
     date_overlap = sorted(set(a_dates).intersection(b_dates))
 
     findings: List[Dict[str, Any]] = []
@@ -341,6 +517,17 @@ def compare_sources(
                 "severity": "high",
                 "code": "MISSING_ORIGINAL_COMPOSITION_DATES",
                 "message": "Original composition window is missing from chronology config",
+            }
+        )
+
+    if ordered_a_profile.get("oldest_witness_anchor_year_ce") is None or ordered_b_profile.get("oldest_witness_anchor_year_ce") is None:
+        findings.append(
+            {
+                "severity": "medium",
+                "code": "MISSING_WITNESS_ANCHOR_DATES",
+                "message": "One or more sources are missing witness anchor dates; oldest-first ordering fell back to digital years",
+                "source_a": ordered_a_name,
+                "source_b": ordered_b_name,
             }
         )
 
@@ -397,17 +584,16 @@ def compare_sources(
         "work_id": work_id,
         "chapter": chapter,
         "chronology": chronology_context,
+        "source_ordering": {
+            "source_a_name": ordered_a_name,
+            "source_b_name": ordered_b_name,
+            "ordering_basis": "oldest textual witness anchor year (fallback: oldest digital/source year)",
+            "witness_year_gap": witness_gap,
+            "digital_year_gap": digital_gap,
+        },
         "sources": {
-            source_a_name: {
-                "record_count": len(source_a_records),
-                "source_version_dates": a_dates,
-                "digital_edition_dates": a_dates,
-            },
-            source_b_name: {
-                "record_count": len(source_b_records),
-                "source_version_dates": b_dates,
-                "digital_edition_dates": b_dates,
-            },
+            ordered_a_name: ordered_a_profile,
+            ordered_b_name: ordered_b_profile,
         },
         "comparison": {
             "shared_verses": len(shared),
@@ -470,6 +656,12 @@ def parse_args() -> argparse.Namespace:
         help="Chronology config path for original composition dates",
     )
     parser.add_argument(
+        "--sources-config",
+        type=Path,
+        default=Path("config") / "sources.yaml",
+        help="Source registry config path for source/archive metadata",
+    )
+    parser.add_argument(
         "--markdown-output",
         type=Path,
         default=None,
@@ -489,6 +681,7 @@ def main() -> int:
     source_a_records = load_jsonl(source_a_path)
     source_b_records = load_jsonl(source_b_path)
     chronology_config = load_yaml(args.chronology) if args.chronology.exists() else {}
+    sources_config = load_yaml(args.sources_config) if args.sources_config.exists() else {}
 
     report = compare_sources(
         source_a_name=args.source_a_name,
@@ -496,6 +689,7 @@ def main() -> int:
         source_b_name=args.source_b_name,
         source_b_records=source_b_records,
         chronology_config=chronology_config,
+        sources_config=sources_config,
         chapter=args.chapter,
     )
 
