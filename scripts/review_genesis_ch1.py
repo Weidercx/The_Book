@@ -26,11 +26,11 @@ def chapter_dir(chapter: int) -> str:
 
 
 def default_input_path(chapter: int) -> Path:
-    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / "oshb.jsonl"
+    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / "sources" / "oshb.jsonl"
 
 
 def default_output_path(chapter: int) -> Path:
-    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / "skeptical_review.json"
+    return Path("data") / "analysis" / WORK_ID / chapter_dir(chapter) / "skeptical_review.json"
 
 
 def _load_jsonl(path: Path) -> List[Dict[str, Any]]:
@@ -91,7 +91,7 @@ def parse_args() -> argparse.Namespace:
         "--input",
         type=Path,
         default=None,
-        help="Path to input JSONL witness records (default: data/raw/bible.ot.genesis/chapter_XXX/oshb.jsonl)",
+        help="Path to input JSONL witness records (default: data/raw/bible.ot.genesis/chapter_XXX/sources/oshb.jsonl)",
     )
     parser.add_argument(
         "--chronology",
@@ -103,7 +103,7 @@ def parse_args() -> argparse.Namespace:
         "--output",
         type=Path,
         default=None,
-        help="Path to output review JSON (default: data/raw/bible.ot.genesis/chapter_XXX/skeptical_review.json)",
+        help="Path to output review JSON (default: data/analysis/bible.ot.genesis/chapter_XXX/skeptical_review.json)",
     )
     parser.add_argument(
         "--baseline",

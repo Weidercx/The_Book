@@ -26,7 +26,7 @@ def chapter_dir(chapter: int) -> str:
 
 
 def default_raw_source_path(chapter: int, source_name: str) -> Path:
-    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / f"{source_name}.jsonl"
+    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / "sources" / f"{source_name}.jsonl"
 
 
 def default_report_json_path(chapter: int) -> Path:
@@ -437,13 +437,13 @@ def parse_args() -> argparse.Namespace:
         "--source-a",
         type=Path,
         default=None,
-        help="First source JSONL (default: data/raw/bible.ot.genesis/chapter_XXX/oshb.jsonl)",
+        help="First source JSONL (default: data/raw/bible.ot.genesis/chapter_XXX/sources/oshb.jsonl)",
     )
     parser.add_argument(
         "--source-b",
         type=Path,
         default=None,
-        help="Second source JSONL (default: data/raw/bible.ot.genesis/chapter_XXX/sefaria_mam.jsonl)",
+        help="Second source JSONL (default: data/raw/bible.ot.genesis/chapter_XXX/sources/sefaria_mam.jsonl)",
     )
     parser.add_argument(
         "--source-a-name",

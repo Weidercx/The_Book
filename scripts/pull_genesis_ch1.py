@@ -25,7 +25,7 @@ WORK_ID = "bible.ot.genesis"
 
 def default_output_path(chapter: int) -> Path:
     chapter_dir = f"chapter_{chapter:03d}"
-    return Path("data") / "raw" / WORK_ID / chapter_dir / "oshb.jsonl"
+    return Path("data") / "raw" / WORK_ID / chapter_dir / "sources" / "oshb.jsonl"
 
 
 def load_oshb_config(config_path: Path) -> Dict[str, Any]:
@@ -92,7 +92,7 @@ def parse_args() -> argparse.Namespace:
         "--output",
         type=Path,
         default=None,
-        help="JSONL output path (default: data/raw/bible.ot.genesis/chapter_XXX/oshb.jsonl)",
+        help="JSONL output path (default: data/raw/bible.ot.genesis/chapter_XXX/sources/oshb.jsonl)",
     )
     return parser.parse_args()
 

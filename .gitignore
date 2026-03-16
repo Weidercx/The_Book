@@ -49,6 +49,7 @@ htmlcov/
 
 # Data (large files)
 data/raw/
+data/analysis/
 data/normalized/
 data/reports/**
 !data/reports/

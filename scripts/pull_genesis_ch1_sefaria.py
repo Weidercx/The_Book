@@ -25,7 +25,7 @@ WORK_ID = "bible.ot.genesis"
 
 def default_output_path(chapter: int) -> Path:
     chapter_dir = f"chapter_{chapter:03d}"
-    return Path("data") / "raw" / WORK_ID / chapter_dir / "sefaria_mam.jsonl"
+    return Path("data") / "raw" / WORK_ID / chapter_dir / "sources" / "sefaria_mam.jsonl"
 
 
 def load_sefaria_config(config_path: Path) -> Dict[str, Any]:
@@ -90,7 +90,7 @@ def parse_args() -> argparse.Namespace:
         "--output",
         type=Path,
         default=None,
-        help="JSONL output path (default: data/raw/bible.ot.genesis/chapter_XXX/sefaria_mam.jsonl)",
+        help="JSONL output path (default: data/raw/bible.ot.genesis/chapter_XXX/sources/sefaria_mam.jsonl)",
     )
     return parser.parse_args()
 
