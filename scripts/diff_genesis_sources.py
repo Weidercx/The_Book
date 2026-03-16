@@ -17,7 +17,24 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-VERSE_REF_RE = re.compile(r"Gen\.1\.(\d+)$")
+WORK_ID = "bible.ot.genesis"
+VERSE_REF_RE = re.compile(r"Gen\.(\d+)\.(\d+)$")
+
+
+def chapter_dir(chapter: int) -> str:
+    return f"chapter_{chapter:03d}"
+
+
+def default_raw_source_path(chapter: int, source_name: str) -> Path:
+    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / f"{source_name}.jsonl"
+
+
+def default_report_json_path(chapter: int) -> Path:
+    return Path("data") / "reports" / WORK_ID / chapter_dir(chapter) / "cross_source_diff.json"
+
+
+def default_report_markdown_path(chapter: int) -> Path:
+    return Path("data") / "reports" / WORK_ID / chapter_dir(chapter) / "cross_source_diff.md"
 
 
 def load_yaml(path: Path) -> Dict[str, Any]:
@@ -25,12 +42,12 @@ def load_yaml(path: Path) -> Dict[str, Any]:
         return yaml.safe_load(handle) or {}
 
 
-def verse_sort_key(verse_ref: str) -> int | str:
+def verse_sort_key(verse_ref: str) -> tuple[int, int, str]:
     """Sort verse refs in numeric chapter order when possible."""
     match = VERSE_REF_RE.search(verse_ref)
     if match:
-        return int(match.group(1))
-    return verse_ref
+        return int(match.group(1)), int(match.group(2)), ""
+    return 999_999, 999_999, verse_ref
 
 
 def load_jsonl(path: Path) -> List[Dict[str, Any]]:
@@ -49,12 +66,12 @@ def verse_key(record: Dict[str, Any]) -> str:
         fragment = source_uri.split("#", maxsplit=1)[1]
         match = VERSE_REF_RE.search(fragment)
         if match:
-            return f"Gen.1.{match.group(1)}"
+            return f"Gen.{match.group(1)}.{match.group(2)}"
 
     notes = str(record.get("notes", ""))
-    match = re.search(r"Genesis\s+1:(\d+)", notes)
+    match = re.search(r"Genesis\s+(\d+):(\d+)", notes)
     if match:
-        return f"Gen.1.{match.group(1)}"
+        return f"Gen.{match.group(1)}.{match.group(2)}"
 
     return source_uri or notes or "unknown"
 
@@ -269,8 +286,9 @@ def compare_sources(
     source_b_name: str,
     source_b_records: List[Dict[str, Any]],
     chronology_config: Dict[str, Any] | None = None,
+    chapter: int = 1,
 ) -> Dict[str, Any]:
-    work_id = "bible.ot.genesis"
+    work_id = WORK_ID
     chronology_context = build_chronology_context(
         chronology_config or {},
         work_id=work_id,
@@ -377,7 +395,7 @@ def compare_sources(
     return {
         "status": "ok",
         "work_id": work_id,
-        "chapter": 1,
+        "chapter": chapter,
         "chronology": chronology_context,
         "sources": {
             source_a_name: {
@@ -410,16 +428,22 @@ def compare_sources(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compare Genesis 1 across two sources")
     parser.add_argument(
+        "--chapter",
+        type=int,
+        default=1,
+        help="Genesis chapter number (default: 1)",
+    )
+    parser.add_argument(
         "--source-a",
         type=Path,
-        default=Path("data") / "raw" / "genesis_ch1_oshb.jsonl",
-        help="First source JSONL",
+        default=None,
+        help="First source JSONL (default: data/raw/bible.ot.genesis/chapter_XXX/oshb.jsonl)",
     )
     parser.add_argument(
         "--source-b",
         type=Path,
-        default=Path("data") / "raw" / "genesis_ch1_sefaria_mam.jsonl",
-        help="Second source JSONL",
+        default=None,
+        help="Second source JSONL (default: data/raw/bible.ot.genesis/chapter_XXX/sefaria_mam.jsonl)",
     )
     parser.add_argument(
         "--source-a-name",
@@ -436,8 +460,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data") / "reports" / "genesis_ch1_cross_source_diff.json",
-        help="Output report path",
+        default=None,
+        help="Output report JSON path (default: data/reports/bible.ot.genesis/chapter_XXX/cross_source_diff.json)",
     )
     parser.add_argument(
         "--chronology",
@@ -448,8 +472,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--markdown-output",
         type=Path,
-        default=Path("data") / "reports" / "genesis_ch1_cross_source_diff.md",
-        help="PR/MR style markdown report path",
+        default=None,
+        help="PR/MR style markdown report path (default: data/reports/bible.ot.genesis/chapter_XXX/cross_source_diff.md)",
     )
     return parser.parse_args()
 
@@ -457,8 +481,13 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
 
-    source_a_records = load_jsonl(args.source_a)
-    source_b_records = load_jsonl(args.source_b)
+    source_a_path = args.source_a or default_raw_source_path(args.chapter, "oshb")
+    source_b_path = args.source_b or default_raw_source_path(args.chapter, "sefaria_mam")
+    output_path = args.output or default_report_json_path(args.chapter)
+    markdown_output_path = args.markdown_output or default_report_markdown_path(args.chapter)
+
+    source_a_records = load_jsonl(source_a_path)
+    source_b_records = load_jsonl(source_b_path)
     chronology_config = load_yaml(args.chronology) if args.chronology.exists() else {}
 
     report = compare_sources(
@@ -467,27 +496,28 @@ def main() -> int:
         source_b_name=args.source_b_name,
         source_b_records=source_b_records,
         chronology_config=chronology_config,
+        chapter=args.chapter,
     )
 
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with args.output.open("w", encoding="utf-8") as handle:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as handle:
         json.dump(report, handle, ensure_ascii=False, indent=2)
 
-    args.markdown_output.parent.mkdir(parents=True, exist_ok=True)
+    markdown_output_path.parent.mkdir(parents=True, exist_ok=True)
     markdown = render_markdown_report(
         report=report,
         source_a_name=args.source_a_name,
         source_b_name=args.source_b_name,
     )
-    with args.markdown_output.open("w", encoding="utf-8") as handle:
+    with markdown_output_path.open("w", encoding="utf-8") as handle:
         handle.write(markdown)
 
     print(f"Cross-source report status: {report.get('status')}")
     print(f"Risk level: {report.get('risk_level')}")
     print(f"Shared verses: {report['comparison']['shared_verses']}")
     print(f"Changed hash verses: {report['comparison']['changed_hash_verses']}")
-    print(f"Output report: {args.output}")
-    print(f"Markdown diff report: {args.markdown_output}")
+    print(f"Output report: {output_path}")
+    print(f"Markdown diff report: {markdown_output_path}")
 
     return 0
 

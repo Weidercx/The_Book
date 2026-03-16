@@ -18,6 +18,21 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.analyzers import DateSkepticalReviewer
 
 
+WORK_ID = "bible.ot.genesis"
+
+
+def chapter_dir(chapter: int) -> str:
+    return f"chapter_{chapter:03d}"
+
+
+def default_input_path(chapter: int) -> Path:
+    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / "oshb.jsonl"
+
+
+def default_output_path(chapter: int) -> Path:
+    return Path("data") / "raw" / WORK_ID / chapter_dir(chapter) / "skeptical_review.json"
+
+
 def _load_jsonl(path: Path) -> List[Dict[str, Any]]:
     records: List[Dict[str, Any]] = []
     with path.open("r", encoding="utf-8") as handle:
@@ -67,10 +82,16 @@ def parse_args() -> argparse.Namespace:
         description="Chronology-first skeptical review for Genesis chapter 1"
     )
     parser.add_argument(
+        "--chapter",
+        type=int,
+        default=1,
+        help="Genesis chapter number (default: 1)",
+    )
+    parser.add_argument(
         "--input",
         type=Path,
-        default=Path("data") / "raw" / "genesis_ch1_oshb.jsonl",
-        help="Path to input JSONL witness records",
+        default=None,
+        help="Path to input JSONL witness records (default: data/raw/bible.ot.genesis/chapter_XXX/oshb.jsonl)",
     )
     parser.add_argument(
         "--chronology",
@@ -81,8 +102,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data") / "reports" / "genesis_ch1_skeptical_review.json",
-        help="Path to output review JSON",
+        default=None,
+        help="Path to output review JSON (default: data/raw/bible.ot.genesis/chapter_XXX/skeptical_review.json)",
     )
     parser.add_argument(
         "--baseline",
@@ -95,10 +116,12 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    input_path = args.input or default_input_path(args.chapter)
+    output_path = args.output or default_output_path(args.chapter)
     return run_review(
-        input_path=args.input,
+        input_path=input_path,
         chronology_path=args.chronology,
-        output_path=args.output,
+        output_path=output_path,
         baseline_path=args.baseline,
     )
 

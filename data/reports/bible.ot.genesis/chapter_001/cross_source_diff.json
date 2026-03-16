@@ -1,0 +1,3158 @@
+{
+  "status": "ok",
+  "work_id": "bible.ot.genesis",
+  "chapter": 1,
+  "chronology": {
+    "tradition_label": "Hebrew Bible / Torah",
+    "composition_window_bce": {
+      "start": 1000,
+      "end": 400
+    },
+    "earliest_known_textual_witness_window_bce": {
+      "start": 250,
+      "end": 100
+    },
+    "base_witness": {
+      "label": "Leningrad Codex (B19A) through WLC tradition",
+      "date_ce": 1008
+    },
+    "source_tradition_anchors": {
+      "oshb": {
+        "witness_anchor_label": "Leningrad Codex (B19A) base witness",
+        "witness_anchor_date_ce": 1008
+      },
+      "sefaria_mam": {
+        "witness_anchor_label": "Miqra according to the Masorah (Aleppo/Leningrad tradition)",
+        "witness_anchor_window_ce": {
+          "start": 930,
+          "end": 1008
+        }
+      }
+    }
+  },
+  "sources": {
+    "oshb": {
+      "record_count": 31,
+      "source_version_dates": [
+        "2018-12-14T00:00:00"
+      ],
+      "digital_edition_dates": [
+        "2018-12-14T00:00:00"
+      ]
+    },
+    "sefaria_mam": {
+      "record_count": 31,
+      "source_version_dates": [
+        "2025-01-02T17:56:40Z"
+      ],
+      "digital_edition_dates": [
+        "2025-01-02T17:56:40Z"
+      ]
+    }
+  },
+  "comparison": {
+    "shared_verses": 31,
+    "identical_hash_verses": 0,
+    "changed_hash_verses": 31,
+    "only_in_source_a": 0,
+    "only_in_source_b": 0,
+    "changed_examples": [
+      "Gen.1.1",
+      "Gen.1.2",
+      "Gen.1.3",
+      "Gen.1.4",
+      "Gen.1.5",
+      "Gen.1.6",
+      "Gen.1.7",
+      "Gen.1.8",
+      "Gen.1.9",
+      "Gen.1.10"
+    ],
+    "changed_verse_details": [
+      {
+        "verse": "Gen.1.1",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.1",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "e7d58fecee97126b64824c4fa73f61f290d8bbf778d194c51216e5c882403a22",
+          "text_content": "בְּ/רֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַ/שָּׁמַ֖יִם וְ/אֵ֥ת הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.1",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "707c96583d95fb1957b4916673ab36ec2d6cfdc168b97a7f7e2125f4d0f23647",
+          "text_content": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 8,
+          "source_b_token_count": 7,
+          "token_similarity_ratio": 0.4,
+          "char_similarity_ratio": 0.9629629629629629,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "בְּ/רֵאשִׁ֖ית"
+              ],
+              "source_b_tokens": [
+                "בְּרֵאשִׁ֖ית"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                8
+              ],
+              "source_b_range": [
+                4,
+                7
+              ],
+              "source_a_tokens": [
+                "הַ/שָּׁמַ֖יִם",
+                "וְ/אֵ֥ת",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "הַשָּׁמַ֖יִם",
+                "וְאֵ֥ת",
+                "הָאָֽרֶץ׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.2",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.2",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "2db5fd6342f30ad8995880cd31c0c883fc2e9c2e5462dfadf00c78822e9c220b",
+          "text_content": "וְ/הָ/אָ֗רֶץ הָיְתָ֥ה תֹ֨הוּ֙ וָ/בֹ֔הוּ וְ/חֹ֖שֶׁךְ עַל ־ פְּנֵ֣י תְה֑וֹם וְ/ר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל ־ פְּנֵ֥י הַ/מָּֽיִם ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.2",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "f85df461cd35652a655a1636965f57a6cc82a2aa04b5d73556f9ce884ff4317e",
+          "text_content": "וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֙הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְה֑וֹם וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 17,
+          "source_b_token_count": 12,
+          "token_similarity_ratio": 0.27586206896551724,
+          "char_similarity_ratio": 0.9482071713147411,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וְ/הָ/אָ֗רֶץ"
+              ],
+              "source_b_tokens": [
+                "וְהָאָ֗רֶץ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                8
+              ],
+              "source_b_range": [
+                2,
+                6
+              ],
+              "source_a_tokens": [
+                "תֹ֨הוּ֙",
+                "וָ/בֹ֔הוּ",
+                "וְ/חֹ֖שֶׁךְ",
+                "עַל",
+                "־",
+                "פְּנֵ֣י"
+              ],
+              "source_b_tokens": [
+                "תֹ֙הוּ֙",
+                "וָבֹ֔הוּ",
+                "וְחֹ֖שֶׁךְ",
+                "עַל־פְּנֵ֣י"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                9,
+                10
+              ],
+              "source_b_range": [
+                7,
+                8
+              ],
+              "source_a_tokens": [
+                "וְ/ר֣וּחַ"
+              ],
+              "source_b_tokens": [
+                "וְר֣וּחַ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                12,
+                17
+              ],
+              "source_b_range": [
+                10,
+                12
+              ],
+              "source_a_tokens": [
+                "עַל",
+                "־",
+                "פְּנֵ֥י",
+                "הַ/מָּֽיִם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "עַל־פְּנֵ֥י",
+                "הַמָּֽיִם׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.3",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.3",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "b3b30ed643583817cfe01f80d2e08746a08b8d3a794d530004acd98045b7712a",
+          "text_content": "וַ/יֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽ/יְהִי ־ אֽוֹר ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.3",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "15da9f05ea03b1fbc8f4414eca91856d9951bd98efb5de14cc731fd2bab4a044",
+          "text_content": "וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 8,
+          "source_b_token_count": 5,
+          "token_similarity_ratio": 0.46153846153846156,
+          "char_similarity_ratio": 0.9514563106796117,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֥אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֥אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                8
+              ],
+              "source_b_range": [
+                4,
+                5
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "אֽוֹר",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־אֽוֹר׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.4",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.4",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "bce48c93b6aaf97ee880415405adc26307c17f8ea992622b56d0dfd8d075f961",
+          "text_content": "וַ/יַּ֧רְא אֱלֹהִ֛ים אֶת ־ הָ/א֖וֹר כִּי ־ ט֑וֹב וַ/יַּבְדֵּ֣ל אֱלֹהִ֔ים בֵּ֥ין הָ/א֖וֹר וּ/בֵ֥ין הַ/חֹֽשֶׁךְ ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.4",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "b763364452ed7b5b725bb2b2c94e0922fad7105843fb72edde7e46e1ef47327a",
+          "text_content": "וַיַּ֧רְא אֱלֹהִ֛ים אֶת־הָא֖וֹר כִּי־ט֑וֹב וַיַּבְדֵּ֣ל אֱלֹהִ֔ים בֵּ֥ין הָא֖וֹר וּבֵ֥ין הַחֹֽשֶׁךְ׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 15,
+          "source_b_token_count": 10,
+          "token_similarity_ratio": 0.24,
+          "char_similarity_ratio": 0.9478672985781991,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֧רְא"
+              ],
+              "source_b_tokens": [
+                "וַיַּ֧רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                9
+              ],
+              "source_b_range": [
+                2,
+                5
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "הָ/א֖וֹר",
+                "כִּי",
+                "־",
+                "ט֑וֹב",
+                "וַ/יַּבְדֵּ֣ל"
+              ],
+              "source_b_tokens": [
+                "אֶת־הָא֖וֹר",
+                "כִּי־ט֑וֹב",
+                "וַיַּבְדֵּ֣ל"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                11,
+                15
+              ],
+              "source_b_range": [
+                7,
+                10
+              ],
+              "source_a_tokens": [
+                "הָ/א֖וֹר",
+                "וּ/בֵ֥ין",
+                "הַ/חֹֽשֶׁךְ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "הָא֖וֹר",
+                "וּבֵ֥ין",
+                "הַחֹֽשֶׁךְ׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.5",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.5",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "5ce112732777560039b60c8b116fe48b268e2048c202bff7cb70809f9e91a62d",
+          "text_content": "וַ/יִּקְרָ֨א אֱלֹהִ֤ים ׀ לָ/אוֹר֙ י֔וֹם וְ/לַ/חֹ֖שֶׁךְ קָ֣רָא לָ֑יְלָה וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם אֶחָֽד ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.5",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "c3671106035449f44f94a34c43cdfe01dd04c555a83d26c9c8a74320e9e037e1",
+          "text_content": "וַיִּקְרָ֨א אֱלֹהִ֤ים ׀ לָאוֹר֙ י֔וֹם וְלַחֹ֖שֶׁךְ קָ֣רָא לָ֑יְלָה וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃ {פ}"
+        },
+        "token_diff": {
+          "source_a_token_count": 18,
+          "source_b_token_count": 13,
+          "token_similarity_ratio": 0.3870967741935484,
+          "char_similarity_ratio": 0.946058091286307,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יִּקְרָ֨א"
+              ],
+              "source_b_tokens": [
+                "וַיִּקְרָ֨א"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                4
+              ],
+              "source_b_range": [
+                3,
+                4
+              ],
+              "source_a_tokens": [
+                "לָ/אוֹר֙"
+              ],
+              "source_b_tokens": [
+                "לָאוֹר֙"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                5,
+                6
+              ],
+              "source_b_range": [
+                5,
+                6
+              ],
+              "source_a_tokens": [
+                "וְ/לַ/חֹ֖שֶׁךְ"
+              ],
+              "source_b_tokens": [
+                "וְלַחֹ֖שֶׁךְ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                8,
+                14
+              ],
+              "source_b_range": [
+                8,
+                10
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־עֶ֥רֶב",
+                "וַֽיְהִי־בֹ֖קֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                15,
+                18
+              ],
+              "source_b_range": [
+                11,
+                13
+              ],
+              "source_a_tokens": [
+                "אֶחָֽד",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "אֶחָֽד׃",
+                "{פ}"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.6",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.6",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "17578d611cd1f6b902b2cef155d44eecb49f87595e7b1d8098e00a48740f4f81",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֔ים יְהִ֥י רָקִ֖יעַ בְּ/ת֣וֹךְ הַ/מָּ֑יִם וִ/יהִ֣י מַבְדִּ֔יל בֵּ֥ין מַ֖יִם לָ/מָֽיִם ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.6",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "e12a9eb31bc91566101e8c722decc5ebf09db364313211f10b4d2014a077c642",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֔ים יְהִ֥י רָקִ֖יעַ בְּת֣וֹךְ הַמָּ֑יִם וִיהִ֣י מַבְדִּ֔יל בֵּ֥ין מַ֖יִם לָמָֽיִם׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 12,
+          "source_b_token_count": 11,
+          "token_similarity_ratio": 0.5217391304347826,
+          "char_similarity_ratio": 0.9705882352941176,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                7
+              ],
+              "source_b_range": [
+                4,
+                7
+              ],
+              "source_a_tokens": [
+                "בְּ/ת֣וֹךְ",
+                "הַ/מָּ֑יִם",
+                "וִ/יהִ֣י"
+              ],
+              "source_b_tokens": [
+                "בְּת֣וֹךְ",
+                "הַמָּ֑יִם",
+                "וִיהִ֣י"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                10,
+                12
+              ],
+              "source_b_range": [
+                10,
+                11
+              ],
+              "source_a_tokens": [
+                "לָ/מָֽיִם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "לָמָֽיִם׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.7",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.7",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "ea3e270377f06e282f73a0d719a65473b52e0de3f4f50348d2156a68d1c9d3b4",
+          "text_content": "וַ/יַּ֣עַשׂ אֱלֹהִים֮ אֶת ־ הָ/רָקִיעַ֒ וַ/יַּבְדֵּ֗ל בֵּ֤ין הַ/מַּ֨יִם֙ אֲשֶׁר֙ מִ/תַּ֣חַת לָ/רָקִ֔יעַ וּ/בֵ֣ין הַ/מַּ֔יִם אֲשֶׁ֖ר מֵ/עַ֣ל לָ/רָקִ֑יעַ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.7",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "110ea878f0689f9a374270e5ceb159d5a4e12658180b6b991130fa92eb3ca716",
+          "text_content": "וַיַּ֣עַשׂ אֱלֹהִים֮ אֶת־הָרָקִ֒יעַ֒ וַיַּבְדֵּ֗ל בֵּ֤ין הַמַּ֙יִם֙ אֲשֶׁר֙ מִתַּ֣חַת לָרָקִ֔יעַ וּבֵ֣ין הַמַּ֔יִם אֲשֶׁ֖ר מֵעַ֣ל לָרָקִ֑יעַ וַֽיְהִי־כֵֽן׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 20,
+          "source_b_token_count": 15,
+          "token_similarity_ratio": 0.22857142857142856,
+          "char_similarity_ratio": 0.9353846153846154,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֣עַשׂ"
+              ],
+              "source_b_tokens": [
+                "וַיַּ֣עַשׂ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                6
+              ],
+              "source_b_range": [
+                2,
+                4
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "הָ/רָקִיעַ֒",
+                "וַ/יַּבְדֵּ֗ל"
+              ],
+              "source_b_tokens": [
+                "אֶת־הָרָקִ֒יעַ֒",
+                "וַיַּבְדֵּ֗ל"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                7,
+                8
+              ],
+              "source_b_range": [
+                5,
+                6
+              ],
+              "source_a_tokens": [
+                "הַ/מַּ֨יִם֙"
+              ],
+              "source_b_tokens": [
+                "הַמַּ֙יִם֙"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                9,
+                13
+              ],
+              "source_b_range": [
+                7,
+                11
+              ],
+              "source_a_tokens": [
+                "מִ/תַּ֣חַת",
+                "לָ/רָקִ֔יעַ",
+                "וּ/בֵ֣ין",
+                "הַ/מַּ֔יִם"
+              ],
+              "source_b_tokens": [
+                "מִתַּ֣חַת",
+                "לָרָקִ֔יעַ",
+                "וּבֵ֣ין",
+                "הַמַּ֔יִם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                14,
+                20
+              ],
+              "source_b_range": [
+                12,
+                15
+              ],
+              "source_a_tokens": [
+                "מֵ/עַ֣ל",
+                "לָ/רָקִ֑יעַ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "מֵעַ֣ל",
+                "לָרָקִ֑יעַ",
+                "וַֽיְהִי־כֵֽן׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.8",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.8",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "8094c5e186fec32cd9ff357fc5a415d0b986de6fc39c1e997af9b633c75e187e",
+          "text_content": "וַ/יִּקְרָ֧א אֱלֹהִ֛ים לָֽ/רָקִ֖יעַ שָׁמָ֑יִם וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם שֵׁנִֽי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.8",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "bf33c6d8df66744ca7d990b38f88355313bc94adea1c5ca8df890bdbb5445d29",
+          "text_content": "וַיִּקְרָ֧א אֱלֹהִ֛ים לָֽרָקִ֖יעַ שָׁמָ֑יִם וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם שֵׁנִֽי׃ {פ}"
+        },
+        "token_diff": {
+          "source_a_token_count": 14,
+          "source_b_token_count": 9,
+          "token_similarity_ratio": 0.2608695652173913,
+          "char_similarity_ratio": 0.9435897435897436,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יִּקְרָ֧א"
+              ],
+              "source_b_tokens": [
+                "וַיִּקְרָ֧א"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                3
+              ],
+              "source_b_range": [
+                2,
+                3
+              ],
+              "source_a_tokens": [
+                "לָֽ/רָקִ֖יעַ"
+              ],
+              "source_b_tokens": [
+                "לָֽרָקִ֖יעַ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                10
+              ],
+              "source_b_range": [
+                4,
+                6
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־עֶ֥רֶב",
+                "וַֽיְהִי־בֹ֖קֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                11,
+                14
+              ],
+              "source_b_range": [
+                7,
+                9
+              ],
+              "source_a_tokens": [
+                "שֵׁנִֽי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "שֵׁנִֽי׃",
+                "{פ}"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.9",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.9",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "33e49ea9407fb98ebb2600cb9cabe23b9bf5b1f30462e13a39a4aa442de869e2",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים יִקָּו֨וּ הַ/מַּ֜יִם מִ/תַּ֤חַת הַ/שָּׁמַ֨יִם֙ אֶל ־ מָק֣וֹם אֶחָ֔ד וְ/תֵרָאֶ֖ה הַ/יַּבָּשָׁ֑ה וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.9",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "d2609e105899efbc704632374752f4f0bdc8287fc676207f46c420915d423b2a",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֗ים יִקָּו֨וּ הַמַּ֜יִם מִתַּ֤חַת הַשָּׁמַ֙יִם֙ אֶל־מָק֣וֹם אֶחָ֔ד וְתֵרָאֶ֖ה הַיַּבָּשָׁ֑ה וַֽיְהִי־כֵֽן׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 16,
+          "source_b_token_count": 11,
+          "token_similarity_ratio": 0.2222222222222222,
+          "char_similarity_ratio": 0.9457364341085271,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                9
+              ],
+              "source_b_range": [
+                3,
+                7
+              ],
+              "source_a_tokens": [
+                "הַ/מַּ֜יִם",
+                "מִ/תַּ֤חַת",
+                "הַ/שָּׁמַ֨יִם֙",
+                "אֶל",
+                "־",
+                "מָק֣וֹם"
+              ],
+              "source_b_tokens": [
+                "הַמַּ֜יִם",
+                "מִתַּ֤חַת",
+                "הַשָּׁמַ֙יִם֙",
+                "אֶל־מָק֣וֹם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                10,
+                16
+              ],
+              "source_b_range": [
+                8,
+                11
+              ],
+              "source_a_tokens": [
+                "וְ/תֵרָאֶ֖ה",
+                "הַ/יַּבָּשָׁ֑ה",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "וְתֵרָאֶ֖ה",
+                "הַיַּבָּשָׁ֑ה",
+                "וַֽיְהִי־כֵֽן׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.10",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.10",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "50471d172863ba12fe92774fc77078208167d126484b0505fe6f0a074f8662e6",
+          "text_content": "וַ/יִּקְרָ֨א אֱלֹהִ֤ים ׀ לַ/יַּבָּשָׁה֙ אֶ֔רֶץ וּ/לְ/מִקְוֵ֥ה הַ/מַּ֖יִם קָרָ֣א יַמִּ֑ים וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.10",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "41870bc70f712c4c43b31da2461f5ca953dfe56eff6336c5c3f1200771c7fe5e",
+          "text_content": "וַיִּקְרָ֨א אֱלֹהִ֤ים ׀ לַיַּבָּשָׁה֙ אֶ֔רֶץ וּלְמִקְוֵ֥ה הַמַּ֖יִם קָרָ֣א יַמִּ֑ים וַיַּ֥רְא אֱלֹהִ֖ים כִּי־טֽוֹב׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 15,
+          "source_b_token_count": 12,
+          "token_similarity_ratio": 0.4444444444444444,
+          "char_similarity_ratio": 0.9623430962343096,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יִּקְרָ֨א"
+              ],
+              "source_b_tokens": [
+                "וַיִּקְרָ֨א"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                4
+              ],
+              "source_b_range": [
+                3,
+                4
+              ],
+              "source_a_tokens": [
+                "לַ/יַּבָּשָׁה֙"
+              ],
+              "source_b_tokens": [
+                "לַיַּבָּשָׁה֙"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                5,
+                7
+              ],
+              "source_b_range": [
+                5,
+                7
+              ],
+              "source_a_tokens": [
+                "וּ/לְ/מִקְוֵ֥ה",
+                "הַ/מַּ֖יִם"
+              ],
+              "source_b_tokens": [
+                "וּלְמִקְוֵ֥ה",
+                "הַמַּ֖יִם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                9,
+                10
+              ],
+              "source_b_range": [
+                9,
+                10
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֥רְא"
+              ],
+              "source_b_tokens": [
+                "וַיַּ֥רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                11,
+                15
+              ],
+              "source_b_range": [
+                11,
+                12
+              ],
+              "source_a_tokens": [
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "כִּי־טֽוֹב׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.11",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.11",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "d4a53bb29b8a8211a6e2adc3e28d36c52ced9c6378c7e3dd6781c7366272b24e",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים תַּֽדְשֵׁ֤א הָ/אָ֨רֶץ֙ דֶּ֔שֶׁא עֵ֚שֶׂב מַזְרִ֣יעַ זֶ֔רַע עֵ֣ץ פְּרִ֞י עֹ֤שֶׂה פְּרִי֙ לְ/מִינ֔/וֹ אֲשֶׁ֥ר זַרְע/וֹ ־ ב֖/וֹ עַל ־ הָ/אָ֑רֶץ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.11",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "d0d24cb84f09c55fcb64dd62ddc28bde2a4e69aaf9346986323eca6ccc89368a",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֗ים תַּֽדְשֵׁ֤א הָאָ֙רֶץ֙ דֶּ֗שֶׁא עֵ֚שֶׂב מַזְרִ֣יעַ זֶ֔רַע עֵ֣ץ פְּרִ֞י עֹ֤שֶׂה פְּרִי֙ לְמִינ֔וֹ אֲשֶׁ֥ר זַרְעוֹ־ב֖וֹ עַל־הָאָ֑רֶץ וַֽיְהִי־כֵֽן׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 24,
+          "source_b_token_count": 17,
+          "token_similarity_ratio": 0.4878048780487805,
+          "char_similarity_ratio": 0.9449275362318841,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                5
+              ],
+              "source_b_range": [
+                3,
+                5
+              ],
+              "source_a_tokens": [
+                "הָ/אָ֨רֶץ֙",
+                "דֶּ֔שֶׁא"
+              ],
+              "source_b_tokens": [
+                "הָאָ֙רֶץ֙",
+                "דֶּ֗שֶׁא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                12,
+                13
+              ],
+              "source_b_range": [
+                12,
+                13
+              ],
+              "source_a_tokens": [
+                "לְ/מִינ֔/וֹ"
+              ],
+              "source_b_tokens": [
+                "לְמִינ֔וֹ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                14,
+                24
+              ],
+              "source_b_range": [
+                14,
+                17
+              ],
+              "source_a_tokens": [
+                "זַרְע/וֹ",
+                "־",
+                "ב֖/וֹ",
+                "עַל",
+                "־",
+                "הָ/אָ֑רֶץ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "זַרְעוֹ־ב֖וֹ",
+                "עַל־הָאָ֑רֶץ",
+                "וַֽיְהִי־כֵֽן׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.12",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.12",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "133d9c91f65a7de8b0c6adcdeaf59de94440f65429e4dc42df71f443f25a55e7",
+          "text_content": "וַ/תּוֹצֵ֨א הָ/אָ֜רֶץ דֶּ֠שֶׁא עֵ֣שֶׂב מַזְרִ֤יעַ זֶ֨רַע֙ לְ/מִינֵ֔/הוּ וְ/עֵ֧ץ עֹֽשֶׂה ־ פְּרִ֛י אֲשֶׁ֥ר זַרְע/וֹ ־ ב֖/וֹ לְ/מִינֵ֑/הוּ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.12",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "6cbd12b4df459794e74de83185a5fe15046758f91810ba1f17f2ffcb69051f06",
+          "text_content": "וַתּוֹצֵ֨א הָאָ֜רֶץ דֶּ֠שֶׁא עֵ֣שֶׂב מַזְרִ֤יעַ זֶ֙רַע֙ לְמִינֵ֔הוּ וְעֵ֧ץ עֹֽשֶׂה־פְּרִ֛י אֲשֶׁ֥ר זַרְעוֹ־ב֖וֹ לְמִינֵ֑הוּ וַיַּ֥רְא אֱלֹהִ֖ים כִּי־טֽוֹב׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 22,
+          "source_b_token_count": 15,
+          "token_similarity_ratio": 0.2702702702702703,
+          "char_similarity_ratio": 0.9418960244648318,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                2
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַ/תּוֹצֵ֨א",
+                "הָ/אָ֜רֶץ"
+              ],
+              "source_b_tokens": [
+                "וַתּוֹצֵ֨א",
+                "הָאָ֜רֶץ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                5,
+                11
+              ],
+              "source_b_range": [
+                5,
+                9
+              ],
+              "source_a_tokens": [
+                "זֶ֨רַע֙",
+                "לְ/מִינֵ֔/הוּ",
+                "וְ/עֵ֧ץ",
+                "עֹֽשֶׂה",
+                "־",
+                "פְּרִ֛י"
+              ],
+              "source_b_tokens": [
+                "זֶ֙רַע֙",
+                "לְמִינֵ֔הוּ",
+                "וְעֵ֧ץ",
+                "עֹֽשֶׂה־פְּרִ֛י"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                12,
+                17
+              ],
+              "source_b_range": [
+                10,
+                13
+              ],
+              "source_a_tokens": [
+                "זַרְע/וֹ",
+                "־",
+                "ב֖/וֹ",
+                "לְ/מִינֵ֑/הוּ",
+                "וַ/יַּ֥רְא"
+              ],
+              "source_b_tokens": [
+                "זַרְעוֹ־ב֖וֹ",
+                "לְמִינֵ֑הוּ",
+                "וַיַּ֥רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                18,
+                22
+              ],
+              "source_b_range": [
+                14,
+                15
+              ],
+              "source_a_tokens": [
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "כִּי־טֽוֹב׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.13",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.13",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "8ff91146a166a6c565e03cff22b015826edeeed64ee919f9658cd14400a252b5",
+          "text_content": "וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם שְׁלִישִֽׁי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.13",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "5caa5e901e3e3315fa188ccaa47fdb247cff1ff69c9ffba1da8efcff752d2fa7",
+          "text_content": "וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם שְׁלִישִֽׁי׃ {פ}"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 5,
+          "token_similarity_ratio": 0.13333333333333333,
+          "char_similarity_ratio": 0.8849557522123894,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                6
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־עֶ֥רֶב",
+                "וַֽיְהִי־בֹ֖קֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                7,
+                10
+              ],
+              "source_b_range": [
+                3,
+                5
+              ],
+              "source_a_tokens": [
+                "שְׁלִישִֽׁי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "שְׁלִישִֽׁי׃",
+                "{פ}"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.14",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.14",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9cd31ced995d6dfbfd7479f15fb37c7eb845fe44d16e3f5100d9e72fc5d7ec26",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים יְהִ֤י מְאֹרֹת֙ בִּ/רְקִ֣יעַ הַ/שָּׁמַ֔יִם לְ/הַבְדִּ֕יל בֵּ֥ין הַ/יּ֖וֹם וּ/בֵ֣ין הַ/לָּ֑יְלָה וְ/הָי֤וּ לְ/אֹתֹת֙ וּ/לְ/מ֣וֹעֲדִ֔ים וּ/לְ/יָמִ֖ים וְ/שָׁנִֽים ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.14",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "090bfb1c11866d77db46818a60288cf6327d56bf0a02cef3a5fff9e2711e4d3d",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֗ים יְהִ֤י מְאֹרֹת֙ בִּרְקִ֣יעַ הַשָּׁמַ֔יִם לְהַבְדִּ֕יל בֵּ֥ין הַיּ֖וֹם וּבֵ֣ין הַלָּ֑יְלָה וְהָי֤וּ לְאֹתֹת֙ וּלְמ֣וֹעֲדִ֔ים וּלְיָמִ֖ים וְשָׁנִֽים׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 17,
+          "source_b_token_count": 16,
+          "token_similarity_ratio": 0.24242424242424243,
+          "char_similarity_ratio": 0.9572649572649573,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                7
+              ],
+              "source_b_range": [
+                4,
+                7
+              ],
+              "source_a_tokens": [
+                "בִּ/רְקִ֣יעַ",
+                "הַ/שָּׁמַ֔יִם",
+                "לְ/הַבְדִּ֕יל"
+              ],
+              "source_b_tokens": [
+                "בִּרְקִ֣יעַ",
+                "הַשָּׁמַ֔יִם",
+                "לְהַבְדִּ֕יל"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                8,
+                17
+              ],
+              "source_b_range": [
+                8,
+                16
+              ],
+              "source_a_tokens": [
+                "הַ/יּ֖וֹם",
+                "וּ/בֵ֣ין",
+                "הַ/לָּ֑יְלָה",
+                "וְ/הָי֤וּ",
+                "לְ/אֹתֹת֙",
+                "וּ/לְ/מ֣וֹעֲדִ֔ים",
+                "וּ/לְ/יָמִ֖ים",
+                "וְ/שָׁנִֽים",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "הַיּ֖וֹם",
+                "וּבֵ֣ין",
+                "הַלָּ֑יְלָה",
+                "וְהָי֤וּ",
+                "לְאֹתֹת֙",
+                "וּלְמ֣וֹעֲדִ֔ים",
+                "וּלְיָמִ֖ים",
+                "וְשָׁנִֽים׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.15",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.15",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "05dbfdb71a9e33380cfcda83cae859f7abbb47cb04c7440d0d349e898efc0177",
+          "text_content": "וְ/הָי֤וּ לִ/מְאוֹרֹת֙ בִּ/רְקִ֣יעַ הַ/שָּׁמַ֔יִם לְ/הָאִ֖יר עַל ־ הָ/אָ֑רֶץ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.15",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "d99d6e3282eb659b4423a8e54e83f5443d182317dacf5da42d6614c1724cd2ab",
+          "text_content": "וְהָי֤וּ לִמְאוֹרֹת֙ בִּרְקִ֣יעַ הַשָּׁמַ֔יִם לְהָאִ֖יר עַל־הָאָ֑רֶץ וַֽיְהִי־כֵֽן׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 12,
+          "source_b_token_count": 7,
+          "token_similarity_ratio": 0.0,
+          "char_similarity_ratio": 0.9213483146067416,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                12
+              ],
+              "source_b_range": [
+                0,
+                7
+              ],
+              "source_a_tokens": [
+                "וְ/הָי֤וּ",
+                "לִ/מְאוֹרֹת֙",
+                "בִּ/רְקִ֣יעַ",
+                "הַ/שָּׁמַ֔יִם",
+                "לְ/הָאִ֖יר",
+                "עַל",
+                "־",
+                "הָ/אָ֑רֶץ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "וְהָי֤וּ",
+                "לִמְאוֹרֹת֙",
+                "בִּרְקִ֣יעַ",
+                "הַשָּׁמַ֔יִם",
+                "לְהָאִ֖יר",
+                "עַל־הָאָ֑רֶץ",
+                "וַֽיְהִי־כֵֽן׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.16",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.16",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "d2c2683780cfbbcd210975e07ee3ce522a2713a4e57d4ef4f1d73710b84fbcf4",
+          "text_content": "וַ/יַּ֣עַשׂ אֱלֹהִ֔ים אֶת ־ שְׁנֵ֥י הַ/מְּאֹרֹ֖ת הַ/גְּדֹלִ֑ים אֶת ־ הַ/מָּא֤וֹר הַ/גָּדֹל֙ לְ/מֶמְשֶׁ֣לֶת הַ/יּ֔וֹם וְ/אֶת ־ הַ/מָּא֤וֹר הַ/קָּטֹן֙ לְ/מֶמְשֶׁ֣לֶת הַ/לַּ֔יְלָה וְ/אֵ֖ת הַ/כּוֹכָבִֽים ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.16",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "817d6787483ae065c1468bc47d07f0eac43becadfaac61a256928c8f93ec2046",
+          "text_content": "וַיַּ֣עַשׂ אֱלֹהִ֔ים אֶת־שְׁנֵ֥י הַמְּאֹרֹ֖ת הַגְּדֹלִ֑ים אֶת־הַמָּא֤וֹר הַגָּדֹל֙ לְמֶמְשֶׁ֣לֶת הַיּ֔וֹם וְאֶת־הַמָּא֤וֹר הַקָּטֹן֙ לְמֶמְשֶׁ֣לֶת הַלַּ֔יְלָה וְאֵ֖ת הַכּוֹכָבִֽים׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 22,
+          "source_b_token_count": 15,
+          "token_similarity_ratio": 0.05405405405405406,
+          "char_similarity_ratio": 0.9448818897637795,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֣עַשׂ"
+              ],
+              "source_b_tokens": [
+                "וַיַּ֣עַשׂ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                22
+              ],
+              "source_b_range": [
+                2,
+                15
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "שְׁנֵ֥י",
+                "הַ/מְּאֹרֹ֖ת",
+                "הַ/גְּדֹלִ֑ים",
+                "אֶת",
+                "־",
+                "הַ/מָּא֤וֹר",
+                "הַ/גָּדֹל֙",
+                "לְ/מֶמְשֶׁ֣לֶת",
+                "הַ/יּ֔וֹם",
+                "וְ/אֶת",
+                "־",
+                "הַ/מָּא֤וֹר",
+                "הַ/קָּטֹן֙",
+                "לְ/מֶמְשֶׁ֣לֶת",
+                "הַ/לַּ֔יְלָה",
+                "וְ/אֵ֖ת",
+                "הַ/כּוֹכָבִֽים",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "אֶת־שְׁנֵ֥י",
+                "הַמְּאֹרֹ֖ת",
+                "הַגְּדֹלִ֑ים",
+                "אֶת־הַמָּא֤וֹר",
+                "הַגָּדֹל֙",
+                "לְמֶמְשֶׁ֣לֶת",
+                "הַיּ֔וֹם",
+                "וְאֶת־הַמָּא֤וֹר",
+                "הַקָּטֹן֙",
+                "לְמֶמְשֶׁ֣לֶת",
+                "הַלַּ֔יְלָה",
+                "וְאֵ֖ת",
+                "הַכּוֹכָבִֽים׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.17",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.17",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "dffbc5f8cdfd45554dca6d235fbc06ea6957c3c31d2a3e793073766f3ddff39e",
+          "text_content": "וַ/יִּתֵּ֥ן אֹתָ֛/ם אֱלֹהִ֖ים בִּ/רְקִ֣יעַ הַ/שָּׁמָ֑יִם לְ/הָאִ֖יר עַל ־ הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.17",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "60fac8317e86eee6695570591290f3fab2f80fa4ae732e5672c1f089c82afd4f",
+          "text_content": "וַיִּתֵּ֥ן אֹתָ֛ם אֱלֹהִ֖ים בִּרְקִ֣יעַ הַשָּׁמָ֑יִם לְהָאִ֖יר עַל־הָאָֽרֶץ׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 7,
+          "token_similarity_ratio": 0.11764705882352941,
+          "char_similarity_ratio": 0.9440993788819876,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                2
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַ/יִּתֵּ֥ן",
+                "אֹתָ֛/ם"
+              ],
+              "source_b_tokens": [
+                "וַיִּתֵּ֥ן",
+                "אֹתָ֛ם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                10
+              ],
+              "source_b_range": [
+                3,
+                7
+              ],
+              "source_a_tokens": [
+                "בִּ/רְקִ֣יעַ",
+                "הַ/שָּׁמָ֑יִם",
+                "לְ/הָאִ֖יר",
+                "עַל",
+                "־",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "בִּרְקִ֣יעַ",
+                "הַשָּׁמָ֑יִם",
+                "לְהָאִ֖יר",
+                "עַל־הָאָֽרֶץ׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.18",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.18",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "80517b390019746c149b9d85eeb227b8bb758269482fe9f77135808907e742f9",
+          "text_content": "וְ/לִ/מְשֹׁל֙ בַּ/יּ֣וֹם וּ/בַ/לַּ֔יְלָה וּֽ/לֲ/הַבְדִּ֔יל בֵּ֥ין הָ/א֖וֹר וּ/בֵ֣ין הַ/חֹ֑שֶׁךְ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.18",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "9474ee059ef17981a269c8ad1c5d5f1b9c1539d78680489b82c83c12fc76cd4c",
+          "text_content": "וְלִמְשֹׁל֙ בַּיּ֣וֹם וּבַלַּ֔יְלָה וּֽלְהַבְדִּ֔יל בֵּ֥ין הָא֖וֹר וּבֵ֣ין הַחֹ֑שֶׁךְ וַיַּ֥רְא אֱלֹהִ֖ים כִּי־טֽוֹב׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 14,
+          "source_b_token_count": 11,
+          "token_similarity_ratio": 0.16,
+          "char_similarity_ratio": 0.9354838709677419,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                4
+              ],
+              "source_b_range": [
+                0,
+                4
+              ],
+              "source_a_tokens": [
+                "וְ/לִ/מְשֹׁל֙",
+                "בַּ/יּ֣וֹם",
+                "וּ/בַ/לַּ֔יְלָה",
+                "וּֽ/לֲ/הַבְדִּ֔יל"
+              ],
+              "source_b_tokens": [
+                "וְלִמְשֹׁל֙",
+                "בַּיּ֣וֹם",
+                "וּבַלַּ֔יְלָה",
+                "וּֽלְהַבְדִּ֔יל"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                5,
+                9
+              ],
+              "source_b_range": [
+                5,
+                9
+              ],
+              "source_a_tokens": [
+                "הָ/א֖וֹר",
+                "וּ/בֵ֣ין",
+                "הַ/חֹ֑שֶׁךְ",
+                "וַ/יַּ֥רְא"
+              ],
+              "source_b_tokens": [
+                "הָא֖וֹר",
+                "וּבֵ֣ין",
+                "הַחֹ֑שֶׁךְ",
+                "וַיַּ֥רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                10,
+                14
+              ],
+              "source_b_range": [
+                10,
+                11
+              ],
+              "source_a_tokens": [
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "כִּי־טֽוֹב׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.19",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.19",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9a7228a898d05336175aa8bf6585c8eb5a9cdf576163a3a0e5ca31b988cbc0f6",
+          "text_content": "וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם רְבִיעִֽי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.19",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "41b310da0abf2adddca2160e023932e49f556bf2a67c2ad7444f3409b9635003",
+          "text_content": "וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם רְבִיעִֽי׃ {פ}"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 5,
+          "token_similarity_ratio": 0.13333333333333333,
+          "char_similarity_ratio": 0.9174311926605505,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                6
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־עֶ֥רֶב",
+                "וַֽיְהִי־בֹ֖קֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                7,
+                10
+              ],
+              "source_b_range": [
+                3,
+                5
+              ],
+              "source_a_tokens": [
+                "רְבִיעִֽי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "רְבִיעִֽי׃",
+                "{פ}"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.20",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.20",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "4a9d5ccd822d0aa71730341587a2938168b4658bce2b51bff8883ed980c49382",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֔ים יִשְׁרְצ֣וּ הַ/מַּ֔יִם שֶׁ֖רֶץ נֶ֣פֶשׁ חַיָּ֑ה וְ/עוֹף֙ יְעוֹפֵ֣ף עַל ־ הָ/אָ֔רֶץ עַל ־ פְּנֵ֖י רְקִ֥יעַ הַ/שָּׁמָֽיִם ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.20",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "3d938fa8dcd4f783766554c7d5a673ddae02c66b75a0161b952e6202494004e4",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֔ים יִשְׁרְצ֣וּ הַמַּ֔יִם שֶׁ֖רֶץ נֶ֣פֶשׁ חַיָּ֑ה וְעוֹף֙ יְעוֹפֵ֣ף עַל־הָאָ֔רֶץ עַל־פְּנֵ֖י רְקִ֥יעַ הַשָּׁמָֽיִם׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 18,
+          "source_b_token_count": 13,
+          "token_similarity_ratio": 0.45161290322580644,
+          "char_similarity_ratio": 0.9635036496350365,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                4
+              ],
+              "source_b_range": [
+                3,
+                4
+              ],
+              "source_a_tokens": [
+                "הַ/מַּ֔יִם"
+              ],
+              "source_b_tokens": [
+                "הַמַּ֔יִם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                7,
+                8
+              ],
+              "source_b_range": [
+                7,
+                8
+              ],
+              "source_a_tokens": [
+                "וְ/עוֹף֙"
+              ],
+              "source_b_tokens": [
+                "וְעוֹף֙"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                9,
+                15
+              ],
+              "source_b_range": [
+                9,
+                11
+              ],
+              "source_a_tokens": [
+                "עַל",
+                "־",
+                "הָ/אָ֔רֶץ",
+                "עַל",
+                "־",
+                "פְּנֵ֖י"
+              ],
+              "source_b_tokens": [
+                "עַל־הָאָ֔רֶץ",
+                "עַל־פְּנֵ֖י"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                16,
+                18
+              ],
+              "source_b_range": [
+                12,
+                13
+              ],
+              "source_a_tokens": [
+                "הַ/שָּׁמָֽיִם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "הַשָּׁמָֽיִם׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.21",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.21",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "1f99aff9c12332af5d96089d235b6b74429a17919e95e765b214cc700d95e558",
+          "text_content": "וַ/יִּבְרָ֣א אֱלֹהִ֔ים אֶת ־ הַ/תַּנִּינִ֖ם הַ/גְּדֹלִ֑ים וְ/אֵ֣ת כָּל ־ נֶ֣פֶשׁ הַֽ/חַיָּ֣ה ׀ הָֽ/רֹמֶ֡שֶׂת אֲשֶׁר֩ שָׁרְצ֨וּ הַ/מַּ֜יִם לְ/מִֽינֵ/הֶ֗ם וְ/אֵ֨ת כָּל ־ ע֤וֹף כָּנָף֙ לְ/מִינֵ֔/הוּ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.21",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "1a6b002769462ec7f213402c823f90226aaf047d432ddb08bdc0a778bb021633",
+          "text_content": "וַיִּבְרָ֣א אֱלֹהִ֔ים אֶת־הַתַּנִּינִ֖ם הַגְּדֹלִ֑ים וְאֵ֣ת כׇּל־נֶ֣פֶשׁ הַֽחַיָּ֣ה ׀ הָֽרֹמֶ֡שֶׂת אֲשֶׁר֩ שָׁרְצ֨וּ הַמַּ֜יִם לְמִֽינֵהֶ֗ם וְאֵ֨ת כׇּל־ע֤וֹף כָּנָף֙ לְמִינֵ֔הוּ וַיַּ֥רְא אֱלֹהִ֖ים כִּי־טֽוֹב׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 29,
+          "source_b_token_count": 20,
+          "token_similarity_ratio": 0.24489795918367346,
+          "char_similarity_ratio": 0.9363636363636364,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יִּבְרָ֣א"
+              ],
+              "source_b_tokens": [
+                "וַיִּבְרָ֣א"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                11
+              ],
+              "source_b_range": [
+                2,
+                7
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "הַ/תַּנִּינִ֖ם",
+                "הַ/גְּדֹלִ֑ים",
+                "וְ/אֵ֣ת",
+                "כָּל",
+                "־",
+                "נֶ֣פֶשׁ",
+                "הַֽ/חַיָּ֣ה"
+              ],
+              "source_b_tokens": [
+                "אֶת־הַתַּנִּינִ֖ם",
+                "הַגְּדֹלִ֑ים",
+                "וְאֵ֣ת",
+                "כׇּל־נֶ֣פֶשׁ",
+                "הַֽחַיָּ֣ה"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                12,
+                13
+              ],
+              "source_b_range": [
+                8,
+                9
+              ],
+              "source_a_tokens": [
+                "הָֽ/רֹמֶ֡שֶׂת"
+              ],
+              "source_b_tokens": [
+                "הָֽרֹמֶ֡שֶׂת"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                15,
+                21
+              ],
+              "source_b_range": [
+                11,
+                15
+              ],
+              "source_a_tokens": [
+                "הַ/מַּ֜יִם",
+                "לְ/מִֽינֵ/הֶ֗ם",
+                "וְ/אֵ֨ת",
+                "כָּל",
+                "־",
+                "ע֤וֹף"
+              ],
+              "source_b_tokens": [
+                "הַמַּ֜יִם",
+                "לְמִֽינֵהֶ֗ם",
+                "וְאֵ֨ת",
+                "כׇּל־ע֤וֹף"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                22,
+                24
+              ],
+              "source_b_range": [
+                16,
+                18
+              ],
+              "source_a_tokens": [
+                "לְ/מִינֵ֔/הוּ",
+                "וַ/יַּ֥רְא"
+              ],
+              "source_b_tokens": [
+                "לְמִינֵ֔הוּ",
+                "וַיַּ֥רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                25,
+                29
+              ],
+              "source_b_range": [
+                19,
+                20
+              ],
+              "source_a_tokens": [
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "כִּי־טֽוֹב׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.22",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.22",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9f11b0c3e9dc9f4712b0c927804bf2182978f087f088932fa9dbf0e4d0b53ae5",
+          "text_content": "וַ/יְבָ֧רֶךְ אֹתָ֛/ם אֱלֹהִ֖ים לֵ/אמֹ֑ר פְּר֣וּ וּ/רְב֗וּ וּ/מִלְא֤וּ אֶת ־ הַ/מַּ֨יִם֙ בַּ/יַּמִּ֔ים וְ/הָ/ע֖וֹף יִ֥רֶב בָּ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.22",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "1562eaeb95e50f12730c1af73f17c962c2b31002edd3ac01cc5b9eb78ef2738a",
+          "text_content": "וַיְבָ֧רֶךְ אֹתָ֛ם אֱלֹהִ֖ים לֵאמֹ֑ר פְּר֣וּ וּרְב֗וּ וּמִלְא֤וּ אֶת־הַמַּ֙יִם֙ בַּיַּמִּ֔ים וְהָע֖וֹף יִ֥רֶב בָּאָֽרֶץ׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 15,
+          "source_b_token_count": 12,
+          "token_similarity_ratio": 0.2222222222222222,
+          "char_similarity_ratio": 0.9407114624505929,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                2
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַ/יְבָ֧רֶךְ",
+                "אֹתָ֛/ם"
+              ],
+              "source_b_tokens": [
+                "וַיְבָ֧רֶךְ",
+                "אֹתָ֛ם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                4
+              ],
+              "source_b_range": [
+                3,
+                4
+              ],
+              "source_a_tokens": [
+                "לֵ/אמֹ֑ר"
+              ],
+              "source_b_tokens": [
+                "לֵאמֹ֑ר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                5,
+                12
+              ],
+              "source_b_range": [
+                5,
+                10
+              ],
+              "source_a_tokens": [
+                "וּ/רְב֗וּ",
+                "וּ/מִלְא֤וּ",
+                "אֶת",
+                "־",
+                "הַ/מַּ֨יִם֙",
+                "בַּ/יַּמִּ֔ים",
+                "וְ/הָ/ע֖וֹף"
+              ],
+              "source_b_tokens": [
+                "וּרְב֗וּ",
+                "וּמִלְא֤וּ",
+                "אֶת־הַמַּ֙יִם֙",
+                "בַּיַּמִּ֔ים",
+                "וְהָע֖וֹף"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                13,
+                15
+              ],
+              "source_b_range": [
+                11,
+                12
+              ],
+              "source_a_tokens": [
+                "בָּ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "בָּאָֽרֶץ׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.23",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.23",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "98a08793041caca9554e81ebd5278ef3f0b41bb953d9372074d589380b7df6fb",
+          "text_content": "וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם חֲמִישִֽׁי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.23",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "14186ab5b360f79d818873839627be64cd7b3325d918ce94d3cc7ec722a444d6",
+          "text_content": "וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם חֲמִישִֽׁי׃ {פ}"
+        },
+        "token_diff": {
+          "source_a_token_count": 10,
+          "source_b_token_count": 5,
+          "token_similarity_ratio": 0.13333333333333333,
+          "char_similarity_ratio": 0.918918918918919,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                6
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־עֶ֥רֶב",
+                "וַֽיְהִי־בֹ֖קֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                7,
+                10
+              ],
+              "source_b_range": [
+                3,
+                5
+              ],
+              "source_a_tokens": [
+                "חֲמִישִֽׁי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "חֲמִישִֽׁי׃",
+                "{פ}"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.24",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.24",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "12cced49349816b895b9965105d4422df1601d3f934cf0cd86ac264510d548aa",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים תּוֹצֵ֨א הָ/אָ֜רֶץ נֶ֤פֶשׁ חַיָּה֙ לְ/מִינָ֔/הּ בְּהֵמָ֥ה וָ/רֶ֛מֶשׂ וְ/חַֽיְתוֹ ־ אֶ֖רֶץ לְ/מִינָ֑/הּ וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.24",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "3c14b52f426df03946fb9ce093e08091053b0c8d773cef0e42523bca77620f72",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֗ים תּוֹצֵ֨א הָאָ֜רֶץ נֶ֤פֶשׁ חַיָּה֙ לְמִינָ֔הּ בְּהֵמָ֥ה וָרֶ֛מֶשׂ וְחַֽיְתוֹ־אֶ֖רֶץ לְמִינָ֑הּ וַֽיְהִי־כֵֽן׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 17,
+          "source_b_token_count": 12,
+          "token_similarity_ratio": 0.3448275862068966,
+          "char_similarity_ratio": 0.9485294117647058,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                4
+              ],
+              "source_b_range": [
+                3,
+                4
+              ],
+              "source_a_tokens": [
+                "הָ/אָ֜רֶץ"
+              ],
+              "source_b_tokens": [
+                "הָאָ֜רֶץ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                6,
+                7
+              ],
+              "source_b_range": [
+                6,
+                7
+              ],
+              "source_a_tokens": [
+                "לְ/מִינָ֔/הּ"
+              ],
+              "source_b_tokens": [
+                "לְמִינָ֔הּ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                8,
+                17
+              ],
+              "source_b_range": [
+                8,
+                12
+              ],
+              "source_a_tokens": [
+                "וָ/רֶ֛מֶשׂ",
+                "וְ/חַֽיְתוֹ",
+                "־",
+                "אֶ֖רֶץ",
+                "לְ/מִינָ֑/הּ",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "וָרֶ֛מֶשׂ",
+                "וְחַֽיְתוֹ־אֶ֖רֶץ",
+                "לְמִינָ֑הּ",
+                "וַֽיְהִי־כֵֽן׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.25",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.25",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "4055f4e9fce14ce82a0ed1a6123c14842f9da624455762189cac1838b2fcb29f",
+          "text_content": "וַ/יַּ֣עַשׂ אֱלֹהִים֩ אֶת ־ חַיַּ֨ת הָ/אָ֜רֶץ לְ/מִינָ֗/הּ וְ/אֶת ־ הַ/בְּהֵמָה֙ לְ/מִינָ֔/הּ וְ/אֵ֛ת כָּל ־ רֶ֥מֶשׂ הָֽ/אֲדָמָ֖ה לְ/מִינֵ֑/הוּ וַ/יַּ֥רְא אֱלֹהִ֖ים כִּי ־ טֽוֹב ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.25",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "04fd933f9a7a99a6541d6afdfa10ceff9ec72612097e3a1f09a4b3e01aade23e",
+          "text_content": "וַיַּ֣עַשׂ אֱלֹהִים֩ אֶת־חַיַּ֨ת הָאָ֜רֶץ לְמִינָ֗הּ וְאֶת־הַבְּהֵמָה֙ לְמִינָ֔הּ וְאֵ֛ת כׇּל־רֶ֥מֶשׂ הָֽאֲדָמָ֖ה לְמִינֵ֑הוּ וַיַּ֥רְא אֱלֹהִ֖ים כִּי־טֽוֹב׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 23,
+          "source_b_token_count": 14,
+          "token_similarity_ratio": 0.10810810810810811,
+          "char_similarity_ratio": 0.9285714285714286,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֣עַשׂ"
+              ],
+              "source_b_tokens": [
+                "וַיַּ֣עַשׂ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                18
+              ],
+              "source_b_range": [
+                2,
+                12
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "חַיַּ֨ת",
+                "הָ/אָ֜רֶץ",
+                "לְ/מִינָ֗/הּ",
+                "וְ/אֶת",
+                "־",
+                "הַ/בְּהֵמָה֙",
+                "לְ/מִינָ֔/הּ",
+                "וְ/אֵ֛ת",
+                "כָּל",
+                "־",
+                "רֶ֥מֶשׂ",
+                "הָֽ/אֲדָמָ֖ה",
+                "לְ/מִינֵ֑/הוּ",
+                "וַ/יַּ֥רְא"
+              ],
+              "source_b_tokens": [
+                "אֶת־חַיַּ֨ת",
+                "הָאָ֜רֶץ",
+                "לְמִינָ֗הּ",
+                "וְאֶת־הַבְּהֵמָה֙",
+                "לְמִינָ֔הּ",
+                "וְאֵ֛ת",
+                "כׇּל־רֶ֥מֶשׂ",
+                "הָֽאֲדָמָ֖ה",
+                "לְמִינֵ֑הוּ",
+                "וַיַּ֥רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                19,
+                23
+              ],
+              "source_b_range": [
+                13,
+                14
+              ],
+              "source_a_tokens": [
+                "כִּי",
+                "־",
+                "טֽוֹב",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "כִּי־טֽוֹב׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.26",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.26",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "2cd226d32d1ed7c56963c2f54ea5a361eaa08a61489999c71bdee2dace0487c8",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֔ים נַֽעֲשֶׂ֥ה אָדָ֛ם בְּ/צַלְמֵ֖/נוּ כִּ/דְמוּתֵ֑/נוּ וְ/יִרְדּוּ֩ בִ/דְגַ֨ת הַ/יָּ֜ם וּ/בְ/ע֣וֹף הַ/שָּׁמַ֗יִם וּ/בַ/בְּהֵמָה֙ וּ/בְ/כָל ־ הָ/אָ֔רֶץ וּ/בְ/כָל ־ הָ/רֶ֖מֶשׂ הָֽ/רֹמֵ֥שׂ עַל ־ הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.26",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "1b155366c63cdc18823e88ee73b06bb118f4a678141b8edf88e0a52fc97e1943",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֔ים נַֽעֲשֶׂ֥ה אָדָ֛ם בְּצַלְמֵ֖נוּ כִּדְמוּתֵ֑נוּ וְיִרְדּוּ֩ בִדְגַ֨ת הַיָּ֜ם וּבְע֣וֹף הַשָּׁמַ֗יִם וּבַבְּהֵמָה֙ וּבְכׇל־הָאָ֔רֶץ וּבְכׇל־הָרֶ֖מֶשׂ הָֽרֹמֵ֥שׂ עַל־הָאָֽרֶץ׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 23,
+          "source_b_token_count": 16,
+          "token_similarity_ratio": 0.15384615384615385,
+          "char_similarity_ratio": 0.9178743961352657,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                23
+              ],
+              "source_b_range": [
+                4,
+                16
+              ],
+              "source_a_tokens": [
+                "בְּ/צַלְמֵ֖/נוּ",
+                "כִּ/דְמוּתֵ֑/נוּ",
+                "וְ/יִרְדּוּ֩",
+                "בִ/דְגַ֨ת",
+                "הַ/יָּ֜ם",
+                "וּ/בְ/ע֣וֹף",
+                "הַ/שָּׁמַ֗יִם",
+                "וּ/בַ/בְּהֵמָה֙",
+                "וּ/בְ/כָל",
+                "־",
+                "הָ/אָ֔רֶץ",
+                "וּ/בְ/כָל",
+                "־",
+                "הָ/רֶ֖מֶשׂ",
+                "הָֽ/רֹמֵ֥שׂ",
+                "עַל",
+                "־",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "בְּצַלְמֵ֖נוּ",
+                "כִּדְמוּתֵ֑נוּ",
+                "וְיִרְדּוּ֩",
+                "בִדְגַ֨ת",
+                "הַיָּ֜ם",
+                "וּבְע֣וֹף",
+                "הַשָּׁמַ֗יִם",
+                "וּבַבְּהֵמָה֙",
+                "וּבְכׇל־הָאָ֔רֶץ",
+                "וּבְכׇל־הָרֶ֖מֶשׂ",
+                "הָֽרֹמֵ֥שׂ",
+                "עַל־הָאָֽרֶץ׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.27",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.27",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "9c86989ff91f86458f3b3d62cc0f3d71fbdfdecd61eb37b0b325136a8f5a0934",
+          "text_content": "וַ/יִּבְרָ֨א אֱלֹהִ֤ים ׀ אֶת ־ הָֽ/אָדָם֙ בְּ/צַלְמ֔/וֹ בְּ/צֶ֥לֶם אֱלֹהִ֖ים בָּרָ֣א אֹת֑/וֹ זָכָ֥ר וּ/נְקֵבָ֖ה בָּרָ֥א אֹתָֽ/ם ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.27",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "d736556498d0ac25ed64bae899f2be86ecf3191571668d534d096d6db7bcbd39",
+          "text_content": "וַיִּבְרָ֨א אֱלֹהִ֤ים ׀ אֶת־הָֽאָדָם֙ בְּצַלְמ֔וֹ בְּצֶ֥לֶם אֱלֹהִ֖ים בָּרָ֣א אֹת֑וֹ זָכָ֥ר וּנְקֵבָ֖ה בָּרָ֥א אֹתָֽם׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 16,
+          "source_b_token_count": 13,
+          "token_similarity_ratio": 0.41379310344827586,
+          "char_similarity_ratio": 0.9473684210526315,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יִּבְרָ֨א"
+              ],
+              "source_b_tokens": [
+                "וַיִּבְרָ֨א"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                8
+              ],
+              "source_b_range": [
+                3,
+                6
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "הָֽ/אָדָם֙",
+                "בְּ/צַלְמ֔/וֹ",
+                "בְּ/צֶ֥לֶם"
+              ],
+              "source_b_tokens": [
+                "אֶת־הָֽאָדָם֙",
+                "בְּצַלְמ֔וֹ",
+                "בְּצֶ֥לֶם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                10,
+                11
+              ],
+              "source_b_range": [
+                8,
+                9
+              ],
+              "source_a_tokens": [
+                "אֹת֑/וֹ"
+              ],
+              "source_b_tokens": [
+                "אֹת֑וֹ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                12,
+                13
+              ],
+              "source_b_range": [
+                10,
+                11
+              ],
+              "source_a_tokens": [
+                "וּ/נְקֵבָ֖ה"
+              ],
+              "source_b_tokens": [
+                "וּנְקֵבָ֖ה"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                14,
+                16
+              ],
+              "source_b_range": [
+                12,
+                13
+              ],
+              "source_a_tokens": [
+                "אֹתָֽ/ם",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "אֹתָֽם׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.28",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.28",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "6383df90000746dac571a7ab56ce573c59cf60cae7df37883059842d216a8acd",
+          "text_content": "וַ/יְבָ֣רֶךְ אֹתָ/ם֮ אֱלֹהִים֒ וַ/יֹּ֨אמֶר לָ/הֶ֜ם אֱלֹהִ֗ים פְּר֥וּ וּ/רְב֛וּ וּ/מִלְא֥וּ אֶת ־ הָ/אָ֖רֶץ וְ/כִבְשֻׁ֑/הָ וּ/רְד֞וּ בִּ/דְגַ֤ת הַ/יָּם֙ וּ/בְ/ע֣וֹף הַ/שָּׁמַ֔יִם וּ/בְ/כָל ־ חַיָּ֖ה הָֽ/רֹמֶ֥שֶׂת עַל ־ הָ/אָֽרֶץ ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.28",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "b9cb2cf0daff3c4e34e24b747c46e02dbad2bbe7f43c70a5e2ed6c29ecfe2a3a",
+          "text_content": "וַיְבָ֣רֶךְ אֹתָם֮ אֱלֹהִים֒ וַיֹּ֨אמֶר לָהֶ֜ם אֱלֹהִ֗ים פְּר֥וּ וּרְב֛וּ וּמִלְא֥וּ אֶת־הָאָ֖רֶץ וְכִבְשֻׁ֑הָ וּרְד֞וּ בִּדְגַ֤ת הַיָּם֙ וּבְע֣וֹף הַשָּׁמַ֔יִם וּבְכׇל־חַיָּ֖ה הָֽרֹמֶ֥שֶׂת עַל־הָאָֽרֶץ׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 26,
+          "source_b_token_count": 19,
+          "token_similarity_ratio": 0.13333333333333333,
+          "char_similarity_ratio": 0.9305555555555556,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                2
+              ],
+              "source_b_range": [
+                0,
+                2
+              ],
+              "source_a_tokens": [
+                "וַ/יְבָ֣רֶךְ",
+                "אֹתָ/ם֮"
+              ],
+              "source_b_tokens": [
+                "וַיְבָ֣רֶךְ",
+                "אֹתָם֮"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                3,
+                5
+              ],
+              "source_b_range": [
+                3,
+                5
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֨אמֶר",
+                "לָ/הֶ֜ם"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֨אמֶר",
+                "לָהֶ֜ם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                7,
+                26
+              ],
+              "source_b_range": [
+                7,
+                19
+              ],
+              "source_a_tokens": [
+                "וּ/רְב֛וּ",
+                "וּ/מִלְא֥וּ",
+                "אֶת",
+                "־",
+                "הָ/אָ֖רֶץ",
+                "וְ/כִבְשֻׁ֑/הָ",
+                "וּ/רְד֞וּ",
+                "בִּ/דְגַ֤ת",
+                "הַ/יָּם֙",
+                "וּ/בְ/ע֣וֹף",
+                "הַ/שָּׁמַ֔יִם",
+                "וּ/בְ/כָל",
+                "־",
+                "חַיָּ֖ה",
+                "הָֽ/רֹמֶ֥שֶׂת",
+                "עַל",
+                "־",
+                "הָ/אָֽרֶץ",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "וּרְב֛וּ",
+                "וּמִלְא֥וּ",
+                "אֶת־הָאָ֖רֶץ",
+                "וְכִבְשֻׁ֑הָ",
+                "וּרְד֞וּ",
+                "בִּדְגַ֤ת",
+                "הַיָּם֙",
+                "וּבְע֣וֹף",
+                "הַשָּׁמַ֔יִם",
+                "וּבְכׇל־חַיָּ֖ה",
+                "הָֽרֹמֶ֥שֶׂת",
+                "עַל־הָאָֽרֶץ׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.29",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.29",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "4b143d7c1399511460ecb4a2fde00078d4b1f1ec428fdbe4af55c482d464f53e",
+          "text_content": "וַ/יֹּ֣אמֶר אֱלֹהִ֗ים הִנֵּה֩ נָתַ֨תִּי לָ/כֶ֜ם אֶת ־ כָּל ־ עֵ֣שֶׂב ׀ זֹרֵ֣עַ זֶ֗רַע אֲשֶׁר֙ עַל ־ פְּנֵ֣י כָל ־ הָ/אָ֔רֶץ וְ/אֶת ־ כָּל ־ הָ/עֵ֛ץ אֲשֶׁר ־ בּ֥/וֹ פְרִי ־ עֵ֖ץ זֹרֵ֣עַ זָ֑רַע לָ/כֶ֥ם יִֽהְיֶ֖ה לְ/אָכְלָֽה ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.29",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "2ae1b33167aed3864b2619a6d24910d87f0a6b44da217104c8354d2421009d61",
+          "text_content": "וַיֹּ֣אמֶר אֱלֹהִ֗ים הִנֵּה֩ נָתַ֨תִּי לָכֶ֜ם אֶת־כׇּל־עֵ֣שֶׂב ׀ זֹרֵ֣עַ זֶ֗רַע אֲשֶׁר֙ עַל־פְּנֵ֣י כׇל־הָאָ֔רֶץ וְאֶת־כׇּל־הָעֵ֛ץ אֲשֶׁר־בּ֥וֹ פְרִי־עֵ֖ץ זֹרֵ֣עַ זָ֑רַע לָכֶ֥ם יִֽהְיֶ֖ה לְאׇכְלָֽה׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 37,
+          "source_b_token_count": 20,
+          "token_similarity_ratio": 0.3508771929824561,
+          "char_similarity_ratio": 0.9216152019002375,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יֹּ֣אמֶר"
+              ],
+              "source_b_tokens": [
+                "וַיֹּ֣אמֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                4,
+                10
+              ],
+              "source_b_range": [
+                4,
+                6
+              ],
+              "source_a_tokens": [
+                "לָ/כֶ֜ם",
+                "אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "עֵ֣שֶׂב"
+              ],
+              "source_b_tokens": [
+                "לָכֶ֜ם",
+                "אֶת־כׇּל־עֵ֣שֶׂב"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                14,
+                31
+              ],
+              "source_b_range": [
+                10,
+                15
+              ],
+              "source_a_tokens": [
+                "עַל",
+                "־",
+                "פְּנֵ֣י",
+                "כָל",
+                "־",
+                "הָ/אָ֔רֶץ",
+                "וְ/אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "הָ/עֵ֛ץ",
+                "אֲשֶׁר",
+                "־",
+                "בּ֥/וֹ",
+                "פְרִי",
+                "־",
+                "עֵ֖ץ"
+              ],
+              "source_b_tokens": [
+                "עַל־פְּנֵ֣י",
+                "כׇל־הָאָ֔רֶץ",
+                "וְאֶת־כׇּל־הָעֵ֛ץ",
+                "אֲשֶׁר־בּ֥וֹ",
+                "פְרִי־עֵ֖ץ"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                33,
+                34
+              ],
+              "source_b_range": [
+                17,
+                18
+              ],
+              "source_a_tokens": [
+                "לָ/כֶ֥ם"
+              ],
+              "source_b_tokens": [
+                "לָכֶ֥ם"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                35,
+                37
+              ],
+              "source_b_range": [
+                19,
+                20
+              ],
+              "source_a_tokens": [
+                "לְ/אָכְלָֽה",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "לְאׇכְלָֽה׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.30",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.30",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "b5a30a04f98ac9eecbbc7e045a10da1d332fca88d6ce0740842feba9248e32ca",
+          "text_content": "וּֽ/לְ/כָל ־ חַיַּ֣ת הָ֠/אָרֶץ וּ/לְ/כָל ־ ע֨וֹף הַ/שָּׁמַ֜יִם וּ/לְ/כֹ֣ל ׀ רוֹמֵ֣שׂ עַל ־ הָ/אָ֗רֶץ אֲשֶׁר ־ בּ/וֹ֙ נֶ֣פֶשׁ חַיָּ֔ה אֶת ־ כָּל ־ יֶ֥רֶק עֵ֖שֶׂב לְ/אָכְלָ֑ה וַֽ/יְהִי ־ כֵֽן ׃"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.30",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "68e59a4a45c34ce7422a551d795259c19ad526ec10fb3de3b7516e73697697e5",
+          "text_content": "וּֽלְכׇל־חַיַּ֣ת הָ֠אָ֠רֶץ וּלְכׇל־ע֨וֹף הַשָּׁמַ֜יִם וּלְכֹ֣ל ׀ רוֹמֵ֣שׂ עַל־הָאָ֗רֶץ אֲשֶׁר־בּוֹ֙ נֶ֣פֶשׁ חַיָּ֔ה אֶת־כׇּל־יֶ֥רֶק עֵ֖שֶׂב לְאׇכְלָ֑ה וַֽיְהִי־כֵֽן׃"
+        },
+        "token_diff": {
+          "source_a_token_count": 30,
+          "source_b_token_count": 15,
+          "token_similarity_ratio": 0.2222222222222222,
+          "char_similarity_ratio": 0.898876404494382,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                9
+              ],
+              "source_b_range": [
+                0,
+                5
+              ],
+              "source_a_tokens": [
+                "וּֽ/לְ/כָל",
+                "־",
+                "חַיַּ֣ת",
+                "הָ֠/אָרֶץ",
+                "וּ/לְ/כָל",
+                "־",
+                "ע֨וֹף",
+                "הַ/שָּׁמַ֜יִם",
+                "וּ/לְ/כֹ֣ל"
+              ],
+              "source_b_tokens": [
+                "וּֽלְכׇל־חַיַּ֣ת",
+                "הָ֠אָ֠רֶץ",
+                "וּלְכׇל־ע֨וֹף",
+                "הַשָּׁמַ֜יִם",
+                "וּלְכֹ֣ל"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                11,
+                17
+              ],
+              "source_b_range": [
+                7,
+                9
+              ],
+              "source_a_tokens": [
+                "עַל",
+                "־",
+                "הָ/אָ֗רֶץ",
+                "אֲשֶׁר",
+                "־",
+                "בּ/וֹ֙"
+              ],
+              "source_b_tokens": [
+                "עַל־הָאָ֗רֶץ",
+                "אֲשֶׁר־בּוֹ֙"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                19,
+                24
+              ],
+              "source_b_range": [
+                11,
+                12
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "יֶ֥רֶק"
+              ],
+              "source_b_tokens": [
+                "אֶת־כׇּל־יֶ֥רֶק"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                25,
+                30
+              ],
+              "source_b_range": [
+                13,
+                15
+              ],
+              "source_a_tokens": [
+                "לְ/אָכְלָ֑ה",
+                "וַֽ/יְהִי",
+                "־",
+                "כֵֽן",
+                "׃"
+              ],
+              "source_b_tokens": [
+                "לְאׇכְלָ֑ה",
+                "וַֽיְהִי־כֵֽן׃"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "verse": "Gen.1.31",
+        "source_a": {
+          "source_archive": "Open Scriptures Hebrew Bible",
+          "source_uri": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml#Gen.1.31",
+          "source_version_date": "2018-12-14T00:00:00",
+          "content_hash": "61fbee17272631325a806bea97c446e802a3257c5043926745340e543bd1f032",
+          "text_content": "וַ/יַּ֤רְא אֱלֹהִים֙ אֶת ־ כָּל ־ אֲשֶׁ֣ר עָשָׂ֔ה וְ/הִנֵּה ־ ט֖וֹב מְאֹ֑ד וַֽ/יְהִי ־ עֶ֥רֶב וַֽ/יְהִי ־ בֹ֖קֶר י֥וֹם הַ/שִּׁשִּֽׁי ׃ פ"
+        },
+        "source_b": {
+          "source_archive": "Sefaria Miqra according to the Masorah",
+          "source_uri": "https://www.sefaria.org/api/texts/Genesis.1?lang=he&context=0#Gen.1.31",
+          "source_version_date": "2025-01-02T17:56:40Z",
+          "content_hash": "6855fac8752c0328955a0f41785d9ef2f2e86e30658a90a31c51857840951dfa",
+          "text_content": "וַיַּ֤רְא אֱלֹהִים֙ אֶת־כׇּל־אֲשֶׁ֣ר עָשָׂ֔ה וְהִנֵּה־ט֖וֹב מְאֹ֑ד וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם הַשִּׁשִּֽׁי׃ {פ}"
+        },
+        "token_diff": {
+          "source_a_token_count": 22,
+          "source_b_token_count": 11,
+          "token_similarity_ratio": 0.24242424242424243,
+          "char_similarity_ratio": 0.9069767441860465,
+          "operations": [
+            {
+              "op": "replace",
+              "source_a_range": [
+                0,
+                1
+              ],
+              "source_b_range": [
+                0,
+                1
+              ],
+              "source_a_tokens": [
+                "וַ/יַּ֤רְא"
+              ],
+              "source_b_tokens": [
+                "וַיַּ֤רְא"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                2,
+                7
+              ],
+              "source_b_range": [
+                2,
+                3
+              ],
+              "source_a_tokens": [
+                "אֶת",
+                "־",
+                "כָּל",
+                "־",
+                "אֲשֶׁ֣ר"
+              ],
+              "source_b_tokens": [
+                "אֶת־כׇּל־אֲשֶׁ֣ר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                8,
+                11
+              ],
+              "source_b_range": [
+                4,
+                5
+              ],
+              "source_a_tokens": [
+                "וְ/הִנֵּה",
+                "־",
+                "ט֖וֹב"
+              ],
+              "source_b_tokens": [
+                "וְהִנֵּה־ט֖וֹב"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                12,
+                18
+              ],
+              "source_b_range": [
+                6,
+                8
+              ],
+              "source_a_tokens": [
+                "וַֽ/יְהִי",
+                "־",
+                "עֶ֥רֶב",
+                "וַֽ/יְהִי",
+                "־",
+                "בֹ֖קֶר"
+              ],
+              "source_b_tokens": [
+                "וַֽיְהִי־עֶ֥רֶב",
+                "וַֽיְהִי־בֹ֖קֶר"
+              ]
+            },
+            {
+              "op": "replace",
+              "source_a_range": [
+                19,
+                22
+              ],
+              "source_b_range": [
+                9,
+                11
+              ],
+              "source_a_tokens": [
+                "הַ/שִּׁשִּֽׁי",
+                "׃",
+                "פ"
+              ],
+              "source_b_tokens": [
+                "הַשִּׁשִּֽׁי׃",
+                "{פ}"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "only_in_source_a_details": [],
+    "only_in_source_b_details": []
+  },
+  "risk_level": "medium",
+  "findings": [
+    {
+      "severity": "medium",
+      "code": "CROSS_SOURCE_TEXTUAL_DIVERGENCE",
+      "message": "Shared verses differ across sources and require skeptical line-by-line review",
+      "changed_count": 31,
+      "examples": [
+        "Gen.1.1",
+        "Gen.1.2",
+        "Gen.1.3",
+        "Gen.1.4",
+        "Gen.1.5",
+        "Gen.1.6",
+        "Gen.1.7",
+        "Gen.1.8",
+        "Gen.1.9",
+        "Gen.1.10"
+      ]
+    }
+  ]
+}
