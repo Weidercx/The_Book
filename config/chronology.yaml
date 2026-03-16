@@ -1,0 +1,19 @@
+# The_Book/config/chronology.yaml
+# Date-first chronology anchors for skeptical text review.
+
+works:
+  bible.ot.genesis:
+    tradition_label: "Hebrew Bible / Torah"
+    composition_window_bce:
+      start: 1000
+      end: 400
+    earliest_known_textual_witness_window_bce:
+      start: 250
+      end: 100
+    base_witness:
+      label: "Leningrad Codex (B19A) through WLC tradition"
+      date_ce: 1008
+    skeptical_rules:
+      require_source_version_date: true
+      flag_inline_editorial_notes: true
+      require_baseline_for_release_comparison: true

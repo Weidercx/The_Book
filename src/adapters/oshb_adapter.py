@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Any, Dict, List
 
 import aiohttp
@@ -69,6 +70,7 @@ class OSHBGenesisAdapter(BaseAdapter):
                     source_uri=source_uri,
                     license_code="CC-BY-4.0",
                     license_url="https://creativecommons.org/licenses/by/4.0/",
+                    source_version_date=raw.get("source_version_date"),
                     morphology_tagged=True,
                     notes=f"Genesis {chapter_number}:{verse_number}",
                 )
@@ -80,6 +82,7 @@ class OSHBGenesisAdapter(BaseAdapter):
     def _extract_chapter_verses(cls, xml_content: str, chapter: int) -> List[Dict[str, Any]]:
         """Extract verse-level raw records for a specific Genesis chapter."""
         root = etree.fromstring(xml_content.encode("utf-8"))
+        source_version_date = cls._extract_latest_revision_date(root)
         chapter_xpath = f"//osis:chapter[@osisID='Gen.{chapter}']/osis:verse"
         verse_elements = root.xpath(chapter_xpath, namespaces=cls.OSIS_NS)
 
@@ -90,7 +93,7 @@ class OSHBGenesisAdapter(BaseAdapter):
         for verse in verse_elements:
             osis_id = verse.attrib.get("osisID", "")
             verse_number = cls._parse_verse_number(osis_id)
-            text_content = cls._normalize_verse_text(" ".join(verse.itertext()))
+            text_content = cls._extract_verse_text(verse)
 
             if not text_content:
                 continue
@@ -101,10 +104,64 @@ class OSHBGenesisAdapter(BaseAdapter):
                     "verse_number": verse_number,
                     "osis_id": osis_id,
                     "text_content": text_content,
+                    "source_version_date": source_version_date,
                 }
             )
 
         return extracted
+
+    @classmethod
+    def _extract_verse_text(cls, verse: etree._Element) -> str:
+        """
+        Extract verse text from lexical tokens only.
+
+        This intentionally excludes <note> content so editorial annotations are not
+        injected into witness text.
+        """
+        tokens: List[str] = []
+        for child in verse:
+            local_name = etree.QName(child).localname
+            if local_name not in {"w", "seg"}:
+                continue
+
+            token_text = "".join(child.itertext()).strip()
+            if token_text:
+                tokens.append(token_text)
+
+        return cls._normalize_verse_text(" ".join(tokens))
+
+    @classmethod
+    def _extract_latest_revision_date(cls, root: etree._Element) -> datetime | None:
+        """Extract latest OSHB revision date from the header metadata."""
+        date_values = root.xpath(
+            "//osis:header/osis:revisionDesc/osis:date/text()",
+            namespaces=cls.OSIS_NS,
+        )
+
+        parsed_dates = [cls._parse_revision_date(str(value)) for value in date_values]
+        valid_dates = [value for value in parsed_dates if value is not None]
+
+        if not valid_dates:
+            return None
+
+        return max(valid_dates)
+
+    @staticmethod
+    def _parse_revision_date(value: str) -> datetime | None:
+        """Parse OSHB header dates such as 2018.12.14 into datetime objects."""
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+
+        parts = cleaned.split(".")
+        if len(parts) == 3 and all(part.isdigit() for part in parts):
+            year, month, day = (int(part) for part in parts)
+            return datetime(year=year, month=month, day=day)
+
+        try:
+            return datetime.fromisoformat(cleaned)
+        except ValueError:
+            return None
 
     @staticmethod
     def _parse_verse_number(osis_id: str) -> int:

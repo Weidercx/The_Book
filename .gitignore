@@ -50,6 +50,7 @@ htmlcov/
 # Data (large files)
 data/raw/
 data/normalized/
+data/reports/
 data/exports/*.parquet
 data/exports/*.jsonl
 *.zip
