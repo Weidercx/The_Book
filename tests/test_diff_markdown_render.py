@@ -83,13 +83,9 @@ def test_markdown_render_contains_diff_block_with_plus_and_minus_tokens():
     assert "## Chronology Axis (Primary)" in markdown
     assert "Estimated original composition window: 1000-400 BCE" in markdown
     assert "## Digital Edition Dates (Secondary)" in markdown
-    assert "Simulated review comments:" in markdown
-    assert "Semantic comparison (simulated):" in markdown
-    assert "Content change summary (simulated):" in markdown
-    assert "omissions from Source B" in markdown
-    assert "Impact (simulated):" in markdown
-    assert "Etymology significance (simulated):" in markdown
-    assert "Diff profile (simulated):" in markdown
+    assert "Reviewer notes:" in markdown
+    assert "Textual observation:" in markdown
+    assert "Historical significance:" in markdown
 
 
 def test_markdown_render_formats_bce_year_labels_for_oldest_source():

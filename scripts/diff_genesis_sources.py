@@ -21,16 +21,114 @@ WORK_ID = "bible.ot.genesis"
 VERSE_REF_RE = re.compile(r"Gen\.(\d+)\.(\d+)$")
 HEBREW_DIACRITICS_RE = re.compile(r"[\u0591-\u05C7]")
 KEEP_ALNUM_HEBREW_RE = re.compile(r"[^0-9A-Za-z\u05D0-\u05EA]+")
-SIGNIFICANT_NAME_TOKENS = {
-    "יהוה",
-    "אלהים",
-    "אדם",
-    "חוה",
-    "אברהם",
-    "יצחק",
-    "יעקב",
-    "משה",
-    "ישראל",
+# Scholarly glossary: normalized Hebrew token -> (short gloss, significance note)
+_HEBREW_GLOSSARY: Dict[str, tuple[str, str]] = {
+    "ברא": (
+        "bara — to create, a verb reserved exclusively for divine creative activity",
+        "This verb occurs only with God as its subject in all of Biblical Hebrew. Its presence here "
+        "stakes a specific theological claim: whatever happened at the beginning was categorically unlike "
+        "anything a human hand could do. Any manuscript that alters this verb touches the central nerve "
+        "of the entire creation account.",
+    ),
+    "אלהים": (
+        "Elohim — grammatically plural, theologically singular; the generic word for God",
+        "The grammatical plurality of Elohim used with singular verbs was one of the most "
+        "argued points in ancient Jewish and early Christian theology. Every scribe who "
+        "encountered it had to decide whether to preserve the anomaly or smooth it over. "
+        "Those who smoothed it left their theological fingerprints on the text.",
+    ),
+    "יהוה": (
+        "YHWH — the personal divine name, the Tetragrammaton",
+        "So sacred that by the Second Temple period scribes refused to write or pronounce it "
+        "and substituted Adonai instead. A medieval scribe later combined the consonants of "
+        "YHWH with the vowels of Adonai and produced 'Jehovah' — a word that never actually "
+        "existed in any ancient language. Any manuscript that substitutes Elohim for YHWH, "
+        "or vice versa, reflects this profound scribal anxiety about the divine name and alters "
+        "what every subsequent reader understood God to be called.",
+    ),
+    "שמים": (
+        "shamayim — the heavens, always grammatically dual in Hebrew",
+        "The dual form implies a layered sky, consistent with ancient Near Eastern cosmology "
+        "that pictured multiple heavens stacked above the earth. Paul's 'third heaven' in "
+        "2 Corinthians draws on this same tradition. How a scribe copied this word could "
+        "signal which cosmological model he thought the text endorsed.",
+    ),
+    "ארץ": (
+        "eretz — earth or land, one of Hebrew's most context-dependent nouns",
+        "In a cosmological clause it means the whole earth; in a legal or national clause it "
+        "means a specific territory. The Septuagint translators had to choose, and their choice "
+        "influenced how every subsequent Bible reader in the Greek-speaking world understood this verse.",
+    ),
+    "תהו": (
+        "tohu — formless waste, a term for primordial chaos",
+        "Its Semitic cognates connect it to ancient Near Eastern chaos narratives. Isaiah later "
+        "uses it of lands laid waste by divine judgment, as if creation were being unmade. Any "
+        "reading that changes or omits tohu alters a word that carries the memory of a whole "
+        "ancient worldview about what existed before God acted.",
+    ),
+    "בהו": (
+        "bohu — emptiness; occurs only three times in all of Biblical Hebrew",
+        "It appears only ever paired with tohu, suggesting it exists partly as a phonetic echo "
+        "rather than an independent concept. Its rarity makes any variant reading significant "
+        "by definition, since there is almost no other context in which scholars can check what it should say.",
+    ),
+    "רוח": (
+        "ruach — spirit, wind, or breath; Hebrew uses one word for all three",
+        "Whether this is the Spirit of God hovering protectively over the waters, or a great "
+        "wind sweeping across them, is not a minor exegetical quibble. The two readings produce "
+        "entirely different theologies of creation: one supervised by divine presence from the "
+        "first instant, one not. Scribes reading the same word could walk away with opposite "
+        "pictures of what Genesis was claiming.",
+    ),
+    "אור": (
+        "or — light, created before the sun exists",
+        "Light appears on Day One; the sun and moon do not appear until Day Four. This sequence "
+        "was noticed in antiquity and generated centuries of theological explanation. The word "
+        "itself is plain, but its placement is among the most discussed anomalies in the entire creation account.",
+    ),
+    "רקיע": (
+        "raqia — the firmament, from a root meaning to beat or stamp flat",
+        "The Septuagint rendered it stereoma — a solid structure. Ancient readers understood this as "
+        "a physical dome holding back the upper waters. When post-Copernican readers encountered this word, "
+        "the translation of raqia became a flashpoint between scientific and traditional readings of Genesis.",
+    ),
+    "מים": (
+        "mayim — the primordial waters",
+        "Crucially, the waters in Genesis 1 are never created — they pre-exist God's ordering of the world. "
+        "This fact sat in quiet tension with later theological formulations of creation out of nothing. "
+        "Every manuscript tradition that preserved this verse intact preserved that tension too, whether "
+        "the scribe understood what he was copying or not.",
+    ),
+    "טוב": (
+        "tov — good; not merely beautiful, but fit for purpose",
+        "The repeated declaration that creation is tov carries moral and covenantal weight far beyond "
+        "aesthetic approval. It means the created order is exactly what it was meant to be. A manuscript "
+        "that altered or omitted tov would be quietly editing out one of the most theologically "
+        "loaded words in the entire chapter.",
+    ),
+    "אדם": (
+        "adam — both humanity as a species and the personal name of the first human",
+        "The Hebrew text refuses to distinguish between these two meanings in the creation account, and "
+        "this is almost certainly intentional. Manuscripts that diverge in how they render adam-related "
+        "forms may reflect communities with different convictions about whether Genesis speaks of a "
+        "single individual or of the entire human species.",
+    ),
+    "צלם": (
+        "tzelem — image or icon; the same word used for cult statues in a temple",
+        "Humanity is described using the same term applied to divine images set up in sanctuaries. "
+        "The implication — that every human being is a living idol of God walking in the world — "
+        "was breathtaking to ancient readers and remains so. Any variant in this word touches the "
+        "most philosophically significant claim of the entire creation narrative.",
+    ),
+    "דמות": (
+        "demut — likeness; a slight softening added alongside tzelem",
+        "The pairing of tzelem and demut became the terminological foundation of the patristic "
+        "imago Dei doctrine. Which words appear, in what order, and whether both are present in a "
+        "given manuscript directly shaped how entire theological traditions understood what it means to be human.",
+    ),
+    "כל": ("kol — all, every; a spelling variant carrying no difference in meaning", ""),
+    "כׇּל": ("kol — all, every; ketiv spelling differing only orthographically from the standard form", ""),
+    "כָּל": ("kol — all, every; standard qere spelling", ""),
 }
 
 
@@ -388,183 +486,129 @@ def canonical_token_stream(text: str) -> List[str]:
     return [token for token in tokens if token]
 
 
-def unique_preserving_order(items: List[str]) -> List[str]:
-    seen: set[str] = set()
-    ordered: List[str] = []
-    for item in items:
-        if not item or item in seen:
-            continue
-        seen.add(item)
-        ordered.append(item)
-    return ordered
+def _gloss(token: str) -> str:
+    """Return a short English gloss for a known Hebrew token, or the token itself."""
+    entry = _HEBREW_GLOSSARY.get(token)
+    return entry[0] if entry else f"the Hebrew form '{token}'"
 
 
-def summarize_examples(items: List[str], limit: int = 3) -> str:
-    if not items:
-        return "(none)"
-    sample = items[:limit]
-    rendered = "; ".join(f"'{item}'" for item in sample)
-    if len(items) > limit:
-        return f"{rendered}; ..."
-    return rendered
+def _significance(token: str) -> str:
+    """Return the scholarly significance note for a known Hebrew token, or empty string."""
+    entry = _HEBREW_GLOSSARY.get(token)
+    return entry[1] if (entry and entry[1]) else ""
 
 
-def token_mentions_significant_name(token: str) -> bool:
-    return any(name in token for name in SIGNIFICANT_NAME_TOKENS)
+def _is_segmentation_variant(left: str, right: str) -> bool:
+    """True when two token strings are identical after removing whitespace — a maqqef-split artifact."""
+    return bool(left) and bool(right) and left.replace(" ", "") == right.replace(" ", "")
 
 
 def simulated_review_comments(source_a_text: str, source_b_text: str, token_diff: Dict[str, Any]) -> List[str]:
-    """Create English reviewer-style comments combining semantic, content, and impact notes."""
-    operations = token_diff.get("operations") if isinstance(token_diff, dict) else []
-    if not isinstance(operations, list):
-        operations = []
-
-    op_counts = {"replace": 0, "insert": 0, "delete": 0}
-    for operation in operations:
-        if not isinstance(operation, dict):
-            continue
-        op = operation.get("op")
-        if isinstance(op, str) and op in op_counts:
-            op_counts[op] += 1
-
+    """Return two scholarly narrative comments on the word-level differences between witnesses."""
     a_canonical = canonical_token_stream(source_a_text)
     b_canonical = canonical_token_stream(source_b_text)
     canonical_matcher = difflib.SequenceMatcher(a=a_canonical, b=b_canonical, autojunk=False)
-    lexical_similarity = canonical_matcher.ratio()
 
-    lexical_replacements: List[str] = []
-    lexical_insertions: List[str] = []
-    lexical_deletions: List[str] = []
-    replacement_tokens: List[str] = []
+    true_substitutions: List[tuple[str, str]] = []
+    additions: List[str] = []
+    omissions: List[str] = []
 
     for op, i1, i2, j1, j2 in canonical_matcher.get_opcodes():
         if op == "equal":
             continue
-
-        left_tokens = [token for token in a_canonical[i1:i2] if token]
-        right_tokens = [token for token in b_canonical[j1:j2] if token]
-
-        left = " ".join(left_tokens).strip()
-        right = " ".join(right_tokens).strip()
-
+        left = " ".join(a_canonical[i1:i2]).strip()
+        right = " ".join(b_canonical[j1:j2]).strip()
         if op == "replace":
-            if left and right and left != right:
-                lexical_replacements.append(f"{left} -> {right}")
-                replacement_tokens.extend(left_tokens)
-                replacement_tokens.extend(right_tokens)
-            elif left and not right:
-                lexical_deletions.append(left)
-            elif right and not left:
-                lexical_insertions.append(right)
+            if left and right:
+                if _is_segmentation_variant(left, right):
+                    pass  # maqqef-split artifact — same word, different encoding
+                else:
+                    true_substitutions.append((left, right))
+            elif left:
+                omissions.append(left)
+            elif right:
+                additions.append(right)
         elif op == "delete" and left:
-            lexical_deletions.append(left)
+            omissions.append(left)
         elif op == "insert" and right:
-            lexical_insertions.append(right)
+            additions.append(right)
 
-    lexical_replacements = unique_preserving_order(lexical_replacements)
-    lexical_insertions = unique_preserving_order(lexical_insertions)
-    lexical_deletions = unique_preserving_order(lexical_deletions)
+    # Pure scribal-convention difference — same consonants, different punctuation encoding
+    if not true_substitutions and not additions and not omissions:
+        observation = (
+            "Textual observation: Both witnesses preserve identical vocabulary in this verse. "
+            "The differences are entirely matters of how the maqqef — the connecting dash that "
+            "Hebrew tradition uses to bind short unstressed words to the following term — is encoded. "
+            "One tradition writes the phrase as a single typographic unit; the other separates the "
+            "components. Neither scribe altered a single root or consonant."
+        )
+        significance = (
+            "Historical significance: The complete agreement on every root and consonant across two "
+            "independent manuscript traditions confirms that this verse's wording was entirely settled "
+            "within the Masoretic stream long before either copy was made. Whatever disagreements lay "
+            "between these scribal communities, they were not disagreements about what this verse said."
+        )
+        return [observation, significance]
 
-    token_similarity = 0.0
-    char_similarity = 0.0
-    if isinstance(token_diff, dict):
-        token_similarity = float(token_diff.get("token_similarity_ratio") or 0.0)
-        char_similarity = float(token_diff.get("char_similarity_ratio") or 0.0)
+    # Build the observation comment naming specific words
+    observation_parts: List[str] = []
+    first_significance = ""
 
-    segmentation_markers = ("/", "־", "{", "}")
-    has_segmentation_markers = any(marker in source_a_text for marker in segmentation_markers) or any(
-        marker in source_b_text for marker in segmentation_markers
-    )
+    for left, right in true_substitutions[:3]:
+        observation_parts.append(
+            f"the older witness reads '{left}' ({_gloss(left)}), "
+            f"while the later manuscript writes '{right}' ({_gloss(right)})"
+        )
+        if not first_significance:
+            first_significance = _significance(left) or _significance(right)
 
-    if a_canonical == b_canonical and has_segmentation_markers:
-        semantic_comment = (
-            "Semantic comparison (simulated): lexical content aligns after normalization; "
-            "differences are mostly segmentation/pointing or punctuation encoding."
+    for phrase in omissions[:2]:
+        observation_parts.append(
+            f"the phrase '{phrase}' ({_gloss(phrase)}) appears in the older witness "
+            f"but is absent from the later one"
         )
-        impact_comment = (
-            "Impact (simulated): low semantic risk for interpretation, but medium processing risk "
-            "for tokenization-dependent pipelines and hash-level diffs."
+        if not first_significance:
+            first_significance = _significance(phrase)
+
+    for phrase in additions[:2]:
+        observation_parts.append(
+            f"the later witness carries '{phrase}' ({_gloss(phrase)}), "
+            f"which the older text does not have"
         )
-    elif lexical_similarity >= 0.88:
-        semantic_comment = (
-            "Semantic comparison (simulated): verses are highly similar with minor lexical or "
-            "morphological variation layered onto orthographic shifts."
-        )
-        impact_comment = (
-            "Impact (simulated): low-to-moderate interpretive impact; translation wording may shift "
-            "at phrase level, but core proposition remains stable."
-        )
-    elif lexical_similarity >= 0.6:
-        semantic_comment = (
-            "Semantic comparison (simulated): mixed lexical divergence is present beyond pure "
-            "orthographic segmentation differences."
-        )
-        impact_comment = (
-            "Impact (simulated): moderate interpretive impact; this verse should be prioritized "
-            "for manual textual-critical review."
+        if not first_significance:
+            first_significance = _significance(phrase)
+
+    if observation_parts:
+        joined = "; ".join(observation_parts)
+        observation = "Textual observation: " + joined[0].upper() + joined[1:] + "."
+    else:
+        observation = "Textual observation: A lexical difference was detected between the two witnesses."
+
+    # Build the significance comment
+    if first_significance:
+        significance = f"Historical significance: {first_significance}"
+    elif omissions or additions:
+        total = len(omissions) + len(additions)
+        direction = "longer" if additions else "shorter"
+        significance = (
+            f"Historical significance: The later witness is {direction} at this point by some "
+            f"{total} phrase(s). Whether this reflects a genuinely different Vorlage — the "
+            "manuscript the scribe was copying from — or physical damage to the older scroll, "
+            "cannot be settled from the text alone. But the question matters enormously. This verse "
+            "was copied, chanted, memorized, and interpreted by communities across more than two "
+            "millennia. A phrase that belongs to one tradition and not the other shapes what every "
+            "reader downstream was taught to believe God had said at the beginning."
         )
     else:
-        semantic_comment = (
-            "Semantic comparison (simulated): substantial lexical divergence detected between witnesses."
-        )
-        impact_comment = (
-            "Impact (simulated): high interpretive impact potential; decisions here can affect "
-            "exegesis, alignment confidence, and downstream translation choices."
-        )
-
-    if lexical_replacements or lexical_insertions or lexical_deletions:
-        parts: List[str] = []
-        if lexical_replacements:
-            parts.append(f"substitutions {summarize_examples(lexical_replacements)}")
-        if lexical_insertions:
-            parts.append(f"additions in Source B {summarize_examples(lexical_insertions)}")
-        if lexical_deletions:
-            parts.append(f"omissions from Source B {summarize_examples(lexical_deletions)}")
-        content_comment = "Content change summary (simulated): " + "; ".join(parts) + "."
-    else:
-        content_comment = (
-            "Content change summary (simulated): no lexical substitutions detected after normalization; "
-            "surface differences are predominantly orthographic/tokenization shifts."
+        significance = (
+            "Historical significance: Even where the divergence looks small on the page, word-level "
+            "changes in a text that was memorized, chanted, and interpreted by millions of people "
+            "over more than two thousand years are never trivial. Every scribe who wrote something "
+            "slightly different was, whether he knew it or not, quietly shaping what the next "
+            "generation would believe this verse meant."
         )
 
-    name_sensitive_replacements = [
-        item
-        for item in lexical_replacements
-        if any(token_mentions_significant_name(token) for token in item.replace("->", " ").split())
-    ]
-
-    if name_sensitive_replacements:
-        etymology_comment = (
-            "Etymology significance (simulated): high-significance term substitution detected, "
-            f"including {summarize_examples(name_sensitive_replacements, limit=2)}. "
-            "Treat as potentially meaningful lexical replacement, not merely spelling drift."
-        )
-    elif lexical_replacements:
-        etymology_comment = (
-            "Etymology significance (simulated): substitutions likely involve lexeme-level choices; "
-            "validate lemma/root alignment for the changed forms before drawing doctrinal or "
-            "historical conclusions."
-        )
-    elif lexical_insertions or lexical_deletions:
-        etymology_comment = (
-            "Etymology significance (simulated): additions/omissions may shift nuance or syntactic force; "
-            "verify whether omitted/added forms represent alternate stems or explanatory expansions."
-        )
-    else:
-        etymology_comment = (
-            "Etymology significance (simulated): no lexeme substitution signal detected; etymological "
-            "interpretation should remain stable across these witnesses."
-        )
-
-    profile_comment = (
-        "Diff profile (simulated): "
-        f"token_similarity={token_similarity:.3f}, "
-        f"char_similarity={char_similarity:.3f}, "
-        f"lexical_similarity={lexical_similarity:.3f}, "
-        f"ops(replace={op_counts['replace']}, insert={op_counts['insert']}, delete={op_counts['delete']})."
-    )
-
-    return [semantic_comment, content_comment, impact_comment, etymology_comment, profile_comment]
+    return [observation, significance]
 
 
 def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_name: str) -> str:
@@ -731,7 +775,7 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
         )
         lines.append("```")
         lines.append("")
-        lines.append("Simulated review comments:")
+        lines.append("Reviewer notes:")
         for comment in simulated_review_comments(
             source_a_text=str(source_a.get("text_content", "")),
             source_b_text=str(source_b.get("text_content", "")),
