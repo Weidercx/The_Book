@@ -436,6 +436,7 @@ def build_diff_queue(
     completed_pairs: set[tuple[str, str]],
     blocked_sources: Dict[str, List[str]],
 ) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    _ = baseline_source  # retained for CLI/API compatibility
     queue: List[Dict[str, Any]] = []
     skipped: List[Dict[str, Any]] = []
     seen_pairs: set[tuple[str, str]] = set()
@@ -543,27 +544,6 @@ def build_diff_queue(
     if len(source_keys) < 2:
         return queue, skipped
 
-    if baseline_source in source_keys:
-        for key in source_keys:
-            if key == baseline_source:
-                continue
-            ordered_a, ordered_b = order_pair_by_year(key, baseline_source, source_order_years)
-            enqueue(
-                source_a=ordered_a,
-                source_b=ordered_b,
-                strategy="baseline_gap_only",
-                strategy_rank=1,
-            )
-
-        for index, item in enumerate(queue, start=1):
-            item["run_priority"] = index
-        return queue, skipped
-
-    if queue:
-        for index, item in enumerate(queue, start=1):
-            item["run_priority"] = index
-        return queue, skipped
-
     for index in range(len(source_keys) - 1):
         ordered_a, ordered_b = order_pair_by_year(
             source_keys[index],
@@ -573,7 +553,7 @@ def build_diff_queue(
         enqueue(
             source_a=ordered_a,
             source_b=ordered_b,
-            strategy="adjacent_unresolved_fallback",
+            strategy="adjacent_chronological",
             strategy_rank=1,
         )
 
@@ -721,9 +701,9 @@ def build_source_index(
             "witness anchor for each source. BCE years sort earlier than CE years."
         ),
         "queue_policy": (
-            "Queue unresolved baseline gaps first (baseline source defaults to oshb), "
-            "skip pairs already present in reports/analysis outputs, and hard-block "
-            "pairs if either source has blocking data-quality flags."
+            "Queue unresolved adjacent chronological pairs only, skip pairs already present "
+            "in reports/analysis outputs, and hard-block pairs if either source has "
+            "blocking data-quality flags."
         ),
         "diff_filename_policy": (
             "Diff artifact filenames prefer compact year spans (<olderEra><olderYear>_<newerEra><newerYear>). "
