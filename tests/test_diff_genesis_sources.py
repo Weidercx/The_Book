@@ -20,6 +20,7 @@ def _chronology():
         "works": {
             "bible.ot.genesis": {
                 "tradition_label": "Hebrew Bible / Torah",
+                "source_ordering_policy": "higher_year_is_older",
                 "textual_authorship": {
                     "traditional_attribution": "Traditionally attributed to Moses",
                     "scholarly_model": "Composite redaction model",
@@ -65,10 +66,11 @@ def test_compare_sources_includes_full_changed_verse_details():
     details = report["comparison"]["changed_verse_details"]
     assert len(details) == 1
     assert details[0]["verse"] == "Gen.1.1"
-    assert details[0]["source_a"]["text_content"] == "בראשית ברא אלהים"
-    assert details[0]["source_b"]["text_content"] == "בראשית ברא"
+    assert details[0]["source_a"]["text_content"] == "בראשית ברא"
+    assert details[0]["source_b"]["text_content"] == "בראשית ברא אלהים"
     assert len(details[0]["token_diff"]["operations"]) >= 1
     assert report["chronology"]["composition_window_bce"]["start"] == 1000
-    assert report["source_ordering"]["source_a_name"] == "sefaria_mam"
-    assert report["source_ordering"]["source_b_name"] == "oshb"
+    assert report["source_ordering"]["source_a_name"] == "oshb"
+    assert report["source_ordering"]["source_b_name"] == "sefaria_mam"
+    assert report["source_ordering"]["ordering_policy"] == "higher_year_is_older"
     assert report["source_ordering"]["witness_year_gap"]["years"] == 78

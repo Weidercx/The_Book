@@ -145,11 +145,17 @@ def build_source_profile(
     }
 
 
-def source_order_key(profile: Dict[str, Any]) -> tuple[int, int, str]:
+def source_order_key(profile: Dict[str, Any], higher_year_is_older: bool) -> tuple[int, int, str]:
     witness_year = profile.get("oldest_witness_anchor_year_ce")
     digital_year = profile.get("oldest_digital_year_ce")
-    witness_rank = witness_year if isinstance(witness_year, int) else 9_999_999
-    digital_rank = digital_year if isinstance(digital_year, int) else 9_999_999
+
+    if higher_year_is_older:
+        witness_rank = (-witness_year) if isinstance(witness_year, int) else 9_999_999
+        digital_rank = (-digital_year) if isinstance(digital_year, int) else 9_999_999
+    else:
+        witness_rank = witness_year if isinstance(witness_year, int) else 9_999_999
+        digital_rank = digital_year if isinstance(digital_year, int) else 9_999_999
+
     return witness_rank, digital_rank, str(profile.get("source_name"))
 
 
@@ -193,6 +199,7 @@ def build_chronology_context(
     return {
         "tradition_label": work.get("tradition_label"),
         "textual_authorship": work.get("textual_authorship"),
+        "source_ordering_policy": work.get("source_ordering_policy"),
         "composition_window_bce": work.get("composition_window_bce"),
         "earliest_known_textual_witness_window_bce": work.get("earliest_known_textual_witness_window_bce"),
         "base_witness": work.get("base_witness"),
@@ -319,11 +326,14 @@ def render_markdown_report(report: Dict[str, Any], source_a_name: str, source_b_
     lines.append("## Source Ordering (Oldest First)")
     lines.append("")
     lines.append(
-        f"- Source A (oldest witness): {ordered_a_name} | "
+        f"- Ordering policy: {source_ordering.get('ordering_policy') or 'lower_year_is_older'}"
+    )
+    lines.append(
+        f"- Source A (ordered older witness): {ordered_a_name} | "
         f"anchor year CE: {ordered_a.get('oldest_witness_anchor_year_ce') or '(unknown)'}"
     )
     lines.append(
-        f"- Source B (newer witness): {ordered_b_name} | "
+        f"- Source B (ordered newer witness): {ordered_b_name} | "
         f"anchor year CE: {ordered_b.get('oldest_witness_anchor_year_ce') or '(unknown)'}"
     )
 
@@ -459,7 +469,13 @@ def compare_sources(
         for name, records in source_inputs.items()
     }
 
-    ordered_profiles = sorted(source_profiles.values(), key=source_order_key)
+    ordering_policy = str(chronology_context.get("source_ordering_policy") or "lower_year_is_older")
+    higher_year_is_older = ordering_policy == "higher_year_is_older"
+
+    ordered_profiles = sorted(
+        source_profiles.values(),
+        key=lambda profile: source_order_key(profile, higher_year_is_older=higher_year_is_older),
+    )
     ordered_a_name = ordered_profiles[0]["source_name"]
     ordered_b_name = ordered_profiles[1]["source_name"]
 
@@ -471,7 +487,7 @@ def compare_sources(
     witness_gap = year_gap_summary(
         older_year=ordered_a_profile.get("oldest_witness_anchor_year_ce"),
         newer_year=ordered_b_profile.get("oldest_witness_anchor_year_ce"),
-        method="difference between oldest witness anchor years (window uses start year)",
+        method="difference between configured witness ordering years (window uses start year)",
     )
 
     digital_gap = year_gap_summary(
@@ -479,6 +495,11 @@ def compare_sources(
         newer_year=ordered_b_profile.get("oldest_digital_year_ce"),
         method="difference between earliest digital/source edition years",
     )
+
+    if higher_year_is_older:
+        ordering_basis = "highest textual witness anchor year (fallback: highest digital/source year)"
+    else:
+        ordering_basis = "lowest textual witness anchor year (fallback: lowest digital/source year)"
 
     a_by_verse = {verse_key(rec): rec for rec in ordered_a_records}
     b_by_verse = {verse_key(rec): rec for rec in ordered_b_records}
@@ -533,7 +554,7 @@ def compare_sources(
             {
                 "severity": "medium",
                 "code": "MISSING_WITNESS_ANCHOR_DATES",
-                "message": "One or more sources are missing witness anchor dates; oldest-first ordering fell back to digital years",
+                "message": "One or more sources are missing witness anchor dates; source ordering fell back to digital years",
                 "source_a": ordered_a_name,
                 "source_b": ordered_b_name,
             }
@@ -595,7 +616,8 @@ def compare_sources(
         "source_ordering": {
             "source_a_name": ordered_a_name,
             "source_b_name": ordered_b_name,
-            "ordering_basis": "oldest textual witness anchor year (fallback: oldest digital/source year)",
+            "ordering_policy": ordering_policy,
+            "ordering_basis": ordering_basis,
             "witness_year_gap": witness_gap,
             "digital_year_gap": digital_gap,
         },
