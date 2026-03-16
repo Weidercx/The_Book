@@ -97,6 +97,10 @@ def oldest_witness_anchor_year(anchor: Dict[str, Any]) -> int | None:
     if not isinstance(anchor, dict):
         return None
 
+    ordering_year = anchor.get("ordering_year_ce")
+    if isinstance(ordering_year, int):
+        return ordering_year
+
     window = anchor.get("witness_anchor_window_ce")
     if isinstance(window, dict):
         start = window.get("start")

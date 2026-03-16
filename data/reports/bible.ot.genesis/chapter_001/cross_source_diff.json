@@ -24,6 +24,7 @@
       "oshb": {
         "witness_anchor_label": "Leningrad Codex (B19A) base witness",
         "witness_anchor_date_ce": 1008,
+        "ordering_year_ce": 1008,
         "source_basis": "Open Scriptures Hebrew Bible representation of WLC/Leningrad Codex tradition",
         "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses",
         "discovery_location": "Leningrad Codex repository: National Library of Russia, Saint Petersburg"
@@ -31,9 +32,10 @@
       "sefaria_mam": {
         "witness_anchor_label": "Miqra according to the Masorah (Aleppo/Leningrad tradition)",
         "witness_anchor_window_ce": {
-          "start": 930,
+          "start": 903,
           "end": 1008
         },
+        "ordering_year_ce": 903,
         "source_basis": "Miqra according to the Masorah digital edition grounded in Aleppo/Leningrad Masoretic tradition",
         "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses",
         "discovery_location": "Aleppo Codex historical provenance in Aleppo, Syria; surviving codex now in Jerusalem, Israel"
@@ -46,8 +48,8 @@
     "ordering_basis": "oldest textual witness anchor year (fallback: oldest digital/source year)",
     "witness_year_gap": {
       "known": true,
-      "years": 78,
-      "older_year_ce": 930,
+      "years": 105,
+      "older_year_ce": 903,
       "newer_year_ce": 1008,
       "method": "difference between oldest witness anchor years (window uses start year)"
     },
@@ -78,14 +80,15 @@
       "witness_anchor": {
         "witness_anchor_label": "Miqra according to the Masorah (Aleppo/Leningrad tradition)",
         "witness_anchor_window_ce": {
-          "start": 930,
+          "start": 903,
           "end": 1008
         },
+        "ordering_year_ce": 903,
         "source_basis": "Miqra according to the Masorah digital edition grounded in Aleppo/Leningrad Masoretic tradition",
         "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses",
         "discovery_location": "Aleppo Codex historical provenance in Aleppo, Syria; surviving codex now in Jerusalem, Israel"
       },
-      "oldest_witness_anchor_year_ce": 930,
+      "oldest_witness_anchor_year_ce": 903,
       "source_basis": "Miqra according to the Masorah digital edition grounded in Aleppo/Leningrad Masoretic tradition",
       "discovery_location": "Aleppo Codex historical provenance in Aleppo, Syria; surviving codex now in Jerusalem, Israel",
       "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses"
@@ -108,6 +111,7 @@
       "witness_anchor": {
         "witness_anchor_label": "Leningrad Codex (B19A) base witness",
         "witness_anchor_date_ce": 1008,
+        "ordering_year_ce": 1008,
         "source_basis": "Open Scriptures Hebrew Bible representation of WLC/Leningrad Codex tradition",
         "attributed_author": "Masoretic scribal tradition; underlying Genesis traditionally attributed to Moses",
         "discovery_location": "Leningrad Codex repository: National Library of Russia, Saint Petersburg"

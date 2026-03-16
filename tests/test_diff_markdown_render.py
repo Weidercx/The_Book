@@ -31,13 +31,15 @@ def _chronology():
                     "oshb": {
                         "witness_anchor_label": "Leningrad Codex",
                         "witness_anchor_date_ce": 1008,
+                        "ordering_year_ce": 1008,
                         "source_basis": "WLC/Leningrad witness tradition",
                         "attributed_author": "Masoretic scribal tradition",
                         "discovery_location": "Saint Petersburg",
                     },
                     "sefaria_mam": {
                         "witness_anchor_label": "MAM Aleppo/Leningrad tradition",
-                        "witness_anchor_window_ce": {"start": 930, "end": 1008},
+                        "witness_anchor_window_ce": {"start": 903, "end": 1008},
+                        "ordering_year_ce": 903,
                         "source_basis": "MAM Aleppo/Leningrad stream",
                         "attributed_author": "Masoretic scribal tradition",
                         "discovery_location": "Aleppo/Jerusalem",
@@ -66,7 +68,7 @@ def test_markdown_render_contains_diff_block_with_plus_and_minus_tokens():
     assert "- אלהים" in markdown
     assert "## Source Ordering (Oldest First)" in markdown
     assert "Source A (oldest witness): sefaria_mam" in markdown
-    assert "Estimated year gap between source witnesses: 78 years" in markdown
+    assert "Estimated year gap between source witnesses: 105 years" in markdown
     assert "## Authorship and Source Context" in markdown
     assert "Text traditional attribution: Traditionally attributed to Moses" in markdown
     assert "Source A discovery location: Aleppo/Jerusalem" in markdown
