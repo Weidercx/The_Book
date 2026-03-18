@@ -999,6 +999,11 @@ def _call_genai_review(prompt: str, enable_genai_review: bool | None = None) -> 
     return _extract_chat_text(payload_json)
 
 
+def genai_api_key_configured() -> bool:
+    """Return True when a GenAI API key is available in environment variables."""
+    return bool(os.getenv("GENAI_API_KEY") or os.getenv("OPENAI_API_KEY"))
+
+
 def _parse_genai_comment_lines(text: str) -> List[str]:
     raw_lines: List[str] = []
     for raw in text.splitlines():
@@ -1578,6 +1583,12 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+
+    if args.enable_genai_review and not genai_api_key_configured():
+        print(
+            "Warning: --enable-genai-review is set but no GENAI_API_KEY or OPENAI_API_KEY was found. "
+            "Reviewer notes will be omitted.",
+        )
 
     source_a_path = args.source_a or default_raw_source_path(args.chapter, "oshb")
     source_b_path = args.source_b or default_raw_source_path(args.chapter, "sefaria_mam")
